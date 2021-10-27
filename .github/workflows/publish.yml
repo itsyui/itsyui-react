@@ -9,4 +9,4 @@ jobs:
         with:
           node_version: "14"
       - run: npm install -g lerna
-      - run: npm bootstrap
+      - run: npm run bootstrap

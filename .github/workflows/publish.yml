@@ -1,0 +1,12 @@
+name: publish package
+on: [push]
+jobs:
+  install-lerna:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node_version: "14"
+      - run: npm install -g lerna
+      - run: npm bootstrap

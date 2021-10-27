@@ -1,0 +1,36 @@
+{
+	"name": "@itsy-ui/utils",
+	"version": "1.0.0-beta.5",
+	"main": "dist/npm/itsy-ui-utils.js",
+	"jsdelivr": "dist/cdn/itsy-ui-utils.js",
+	"module": "dist/es/itsy-ui-utils.esm.js",
+	"jsnext:main": "dist/es/itsy-ui-utils.esm.js",
+	"unpkg": "dist/cdn/itsy-ui-utils.js",
+	"amd": "dist/amd/itsy-ui-utils.amd.js",
+	"typings": "dist/types/index.d.ts",
+	"description": "ItsyUI utils library",
+	"author": "ItsyUI",
+	"license": "SEE LICENSE IN license.md",
+	"keywords": [
+		"react",
+		"react-dom",
+		"itsyui",
+		"itsy-ui",
+		"components",
+		"utils",
+		"utility"
+	],
+	"files": [
+		"dist/*",
+		"license.md"
+	],
+	"dependencies": {
+		"@itsy-ui/core": "^1.0.0-beta.0",
+		"axios": "^0.21.1"
+	},
+	"devDependencies": {},
+	"scripts": {
+		"build": "rollup -c ../../rollup.config.js",
+		"build:prod": "NODE_ENV=production rollup -c ../../rollup.config.js"
+	}
+}

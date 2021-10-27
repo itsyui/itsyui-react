@@ -1,0 +1,24 @@
+{
+	"command": {
+		"bootstrap": {
+			"concurrency": 4,
+			"forceLocal": true
+		},
+		"publish": {},
+		"run": {
+			"prefix": false,
+			"loglevel": "silent",
+			"stream": true,
+			"concurrency": 8,
+			"sort": false
+		},
+		"clean": {
+			"loglevel": "silent",
+			"concurrency": 8,
+			"yes": true
+		}
+	},
+	"version": "independent",
+	"npmClient": "yarn",
+	"useWorkspaces": true
+}

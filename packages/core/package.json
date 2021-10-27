@@ -1,0 +1,35 @@
+{
+    "name": "@itsy-ui/core",
+    "version": "1.0.0-beta.8",
+    "main": "dist/npm/itsy-ui-core.js",
+    "jsdelivr": "dist/cdn/itsy-ui-core.js",
+    "module": "dist/es/itsy-ui-core.esm.js",
+    "jsnext:main": "dist/es/itsy-ui-core.esm.js",
+    "amd": "dist/amd/itsy-ui-core.amd.js",
+    "unpkg": "dist/cdn/itsy-ui-core.js",
+    "description": "ItsyUI core library",
+    "author": "ItsyUI",
+    "license": "SEE LICENSE IN license.md",
+    "typings": "core.d.ts",
+    "keywords": [
+        "react",
+        "react-dom",
+        "itsyui",
+        "itsy-ui",
+        "components"
+    ],
+    "files": [
+        "dist/*",
+        "core.d.ts",
+        "license.md"
+    ],
+    "dependencies": {
+        "prop-types": "15.6.2",
+        "rx-lite": "^4.0.8",
+        "xstate": "4.0.0-1"
+    },
+    "scripts": {
+        "build": "rollup -c ../../rollup.config.js",
+        "build:prod": "NODE_ENV=production rollup -c ../../rollup.config.js"
+    }
+}

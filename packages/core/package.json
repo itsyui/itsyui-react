@@ -9,7 +9,6 @@
     "unpkg": "dist/cdn/itsy-ui-core.js",
     "description": "ItsyUI core library",
     "author": "ItsyUI",
-    "license": "SEE LICENSE IN license.md",
     "typings": "core.d.ts",
     "keywords": [
         "react",
@@ -18,6 +17,16 @@
         "itsy-ui",
         "components"
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/itsyui/itsyui-react.git",
+        "directory": "packages/core"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/itsyui/itsyui-react/issues"
+    },
+    "homepage": "https://www.itsyui.com/",
     "files": [
         "dist/*",
         "core.d.ts",
@@ -30,6 +39,6 @@
     },
     "scripts": {
         "build": "rollup -c ../../rollup.config.js",
-        "build:prod": "NODE_ENV=production rollup -c ../../rollup.config.js"
+        "build:prod": "set NODE_ENV=production && rollup -c ../../rollup.config.js"
     }
 }

@@ -1,11 +1,11 @@
 {
-    "name": "@itsy-ui/root",
     "private": true,
     "version": "1.0.0",
     "description": "Itsy UI Multi Repository Pacakge System",
     "main": "index.js",
     "scripts": {
         "bootstrap": "lerna bootstrap",
+        "release:build": "lerna run --parallel --scope \"@itsy-ui/*\" build:prod",
         "clean": "rimraf ./**/dist",
         "clean:nm": "rimraf node_modules && rimraf ./**/node_modules && rimraf yarn.lock",
         "format": "prettier --write 'packages/*/src/**/*' 'packages/*/test/**/*' 'README.md'"
@@ -34,6 +34,7 @@
         "@types/react-dom": "^16.9.8",
         "@types/rx-lite": "^4.0.6",
         "prettier": "^2.1.2",
+        "lerna": "^4.0.0",
         "rollup": "^2.0.6",
         "rollup-plugin-babel": "^4.4.0",
         "rollup-plugin-peer-deps-external": "^2.2.2",

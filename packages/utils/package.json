@@ -10,7 +10,6 @@
 	"typings": "dist/types/index.d.ts",
 	"description": "ItsyUI utils library",
 	"author": "ItsyUI",
-	"license": "SEE LICENSE IN license.md",
 	"keywords": [
 		"react",
 		"react-dom",
@@ -20,6 +19,16 @@
 		"utils",
 		"utility"
 	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/itsyui/itsyui-react.git",
+		"directory": "packages/core"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/itsyui/itsyui-react/issues"
+	},
+	"homepage": "https://www.itsyui.com/",
 	"files": [
 		"dist/*",
 		"license.md"
@@ -31,6 +40,6 @@
 	"devDependencies": {},
 	"scripts": {
 		"build": "rollup -c ../../rollup.config.js",
-		"build:prod": "NODE_ENV=production rollup -c ../../rollup.config.js"
+		"build:prod": "set NODE_ENV=production rollup -c ../../rollup.config.js"
 	}
 }

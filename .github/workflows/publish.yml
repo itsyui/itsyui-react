@@ -1,4 +1,4 @@
-name: publish package
+name: CI
 on: [push]
 jobs:
   install-lerna:
@@ -8,5 +8,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node_version: "14"
-      - run: npm install -g lerna
-      - run: npm run bootstrap
+          registry-url: "https://registry.npmjs.org"
+      - run: yarn install
+      - run: yarn bootstrap
+      - run: yarn release:build

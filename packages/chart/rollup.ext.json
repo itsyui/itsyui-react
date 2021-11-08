@@ -1,0 +1,6 @@
+{
+    "externals": [
+        "@cubejs-client/core",
+        "@cubejs-client/react"
+    ]
+}

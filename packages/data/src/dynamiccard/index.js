@@ -1,0 +1,1 @@
+export { default as ItsyDynamicCard } from "./CardWidget";

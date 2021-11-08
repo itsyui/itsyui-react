@@ -1,0 +1,130 @@
+{
+	"initial": "start",
+	"states": {
+		"start": {
+			"on": {
+				"APP_INIT": "appInit"
+			}
+		},
+		"appInit": {
+			"onEntry": [
+				"onAppInit"
+			],
+			"on": {
+				"LOAD_LANGUAGE": "loadLanguage"
+			}
+		},
+		"loadLanguage": {
+			"onEntry": [
+				"onLoadLanguageData"
+			],
+			"on": {
+				"PRE_LOAD_RESOURCES": "preLoadResources"
+			}
+		},
+		"preLoadResources": {
+			"onEntry": [
+				"onPreLoadResources"
+			],
+			"on": {
+				"LOAD_RESOURCES": "loadResources"
+			}
+		},
+		"loadResources": {
+			"onEntry": [
+				"onLoadResources"
+			],
+			"on": {
+				"LOAD_APP_SCHEMA": "loadAppSchema"
+			}
+		},
+		"loadAppSchema": {
+			"onEntry": [
+				"onLoadAppSchema"
+			],
+			"on": {
+				"RESOURCES_READY": "userRequireAuthenticate"
+			}
+		},
+		"userRequireAuthenticate": {
+			"onEntry": [
+				"onUserRequireAuthenticate"
+			],
+			"on": {
+				"AUTH_SUCCESS": "userAuthenticated",
+				"AUTH_FAILURE": "authError"
+			}
+		},
+		"authError": {
+			"onEntry": [
+				"onNavigateToLogin"
+			],
+			"on": {
+				"USER_REQUIRE_AUTHENTICATE": "userRequireAuthenticate",
+				"AUTH_SUCCESS": "userAuthenticated",
+				"NAVIGATE_URL": "navigateUrl",
+				"LANGUAGE_CHANGE": "languageChange"
+			}
+		},
+		"languageChange": {
+			"onEntry": [
+				"onLanguageChange"
+			],
+			"on": {
+				"USER_REQUIRE_AUTHENTICATE": "userRequireAuthenticate",
+				"LANGUAGE_CHANGE_DONE": "onLoaded",
+				"USER_AUTHENTICATE_REQUIRED": "userAuthenticateRequired"
+			}
+		},
+		"userAuthenticateRequired": {
+			"on": {
+				"USER_REQUIRE_AUTHENTICATE": "userRequireAuthenticate",
+				"AUTH_SUCCESS": "userAuthenticated",
+				"NAVIGATE_URL": "navigateUrl",
+				"LANGUAGE_CHANGE": "languageChange"
+			}
+		},
+		"userAuthenticated": {
+			"onEntry": [
+				"onUserAuthenticated"
+			],
+			"on": {
+				"USER_AUTHENTICATED": "appReady"
+			}
+		},
+		"appReady": {
+			"onEntry": [
+				"onNavigateToHome"
+			],
+			"on": {
+				"APP_READY": "onLoaded"
+			}
+		},
+		"onLoaded": {
+			"on": {
+				"NAVIGATE_URL": "navigateUrl",
+				"RESOURCES_READY": "userRequireAuthenticate",
+				"NAVIGATE_BACK": "navigateBack",
+				"LANGUAGE_CHANGE": "languageChange",
+				"NAVIGATE_HISTORY": "navigateHistory",
+				"AUTH_SUCCESS": "userAuthenticated"
+			}
+		},
+		"navigateUrl": {
+			"onEntry": [
+				"onNavigateTo"
+			],
+			"on": {
+				"DONE": "onLoaded"
+			}
+		},
+		"navigateHistory": {
+			"onEntry": [
+				"onNavigateToHistory"
+			],
+			"on": {
+				"DONE": "onLoaded"
+			}
+		}
+	}
+}

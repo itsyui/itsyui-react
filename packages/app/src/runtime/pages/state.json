@@ -1,0 +1,54 @@
+{
+	"initial": "onLoaded",
+	"states": {
+		"onLoaded": {
+			"on": {
+				"PAGE_INIT": "pageInit",
+				"PAGE_READY": "pageReady",
+				"PAGE_GET_STATE": "pageGetState",
+				"UPDATE_PAGE_CONTEXT": "updatePageContext"
+			}
+		},
+		"pageInit": {
+			"onEntry": [
+				"onPageInit"
+			],
+			"on": {
+				"PAGE_INIT_LOAD": "pageInitLoad"
+			}
+		},
+		"pageInitLoad": {
+			"onEntry": [
+				"onPageInitLoad"
+			],
+			"on": {
+				"PAGE_GET_STATE": "pageGetState",
+				"PAGE_LOADED": "onLoaded"
+			}
+		},
+		"pageReady": {
+			"onEntry": [
+				"onPageReady"
+			],
+			"on": {
+				"PAGE_LOADED": "onLoaded"
+			}
+		},
+		"pageGetState": {
+			"onEntry": [
+				"onPageGetState"
+			],
+			"on": {
+				"PAGE_LOADED": "onLoaded"
+			}
+		},
+		"updatePageContext": {
+			"onEntry": [
+				"onPageUpdateContext"
+			],
+			"on": {
+				"PAGE_LOADED": "onLoaded"
+			}
+		}
+	}
+}

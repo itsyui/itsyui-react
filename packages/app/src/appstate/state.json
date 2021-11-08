@@ -1,0 +1,57 @@
+{
+	"initial": "onLoaded",
+	"states": {
+		"onLoaded": {
+			"on": {
+				"FV_APPSTATE_INIT": "fvAppStateInit",
+				"FV_APPSTATE_GET_STATE": "fvAppStateGet",
+				"FV_APPSTATE_SET_STATE": "fvAppStateUpdate",
+				"FV_APPSTATE_INIT_ROLES": "fvAppStateInitRoles",
+				"FV_APPSTATE_INIT_TYPES": "fvAppStateInitTypes"
+			}
+		},
+		"fvAppStateInit": {
+			"onEntry": [
+				"onAppStateInit"
+			],
+			"on": {
+				"FV_APPSTATE_LOADED": "onLoaded",
+				"FV_APPSTATE_INIT_ROLES": "fvAppStateInitRoles"
+			}
+		},
+		"fvAppStateGet": {
+			"onEntry": [
+				"onAppStateGet"
+			],
+			"on": {
+				"FV_APPSTATE_LOADED": "onLoaded"
+			}
+		},
+		"fvAppStateUpdate": {
+			"onEntry": [
+				"onAppStateUpdate"
+			],
+			"on": {
+				"FV_APPSTATE_LOADED": "onLoaded"
+			}
+		},
+		"fvAppStateInitRoles": {
+			"onEntry": [
+				"onRolesInit"
+			],
+			"on": {
+				"FV_APPSTATE_LOADED": "onLoaded",
+				"FV_APPSTATE_GET_STATE": "fvAppStateGet"
+			}
+		},
+		"fvAppStateInitTypes": {
+			"onEntry": [
+				"onPropDefsInit"
+			],
+			"on": {
+				"FV_APPSTATE_LOADED": "onLoaded",
+				"FV_APPSTATE_GET_STATE": "fvAppStateGet"
+			}
+		}
+	}
+}

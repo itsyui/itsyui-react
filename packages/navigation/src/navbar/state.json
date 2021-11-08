@@ -1,0 +1,46 @@
+{
+	"initial": "onLoaded",
+	"states": {
+		"onLoaded": {
+			"on": {
+				"NAVBAR_INIT": "navbarInit",
+				"NAVBAR_REFRESH": "navbarRefresh",
+				"NAVBAR_COMMANDEXECUTE": "navbarCommandExecute",
+				"NAVBAR_GET_STATE": "navbarGetState"
+			}
+		},
+		"navbarInit": {
+			"onEntry": [
+				"onNavbarInit"
+			],
+			"on": {
+				"NAVBAR_REFRESH": "navbarRefresh"
+			}
+		},
+		"navbarRefresh": {
+			"onEntry": [
+				"onNavbarRefresh"
+			],
+			"on": {
+				"NAVBAR_ON_LOADED": "onLoaded"
+			}
+		},
+		"navbarCommandExecute": {
+			"onEntry": [
+				"onNavbarCommandExecute"
+			],
+			"on": {
+				"NAVBAR_ON_LOADED": "onLoaded",
+				"NAVBAR_REFRESH": "navbarRefresh"
+			}
+		},
+		"navbarGetState": {
+			"onEntry": [
+				"onNavbarGetState"
+			],
+			"on": {
+				"NAVBAR_DONE": "onLoaded"
+			}
+		}
+	}
+}

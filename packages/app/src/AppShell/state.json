@@ -1,0 +1,26 @@
+{
+	"initial": "start",
+	"states": {
+		"start": {
+			"on": {
+				"APP_BEFORE_LOAD": "appBeforeLoad"
+			}
+		},
+		"appBeforeLoad": {
+			"onEntry": [
+				"onAppBeforeLoad"
+			],
+			"on": {
+				"APP_LOAD": "appLoad"
+			}
+		},
+		"appLoad": {
+			"onEntry": [
+				"onAppLoad"
+			],
+			"on": {
+				"APP_LOADED": "start"
+			}
+		}
+	}
+}

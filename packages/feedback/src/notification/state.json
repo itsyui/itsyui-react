@@ -1,0 +1,18 @@
+{
+	"initial": "onLoaded",
+	"states": {
+		"onLoaded": {
+			"on": {
+				"SHOW_NOTIFICATION": "showNotification"
+			}
+		},
+		"showNotification": {
+			"onEntry": [
+				"onShowNotification"
+			],
+			"on": {
+				"NOTIFICATION_LOADED": "onLoaded"
+			}
+		}
+	}
+}

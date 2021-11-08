@@ -1,0 +1,145 @@
+{
+	"initial": "onLoaded",
+	"states": {
+		"onLoaded": {
+			"on": {
+				"GRID_INIT": "gridInit",
+				"GRID_REFRESH": "gridRefresh",
+				"GRID_BEFORE_SELECTED_ROWS": "gridBeforeSelectedRows",
+				"GRID_INIT_ROW_SUMMARY": "gridInitRowSummary",
+				"GRID_FILTER": "gridFilter",
+				"GRID_GET_STATE": "gridGetState",
+				"GRID_BEFORE_EDIT": "gridBeforeEdit",
+				"GRID_UPDATE_CONTEXT": "gridUpdateContext"
+			}
+		},
+		"gridInit": {
+			"onEntry": [
+				"onGridInit"
+			],
+			"on": {
+				"GRID_LOAD": "gridLoad"
+			}
+		},
+		"gridLoad": {
+			"onEntry": [
+				"onGridLoad"
+			],
+			"on": {
+				"GRID_LOAD_DONE": "gridLoadDone"
+			}
+		},
+		"gridLoadDone": {
+			"onEntry": [
+				"onGridLoadDone"
+			],
+			"on": {
+				"GRID_BEFORE_SELECTED_ROWS": "gridBeforeSelectedRows",
+				"GRID_DONE": "onLoaded"
+			}
+		},
+		"gridFilter": {
+			"onEntry": [
+				"onGridFilter"
+			],
+			"on": {
+				"GRID_DONE": "onLoaded"
+			}
+		},
+		"gridRefresh": {
+			"onEntry": [
+				"onGridRefresh"
+			],
+			"on": {
+				"GRID_DONE": "onLoaded"
+			}
+		},
+		"gridBeforeSelectedRows": {
+			"onEntry": [
+				"onGridBeforeSelectedRows"
+			],
+			"on": {
+				"GRID_SELECTED_ROWS": "gridSelectedRows",
+				"GRID_SELECTED_ROWS_DONE": "gridSelectedRowsDone"
+			}
+		},
+		"gridSelectedRows": {
+			"onEntry": [
+				"onGridSelectedRows"
+			],
+			"on": {
+				"GRID_SELECTED_ROWS_DONE": "gridSelectedRowsDone"
+			}
+		},
+		"gridSelectedRowsDone": {
+			"onEntry": [
+				"onGridSelectedRowsDone"
+			],
+			"on": {
+				"GRID_DONE": "onLoaded"
+			}
+		},
+		"gridInitRowSummary": {
+			"onEntry": [
+				"onGridInitRowSummary"
+			],
+			"on": {
+				"GRID_DONE": "onLoaded"
+			}
+		},
+		"gridGetState": {
+			"onEntry": [
+				"onGridGetState"
+			],
+			"on": {
+				"GRID_DONE": "onLoaded"
+			}
+		},
+		"gridBeforeEdit": {
+			"onEntry": [
+				"onGridBeforeEdit"
+			],
+			"on": {
+				"GRID_EDIT": "gridEdit"
+			}
+		},
+		"gridEdit": {
+			"onEntry": [
+				"onGridEdit"
+			],
+			"on": {
+				"GRID_EDIT_LOADED": "gridEditLoaded"
+			}
+		},
+		"gridEditLoaded": {
+			"on": {
+				"GRID_BEFORE_EDIT": "gridBeforeEdit",
+				"GRID_END_EDIT": "gridEndEdit"
+			}
+		},
+		"gridEndEdit": {
+			"onEntry": [
+				"onGridEndEdit"
+			],
+			"on": {
+				"GRID_AFTER_END_EDIT": "gridAfterEndEdit"
+			}
+		},
+		"gridAfterEndEdit": {
+			"onEntry": [
+				"onGridAfterEndEdit"
+			],
+			"on": {
+				"GRID_DONE": "onLoaded"
+			}
+		},
+		"gridUpdateContext": {
+			"onEntry": [
+				"onGridUpdateContext"
+			],
+			"on": {
+				"GRID_DONE": "onLoaded"
+			}
+		}
+	}
+}

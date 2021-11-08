@@ -1,0 +1,207 @@
+{
+	"initial": "onLoaded",
+	"states": {
+		"onLoaded": {
+			"on": {
+				"FORM_INIT": "formInit",
+				"FORM_SUBMIT_CLICK": "formSubmitClick",
+				"FORM_DATA_FETCH": "formDataFetch",
+				"FORM_SUBMIT": "formSubmit",
+				"FORM_EXIT": "formExit",
+				"FORM_BEFORE_HANDLE_CHANGE": "formBeforeHandleChange",
+				"FORM_BEFORE_HANDLE_BLUR": "formBeforeHandleBlur",
+				"FORM_UPDATE_PROPERTY_DEFINITIONS": "formUpdatePropertyDefinitions",
+				"FORM_BEFORE_UPDATE_SECTION": "formBeforeUpdateSection",
+				"FORM_UPDATE_SECTION": "formUpdateSection",
+				"FORM_GET_STATE": "formGetState",
+				"FORM_UPDATE_EXTRAPARAMS": "formUpdateExtraParams",
+				"FORM_REFRESH": "formRefresh"
+			}
+		},
+		"formInit": {
+			"onEntry": [
+				"onFormInit"
+			],
+			"on": {
+				"FORM_INIT_LOAD": "formInitLoad"
+			}
+		},
+		"formInitLoad": {
+			"onEntry": [
+				"onFormInitLoad"
+			],
+			"on": {
+				"FORM_SCHEMA_BEFORE_LOAD": "formSchemaBeforeLoad",
+				"FORM_ERROR": "formError"
+			}
+		},
+		"formSchemaBeforeLoad": {
+			"onEntry": [
+				"onFormSchemaBeforeLoad"
+			],
+			"on": {
+				"FORM_SCHEMA_LOADED": "formSchemaLoaded",
+				"FORM_ERROR": "formError"
+			}
+		},
+		"formSchemaLoaded": {
+			"onEntry": [
+				"onFormSchemaLoaded"
+			],
+			"on": {
+				"FORM_DATA_FETCH": "formDataFetch",
+				"FORM_DATA_AFTER_LOAD": "formDataAfterLoad",
+				"FORM_ERROR": "formError"
+			}
+		},
+		"formSubmitClick": {
+			"onEntry": [
+				"onFormSubmitClick"
+			],
+			"on": {
+				"FORM_BEFORE_SUBMIT": "formBeforeSubmit"
+			}
+		},
+		"formBeforeSubmit": {
+			"on": {
+				"FORM_SUBMIT": "formSubmit",
+				"FORM_SUBMIT_CLICK": "formSubmitClick",
+				"FORM_BEFORE_HANDLE_CHANGE": "formBeforeHandleChange"
+			}
+		},
+		"formSubmit": {
+			"onEntry": [
+				"onFormSubmit"
+			],
+			"on": {
+				"FORM_AFTER_SUBMIT": "formAfterSubmit",
+				"FORM_ERROR": "formError"
+			}
+		},
+		"formError": {
+			"onEntry": [
+				"onFormError"
+			],
+			"on": {
+				"FORM_LOADED": "onLoaded"
+			}
+		},
+		"formDataFetch": {
+			"onEntry": [
+				"onFormDataFetch"
+			],
+			"on": {
+				"FORM_DATA_AFTER_LOAD": "formDataAfterLoad",
+				"FORM_ERROR": "formError"
+			}
+		},
+		"formDataAfterLoad": {
+			"onEntry": [
+				"onFormDataAfterLoad"
+			],
+			"on": {
+				"FORM_RELOAD": "formReload",
+				"FORM_ERROR": "formError"
+			}
+		},
+		"formReload": {
+			"onEntry": [
+				"onFormReload"
+			],
+			"on": {
+				"FORM_LOADED": "onLoaded"
+			}
+		},
+		"formAfterSubmit": {
+			"onEntry": [
+				"onFormAfterSubmit"
+			],
+			"on": {
+				"FORM_LOADED": "onLoaded",
+				"FORM_VALUE_RESET": "formValueReset",
+				"FORM_EXIT": "formExit"
+			}
+		},
+		"formExit": {},
+		"formValueReset": {
+			"onEntry": [
+				"onFormValueReset"
+			],
+			"on": {
+				"FORM_INIT": "formInit"
+			}
+		},
+		"formBeforeHandleChange": {
+			"onEntry": [
+				"onFormBeforeHandleChange"
+			],
+			"on": {
+				"FORM_VALUE_UPDATE": "formValueUpdate"
+			}
+		},
+		"formValueUpdate": {
+			"onEntry": [
+				"onFormValueUpdate"
+			],
+			"on": {
+				"FORM_LOADED": "onLoaded"
+			}
+		},
+		"formBeforeHandleBlur": {
+			"onEntry": [
+				"onFormBeforeHandleBlur"
+			],
+			"on": {
+				"FORM_VALUE_UPDATE": "formValueUpdate"
+			}
+		},
+		"formUpdatePropertyDefinitions": {
+			"onEntry": [
+				"onFormUpdatePropertyDefinitions"
+			],
+			"on": {
+				"FORM_LOADED": "onLoaded"
+			}
+		},
+		"formBeforeUpdateSection": {
+			"onEntry": [
+				"onFormBeforeUpdateSection"
+			],
+			"on": {
+				"FORM_UPDATE_SECTION": "formUpdateSection"
+			}
+		},
+		"formUpdateSection": {
+			"onEntry": [
+				"onFormUpdateSection"
+			],
+			"on": {
+				"FORM_LOADED": "onLoaded"
+			}
+		},
+		"formGetState": {
+			"onEntry": [
+				"onFormGetState"
+			],
+			"on": {
+				"FORM_LOADED": "onLoaded"
+			}
+		},
+		"formUpdateExtraParams": {
+			"onEntry": [
+				"onFormUpdateExtraParams"
+			],
+			"on": {
+				"FORM_LOADED": "onLoaded"
+			}
+		},
+		"formRefresh": {
+			"onEntry": [
+				"onFormRefresh"
+			],
+			"on": {
+				"FORM_LOADED": "onLoaded"
+			}
+		}
+	}
+}

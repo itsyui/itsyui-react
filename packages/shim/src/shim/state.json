@@ -1,0 +1,211 @@
+{
+	"initial": "onLoaded",
+	"states": {
+		"onLoaded": {
+			"on": {
+				"MOBILE_INIT": "mobileInit",
+				"MOBILE_CAMERA": "mobileCamera",
+				"MOBILE_GPS": "mobileGPS",
+				"MOBILE_KEYBOARD_SHOW": "mobileKeyboardShow",
+				"MOBILE_KEYBOARD_HIDE": "mobileKeyboardHide",
+				"MOBILE_BEFORE_NETWORK_STATE": "mobileBeforeNetworkState",
+				"MOBILE_NETWORK_STATE": "mobileNetworkState",
+				"MOBILE_BEFORE_NAVIGATE_BACK": "mobileBeforeNavigateBack",
+				"MOBILE_SHOW_TOAST_MESSAGE": "mobileShowToastMessage",
+				"MOBILE_BEFORE_APPSTATE": "mobileBeforeAppState",
+				"MOBILE_APPSTATE": "mobileAppState",
+				"MOBILE_WRITE_FILE": "mobileWriteFile",
+				"MOBILE_READ_FILE": "mobileReadFile",
+				"MOBILE_OPEN_FILE": "mobileOpenFile",
+				"MOBILE_READ_DIRECTORY": "mobileReadDirectory",
+				"MOBILE_MAKE_DIRECTORY": "mobileMakeDirectory",
+				"MOBILE_STATUSBAR": "mobileStatusBar",
+				"MOBILE_SCAN_QR": "mobileScanQR",
+				"MOBILE_UPDATE_QR_STATUS": "mobileUpdateQRStatus",
+				"MOBILE_SHARE": "mobileShare",
+				"MOBILE_CLIP_BOARD": "mobileClipboard"
+			}
+		},
+		"mobileInit": {
+			"onEntry": [
+				"onMobileInit"
+			],
+			"on": {
+				"MOBILE_ON_LOADED": "onLoaded",
+				"MOBILE_STATUSBAR": "mobileStatusBar"
+			}
+		},
+		"mobileCamera": {
+			"onEntry": [
+				"onMobileCamera"
+			],
+			"on": {
+				"MOBILE_BEFORE_NETWORK_STATE": "mobileBeforeNetworkState",
+				"MOBILE_BEFORE_APPSTATE": "mobileBeforeAppState",
+				"MOBILE_ON_LOADED": "onLoaded"
+			}
+		},
+		"mobileGPS": {
+			"onEntry": [
+				"onMobileGPS"
+			],
+			"on": {
+				"MOBILE_ON_LOADED": "onLoaded"
+			}
+		},
+		"mobileKeyboardShow": {
+			"onEntry": [
+				"onMobileKeyboardShow"
+			],
+			"on": {
+				"MOBILE_ON_LOADED": "onLoaded"
+			}
+		},
+		"mobileKeyboardHide": {
+			"onEntry": [
+				"onMobileKeyboardHide"
+			],
+			"on": {
+				"MOBILE_ON_LOADED": "onLoaded"
+			}
+		},
+		"mobileBeforeNavigateBack": {
+			"onEntry": [
+				"onMobileBeforeNavigateBack"
+			],
+			"on": {
+				"MOBILE_NAVIGATE_BACK": "mobileNavigateBack"
+			}
+		},
+		"mobileNavigateBack": {
+			"onEntry": [
+				"onMobileNavigateBack"
+			],
+			"on": {
+				"MOBILE_ON_LOADED": "onLoaded"
+			}
+		},
+		"mobileShowToastMessage": {
+			"onEntry": [
+				"onMobileShowToastMessage"
+			],
+			"on": {
+				"MOBILE_ON_LOADED": "onLoaded"
+			}
+		},
+		"mobileBeforeNetworkState": {
+			"onEntry": [
+				"onMobileBeforeNetworkState"
+			],
+			"on": {
+				"MOBILE_NETWORK_STATE": "mobileNetworkState",
+				"MOBILE_ON_LOADED": "onLoaded"
+			}
+		},
+		"mobileNetworkState": {
+			"onEntry": [
+				"onMobileNetworkState"
+			],
+			"on": {
+				"MOBILE_ON_LOADED": "onLoaded"
+			}
+		},
+		"mobileBeforeAppState": {
+			"onEntry": [
+				"onMobileBeforeAppState"
+			],
+			"on": {
+				"MOBILE_APPSTATE": "mobileAppState",
+				"MOBILE_ON_LOADED": "onLoaded"
+			}
+		},
+		"mobileAppState": {
+			"onEntry": [
+				"onMobileAppState"
+			],
+			"on": {
+				"MOBILE_ON_LOADED": "onLoaded"
+			}
+		},
+		"mobileWriteFile": {
+			"onEntry": [
+				"onMobileWriteFile"
+			],
+			"on": {
+				"MOBILE_ON_LOADED": "onLoaded"
+			}
+		},
+		"mobileReadFile": {
+			"onEntry": [
+				"onMobileReadFile"
+			],
+			"on": {
+				"MOBILE_ON_LOADED": "onLoaded"
+			}
+		},
+		"mobileOpenFile": {
+			"onEntry": [
+				"onMobileOpenFile"
+			],
+			"on": {
+				"MOBILE_ON_LOADED": "onLoaded"
+			}
+		},
+		"mobileStatusBar": {
+			"onEntry": [
+				"onMobileStatusBar"
+			],
+			"on": {
+				"MOBILE_ON_LOADED": "onLoaded"
+			}
+		},
+		"mobileScanQR": {
+			"onEntry": [
+				"onMobileScanQR"
+			],
+			"on": {
+				"MOBILE_ON_LOADED": "onLoaded"
+			}
+		},
+		"mobileUpdateQRStatus": {
+			"onEntry": [
+				"onUpdateQRStatus"
+			],
+			"on": {
+				"MOBILE_ON_LOADED": "onLoaded"
+			}
+		},
+		"mobileShare": {
+			"onEntry": [
+				"onMobileShare"
+			],
+			"on": {
+				"MOBILE_ON_LOADED": "onLoaded"
+			}
+		},
+		"mobileReadDirectory": {
+			"onEntry": [
+				"onMobileReadDirectory"
+			],
+			"on": {
+				"MOBILE_ON_LOADED": "onLoaded"
+			}
+		},
+		"mobileMakeDirectory": {
+			"onEntry": [
+				"onMobileMakeDirectory"
+			],
+			"on": {
+				"MOBILE_ON_LOADED": "onLoaded"
+			}
+		},
+		"mobileClipboard": {
+			"onEntry": [
+				"onMobileClipBorad"
+			],
+			"on": {
+				"MOBILE_ON_LOADED": "onLoaded"
+			}
+		}
+	}
+}

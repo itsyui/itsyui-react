@@ -1,0 +1,49 @@
+{
+	"name": "@itsy-ui/layout",
+	"version": "1.0.0-beta.3",
+	"main": "dist/npm/itsy-ui-layout.js",
+	"jsdelivr": "dist/cdn/itsy-ui-layout.js",
+	"module": "dist/es/itsy-ui-layout.esm.js",
+	"jsnext:main": "dist/es/itsy-ui-layout.esm.js",
+	"unpkg": "dist/cdn/itsy-ui-layout.js",
+	"amd": "dist/amd/itsy-ui-layout.amd.js",
+	"typings": "dist/types/index.d.ts",
+	"description": "ItsyUI layout library",
+	"author": "ItsyUI",
+	"keywords": [
+		"react",
+		"react-dom",
+		"itsyui",
+		"itsy-ui",
+		"components",
+		"responsive",
+		"layout",
+		"grid-layout"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/itsyui/itsyui-react.git",
+		"directory": "packages/layout"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/itsyui/itsyui-react/issues"
+	},
+	"homepage": "https://www.itsyui.com/",
+	"files": [
+		"dist/*",
+		"license.md"
+	],
+	"dependencies": {
+		"classnames": "^2.2.5",
+		"prop-types": "15.7.2",
+		"rx-lite": "^4.0.8",
+		"xstate": "4.0.0-1",
+		"@itsy-ui/core": "^1.0.0-beta.0"
+	},
+	"devDependencies": {},
+	"scripts": {
+		"build": "rollup -c ../../rollup.config.js",
+		"build:prod": "NODE_ENV=production rollup -c ../../rollup.config.js"
+	}
+}

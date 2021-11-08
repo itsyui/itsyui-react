@@ -1,0 +1,18 @@
+{
+    "initial": "onLoaded",
+    "states": {
+        "onLoaded": {
+            "on": {
+                "TABITEMS_INIT": "tabItemsInit"
+            }
+        },
+        "tabItemsInit": {
+            "onEntry": [
+                "onTabItemsInit"
+            ],
+            "on": {
+                "TABITEMS_LOADED": "onLoaded"
+            }
+        }
+    }
+}

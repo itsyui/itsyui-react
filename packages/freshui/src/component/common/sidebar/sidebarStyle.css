@@ -1,0 +1,174 @@
+.freshui-expended-sidebar {
+    margin: 0;
+    padding: 0;
+    width: 240px;
+    background-color: #f1f1f1;
+    height: 100%;
+    overflow: auto;
+    top: 58px;
+    transition: width 0.8s ease;
+}
+.freshui-collapse-sidebar {
+    margin: 0;
+    padding: 0;
+    width: 68px;
+    background-color: #f1f1f1;
+    height: 100%;
+    overflow: auto;
+    top: 58px;
+    transition: width 0.8s ease;
+}
+
+.freshui-list-item {
+    display: flex;
+    padding: 15px 15px;
+    list-style-type: none;
+    align-items: center;
+}
+.freshui-list-item:hover {
+    border-left: 3px solid;
+    border-left-color: #5082a2;
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.freshui-expended-sidebar img.sidebar-imageIcon {
+    width: 14%;
+}
+img.collabse-sidebar-image {
+    width: 75%;
+}
+
+.sidebar-menu-text {
+    margin-left: 20px;
+    align-self: center;
+    flex: 1 1 auto;
+}
+
+a.sidebar-atag-item:hover, a.sidebar-atag-item {
+    text-decoration: none;
+}
+
+.sidebar-bottom-icon {
+    margin-top: auto;
+}
+
+.drawerHeader {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 48px
+}
+
+.drawerHeader_close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px
+}
+.freshui-collapse-sidebar li.freshui-list-item.icon-align.sidebar_text_color {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.freshui-expended-sidebar .sidebar-bottom-icon,.freshui-collapse-sidebar .sidebar-bottom-icon {
+    /* position: relative; */
+    border-top: 1px solid #dee2e6;
+    /* width: 240px; */
+    background-color: #f1f1f1;
+}
+.freshui-collapse-sidebar .sidebar-bottom-icon {
+    border-top: 1px solid #dee2e6;
+    background-color: #f1f1f1;
+}
+.bottom-iconDiv{
+    padding: 15px;
+}
+.sidebar-item{
+    height: calc(100% - 58px);
+    overflow-y: auto;
+    overflow-x: hidden;  
+}
+.freshui-collapse-sidebar li.freshui-list-item{
+    justify-content: center;
+}
+.freshui-list-item.text-direction {
+    flex-direction: column;
+    text-align: center;
+}
+.freshui-expended-sidebar.verticalMenu,.freshui-collapse-sidebar.verticalMenu {
+    height: auto;
+}
+.freshui-horizontal-navbar-container {
+    margin-top: 12px;
+}
+ul.freshui-horizontal_ul {
+    display: flex;
+    padding: 0px;
+    width: 100%;
+    overflow-x: auto;
+    margin: 0px;
+    overflow-y: hidden;
+    height: 48px;
+    background-color: #f1f1f1;
+}
+.freshui-horizontal-navbar-section {
+    width: 100%;
+}
+li.freshui-horizontal-list-item {
+    align-items: center;
+    list-style-type: none;
+    padding: 5px;
+}
+.freshui-horizontal-sidebar-menu-text {
+    margin-left: 8px;
+}
+.freshui-horizontal-list-item {
+    display: flex;
+}
+.freshui-layoutC_header_fixed_design .freshui-horizontal_ul {
+    height: 54px;
+}
+.horizontal_top_icon {
+    text-align: center;
+}
+li.horizontalTop-list-item {
+    list-style-type: none;
+}
+.freshui-drawer-root{
+    height: 100%;
+}
+.freshui-mobile-root {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+.freshui-mobile-root .backdrop {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+.freshui-mobile-sidebar-inner-contianer {
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 240px;
+    background-color: #f1f1f1;
+}
+li.freshui-list-item.icon-align.list-item-avatar-expand.active,
+li.freshui-list-item.icon-align.active {
+    background-color: #5082a2;
+    color: #fff;
+}
+.childe-item-render{
+    margin-left: 10px;
+}

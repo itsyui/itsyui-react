@@ -14,3 +14,6 @@ jobs:
       - run: yarn release:build
         env:
           NODE_ENV: production
+      - run: yarn release:publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

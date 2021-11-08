@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "bootstrap": "lerna bootstrap",
-        "release:build": "lerna run --sort --parallel --scope \"@itsy-ui/*\" build",
+        "release:build": "lerna run --sort --scope \"@itsy-ui/*\" build",
         "clean": "rimraf ./**/dist",
         "clean:nm": "rimraf node_modules && rimraf ./**/node_modules && rimraf yarn.lock",
         "format": "prettier --write 'packages/*/src/**/*' 'packages/*/test/**/*' 'README.md'"

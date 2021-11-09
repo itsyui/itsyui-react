@@ -1,0 +1,27 @@
+{
+    "name": "cra-template-itsyui-widget",
+    "version": "1.0.1",
+    "keywords": [
+        "react",
+        "create-react-app",
+        "template",
+        "itsyui",
+        "counter"
+    ],
+    "main": "template.json",
+    "description": "This app builds counter widget using ItsyUI state transitions.",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/itsyui/itsyui-react.git",
+        "directory": "templates/cra-template-itsyui-widget"
+    },
+    "license": "MIT",
+    "engines": {
+        "node": ">=10"
+    },
+    "bugs": {},
+    "files": [
+        "template",
+        "template.json"
+    ]
+}

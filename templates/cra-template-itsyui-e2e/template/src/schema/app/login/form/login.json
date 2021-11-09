@@ -1,0 +1,55 @@
+{
+  "id": "login",
+  "title": "Default",
+  "description": "Default schema",
+  "uniquePropertyId": "",
+  "propertyDefinitions": {
+    "email": {
+      "id": "email",
+      "displayName": "{{E-mail}}",
+      "propertyType": "string",
+      "ui:widget": "text",
+      "required": true,
+      "title": "E-mail",
+      "description": "{{formDesigner.emailDescription}}",
+      "fieldKey": "email",
+      "isMandatory": true
+    },
+    "password": {
+      "id": "password",
+      "displayName": "{{Password}}",
+      "propertyType": "string",
+      "ui:widget": "text",
+      "required": true,
+      "title": "Password",
+      "description": "{{formDesigner.passwordDescription}}",
+      "type": "password",
+      "fieldKey": "password",
+      "isMandatory": true
+    }
+  },
+  "sections": [
+    {
+      "columns": [
+        {
+          "cell": [
+            {
+              "widget": "email"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "cell": [
+            {
+              "widget": "password"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

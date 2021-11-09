@@ -1,0 +1,26 @@
+{
+    "name": "cra-template-itsyui-e2e",
+    "version": "1.0.2",
+    "keywords": [
+        "react",
+        "create-react-app",
+        "template",
+        "itsyui"
+    ],
+    "main": "template.json",
+    "description": "The official template for ItsyUI E2E app with typescript.",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/itsyui/itsyui-react.git",
+        "directory": "template/cra-template-itsyui-e2e"
+    },
+    "license": "MIT",
+    "engines": {
+        "node": ">=10"
+    },
+    "bugs": {},
+    "files": [
+        "template",
+        "template.json"
+    ]
+}

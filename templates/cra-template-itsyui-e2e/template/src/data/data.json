@@ -1,0 +1,47 @@
+[
+    {
+        "id": 101,
+        "name": "Frozen yoghurt",
+        "description": "Frozen yogurt is a frozen dessert made with yogurt and sometimes other dairy and non-dairy products.",
+        "calories": "262",
+        "fat": "6",
+        "carbs": "24",
+        "protein": "4"
+    },
+    {
+        "id": 102,
+        "name": "Ice cream sandwich",
+        "description": "An ice cream sandwich is a frozen dessert consisting of ice cream between two biscuits, skins, or cookies.",
+        "calories": "159",
+        "fat": "9",
+        "carbs": "37",
+        "protein": "4.3"
+    },
+    {
+        "id": 103,
+        "name": "Cupcake",
+        "description": "A cupcake is a small cake designed to serve one person, which may be baked in a small thin paper or aluminum cup.",
+        "calories": "305",
+        "fat": "3.7",
+        "carbs": "67",
+        "protein": "4.3"
+    },
+    {
+        "id": 104,
+        "name": "Gingerbread",
+        "description": "A gingerbread man is a biscuit or cookie made of gingerbread, usually in the shape of a stylized human being",
+        "calories": "356",
+        "fat": "16",
+        "carbs": "49",
+        "protein": "3.9"
+    },
+    {
+        "id": 105,
+        "name": "Eclair",
+        "description": "An éclair is an oblong pastry made with choux dough filled with a cream and topped with chocolate icing.",
+        "calories": "237",
+        "fat": "16",
+        "carbs": "24",
+        "protein": "6"
+    }
+]

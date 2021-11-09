@@ -1,0 +1,45 @@
+{
+  "id": "second",
+  "title": "Second",
+  "url": "/second",
+  "isDefault": false,
+  "orderId": 3,
+  "roles": [],
+  "queryParams": [],
+  "components": {
+    "a4055955-6d74-80cd-f807-412bf6f0f332": {
+      "name": "a4055955-6d74-80cd-f807-412bf6f0f332",
+      "properties": {
+        "title": "Welcome to second screen",
+        "propertyType": "label",
+        "ui:widget": "label",
+        "widgetType": "unbound",
+        "headerSize": "h3",
+        "alignText": "center"
+      }
+    },
+    "553eb350-43b7-1e22-efa4-0da67c9ec2a5": {
+      "name": "553eb350-43b7-1e22-efa4-0da67c9ec2a5",
+      "properties": {
+        "title": "Go back",
+        "propertyType": "commandButton",
+        "ui:widget": "commandButton",
+        "widgetType": "unbound",
+        "widget": "commandButtonWidget",
+        "iconPosition": "startIcon",
+        "iconName": "arrow_back",
+        "commandName": "go_home",
+        "alignText": "center"
+      }
+    }
+  },
+  "pageBinding": {},
+  "layout": [
+    {
+      "widget": "a4055955-6d74-80cd-f807-412bf6f0f332"
+    },
+    {
+      "widget": "553eb350-43b7-1e22-efa4-0da67c9ec2a5"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
 	"name": "@itsy-ui/utils",
-	"version": "1.0.0-beta.6",
+	"version": "1.0.0-beta.7",
 	"main": "dist/npm/itsy-ui-utils.js",
 	"jsdelivr": "dist/cdn/itsy-ui-utils.js",
 	"module": "dist/es/itsy-ui-utils.esm.js",

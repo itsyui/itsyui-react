@@ -1,6 +1,6 @@
 {
 	"name": "@itsy-ui/shim",
-	"version": "1.0.0-beta.4",
+	"version": "1.0.0-beta.5",
 	"main": "dist/npm/itsy-ui-shim.js",
 	"jsdelivr": "dist/cdn/itsy-ui-shim.js",
 	"module": "dist/es/itsy-ui-shim.esm.js",
@@ -36,24 +36,24 @@
 		"license.md"
 	],
 	"dependencies": {
+		"@capacitor/app": "^1.0.0",
+		"@capacitor/camera": "^1.0.0",
 		"@capacitor/cli": "^3.0.0",
+		"@capacitor/clipboard": "^1.0.3",
 		"@capacitor/core": "^3.0.0",
-		"@itsy-ui/core": "^1.0.0-beta.0",
-		"@itsy-ui/utils": "^1.0.0-beta.0",
+		"@capacitor/filesystem": "^1.0.0",
+		"@capacitor/geolocation": "^1.0.0",
+		"@capacitor/keyboard": "^1.0.0",
+		"@capacitor/network": "^1.0.0",
+		"@capacitor/share": "^1.0.0",
+		"@capacitor/status-bar": "^1.0.0",
+		"@capacitor/toast": "^1.0.0",
+		"@itsy-ui/core": "^1.0.0-beta.9",
+		"@itsy-ui/utils": "^1.0.0-beta.9",
 		"cordova-plugin-file": "^6.0.1",
 		"cordova-plugin-file-opener2": "^2.2.0",
 		"cordova-plugin-qrscanner": "^3.0.1",
-		"react-router-dom": "^5.1.2",
-		"@capacitor/share": "^1.0.0",
-		"@capacitor/camera": "^1.0.0",
-		"@capacitor/filesystem": "^1.0.0",
-		"@capacitor/keyboard": "^1.0.0",
-		"@capacitor/network": "^1.0.0",
-		"@capacitor/app": "^1.0.0",
-		"@capacitor/geolocation": "^1.0.0",
-		"@capacitor/toast": "^1.0.0",
-		"@capacitor/status-bar": "^1.0.0",
-		"@capacitor/clipboard": "^1.0.3"
+		"react-router-dom": "^5.1.2"
 	},
 	"devDependencies": {
 		"@types/node": "^14.0.23"

@@ -18,6 +18,9 @@
 		"components",
 		"navigation"
 	],
+	"publishConfig": {
+		"access": "public"
+	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/itsyui/itsyui-react.git",

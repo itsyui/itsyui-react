@@ -3,9 +3,6 @@ on: [push]
 jobs:
   publish-packages:
     runs-on: ubuntu-latest
-    env:
-      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      NODE_ENV: production
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -15,4 +12,17 @@ jobs:
       - run: yarn install
       - run: yarn bootstrap
       - run: yarn release:build
+        env:
+          NODE_ENV: production
+      - name: Authenticate with Registry
+        run: |
+          yarn logout
+          echo "@itsy-ui:registry=http://registry.npmjs.org/" > .npmrc
+          echo "registry=http://registry.npmjs.org/" >> .npmrc
+          echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" >> .npmrc
+          npm whoami
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: yarn release:publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

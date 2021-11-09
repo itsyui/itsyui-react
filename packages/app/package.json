@@ -1,6 +1,6 @@
 {
 	"name": "@itsy-ui/app",
-	"version": "1.0.0-beta.9",
+	"version": "1.0.0",
 	"main": "dist/npm/itsy-ui-app.js",
 	"jsdelivr": "dist/cdn/itsy-ui-app.js",
 	"module": "dist/es/itsy-ui-app.esm.js",
@@ -35,10 +35,10 @@
 		"license.md"
 	],
 	"dependencies": {
-		"@itsy-ui/core": "^1.0.0-beta.9",
-		"@itsy-ui/feedback": "^1.0.0-beta.5",
-		"@itsy-ui/navigation": "^1.0.0-beta.10",
-		"@itsy-ui/utils": "^1.0.0-beta.9",
+		"@itsy-ui/core": "^1.0.0",
+		"@itsy-ui/feedback": "^1.0.0",
+		"@itsy-ui/navigation": "^1.0.0",
+		"@itsy-ui/utils": "^1.0.0",
 		"axios": "^0.21.1",
 		"classnames": "^2.2.5",
 		"prop-types": "15.7.2",

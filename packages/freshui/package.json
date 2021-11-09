@@ -1,6 +1,6 @@
 {
 	"name": "@itsy-ui/freshui-theme",
-	"version": "1.0.0-beta.17",
+	"version": "1.0.0",
 	"main": "dist/npm/itsy-ui-freshui-theme.js",
 	"jsdelivr": "dist/cdn/itsy-ui-freshui-theme.js",
 	"module": "dist/es/itsy-ui-freshui-theme.esm.js",
@@ -36,7 +36,7 @@
 	],
 	"dependencies": {
 		"@date-io/date-fns": "^1.3.13",
-		"@itsy-ui/core": "^1.0.0-beta.9",
+		"@itsy-ui/core": "^1.0.0",
 		"@popperjs/core": "^2.9.2",
 		"bootstrap": "<=4.6.0",
 		"bootstrap-daterangepicker": "^3.1.0",

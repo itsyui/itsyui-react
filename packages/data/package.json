@@ -1,6 +1,6 @@
 {
 	"name": "@itsy-ui/data",
-	"version": "1.0.0-beta.11",
+	"version": "1.0.0",
 	"main": "dist/npm/itsy-ui-data.js",
 	"jsdelivr": "dist/cdn/itsy-ui-data.js",
 	"module": "dist/es/itsy-ui-data.esm.js",
@@ -39,8 +39,8 @@
 		"license.md"
 	],
 	"dependencies": {
-		"@itsy-ui/core": "^1.0.0-beta.9",
-		"@itsy-ui/utils": "^1.0.0-beta.9",
+		"@itsy-ui/core": "^1.0.0",
+		"@itsy-ui/utils": "^1.0.0",
 		"axios": "^0.21.1",
 		"classnames": "^2.2.5",
 		"cmis": "github:PogeyanOSS/CmisJS",

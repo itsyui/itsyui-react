@@ -1,0 +1,26 @@
+{
+	"initial": "onLoaded",
+	"states": {
+		"onLoaded": {
+			"on": {
+				"LABEL_BEFORE_REFRESH": "labelBeforeRefresh"
+			}
+		},
+		"labelBeforeRefresh": {
+			"onEntry": [
+				"onLabelBeforeRefresh"
+			],
+			"on": {
+				"LABEL_REFRESH": "labelRefresh"
+			}
+		},
+		"labelRefresh": {
+			"onEntry": [
+				"onLabelRefresh"
+			],
+			"on": {
+				"LABEL_REFRESH_DONE": "onLoaded"
+			}
+		}
+	}
+}

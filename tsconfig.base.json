@@ -1,0 +1,31 @@
+{
+	"compilerOptions": {
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"noUnusedLocals": false,
+		"target": "es6",
+		"noResolve": false,
+		"noImplicitAny": false,
+		"removeComments": true,
+		"sourceMap": true,
+		"allowJs": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"strict": false,
+		"forceConsistentCasingInFileNames": true,
+		"noFallthroughCasesInSwitch": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"jsx": "react",
+		"declaration": true,
+		"declarationDir": "./dist/types"
+	},
+	"exclude": [
+		"node_modules",
+		"dist"
+	]
+}

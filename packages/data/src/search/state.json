@@ -1,0 +1,62 @@
+{
+	"initial": "onLoaded",
+	"states": {
+		"onLoaded": {
+			"on": {
+				"SEARCH_INIT": "searchInit",
+				"SEARCH_CLICKED": "searchCliked",
+				"SEARCH_ON_LOADED": "searchOnLoaded",
+				"SEARCH_UPDATE_VALUE": "updateSearchValue",
+				"SEARCH_WITH_QR": "searchWithQR"
+			}
+		},
+		"searchInit": {
+			"onEntry": [
+				"onSearchInit"
+			],
+			"on": {
+				"SEARCH_INIT_LOADED": "searchInitLoaded"
+			}
+		},
+		"searchInitLoaded": {
+			"onEntry": [
+				"onSearchInitLoaded"
+			],
+			"on": {
+				"SHOW_SEARCH": "onLoaded"
+			}
+		},
+		"searchCliked": {
+			"onEntry": [
+				"onSearchClicked"
+			],
+			"on": {
+				"SEARCH_LOAD": "searchLoad"
+			}
+		},
+		"searchLoad": {
+			"onEntry": [
+				"onSearchLoad"
+			],
+			"on": {
+				"SEARCH_LOAD_DONE": "onLoaded"
+			}
+		},
+		"updateSearchValue": {
+			"onEntry": [
+				"onUpdateSearchValue"
+			],
+			"on": {
+				"SEARCH_LOAD_DONE": "onLoaded"
+			}
+		},
+		"searchWithQR": {
+			"onEntry": [
+				"onSearchWithQR"
+			],
+			"on": {
+				"SEARCH_LOAD_DONE": "onLoaded"
+			}
+		}
+	}
+}

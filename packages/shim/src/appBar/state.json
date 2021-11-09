@@ -1,0 +1,37 @@
+{
+    "initial": "onLoaded",
+    "states": {
+        "onLoaded": {
+            "on": {
+                "APPBAR_INIT": "appbarInit",
+                "APPBAR_REFRESH": "appbarRefresh",
+                "APPBAR_COMMANDEXECUTE": "appbarCommandExecute",
+                "APPBAR_ON_LOADED": "onLoaded"
+            }
+        },
+        "appbarInit": {
+            "onEntry": [
+                "onAppBarInit"
+            ],
+            "on": {
+                "APPBAR_REFRESH": "appbarRefresh"
+            }
+        },
+        "appbarRefresh": {
+            "onEntry": [
+                "onAppBarRefresh"
+            ],
+            "on": {
+                "APPBAR_ON_LOADED": "onLoaded"
+            }
+        },
+        "appbarCommandExecute": {
+            "onEntry": [
+                "onAppBarCommandExecute"
+            ],
+            "on": {
+                "APPBAR_ON_LOADED": "onLoaded"
+            }
+        }
+    }
+}

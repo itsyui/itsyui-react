@@ -1,0 +1,113 @@
+{
+	"initial": "onLoaded",
+	"states": {
+		"onLoaded": {
+			"on": {
+				"FILTERBAR_INIT": "filterbarInit",
+				"FILTERBAR_BEFORE_CHANGE": "filterbarBeforeChange",
+				"FILTERBAR_BEFORE_RESET": "filterbarBeforeReset",
+				"FILTERBAR_BEFORE_REMOVE_CHIP": "filterbarBeforeRemoveChip",
+				"FILTERBAR_APPLY_FILTER": "filterbarApplyFilter",
+				"FILTERBAR_GET_STATE": "filterbarGetState",
+				"FILTERBAR_AFTER_CHANGE": "filterbarAfterChange",
+				"FILTERBAR_UPDATE": "filterbarUpdate"
+			}
+		},
+		"filterbarInit": {
+			"onEntry": [
+				"onFilterbarInit"
+			],
+			"on": {
+				"FILTERBAR_LOAD": "filterbarLoad"
+			}
+		},
+		"filterbarLoad": {
+			"onEntry": [
+				"onFilterbarLoad"
+			],
+			"on": {
+				"FILTERBAR_DONE": "onLoaded"
+			}
+		},
+		"filterbarBeforeChange": {
+			"onEntry": [
+				"onFilterbarBeforeChange"
+			],
+			"on": {
+				"FILTERBAR_AFTER_CHANGE": "filterbarAfterChange"
+			}
+		},
+		"filterbarAfterChange": {
+			"onEntry": [
+				"onFilterbarAfterChange"
+			],
+			"on": {
+				"FILTERBAR_DONE": "onLoaded"
+			}
+		},
+		"filterbarApplyFilter": {
+			"onEntry": [
+				"onFilterbarApplyFilter"
+			],
+			"on": {
+				"FILTERBAR_AFTER_APPLY_FILTER": "filterbarAfterApplyFilter"
+			}
+		},
+		"filterbarAfterApplyFilter": {
+			"onEntry": [
+				"onFilterbarAfterApplyFilter"
+			],
+			"on": {
+				"FILTERBAR_DONE": "onLoaded"
+			}
+		},
+		"filterbarGetState": {
+			"onEntry": [
+				"onFilterbarGetState"
+			],
+			"on": {
+				"FILTERBAR_DONE": "onLoaded"
+			}
+		},
+		"filterbarBeforeReset": {
+			"onEntry": [
+				"onFilterbarBeforeReset"
+			],
+			"on": {
+				"FILTERBAR_RESET": "filterbarReset"
+			}
+		},
+		"filterbarReset": {
+			"onEntry": [
+				"onFilterbarReset"
+			],
+			"on": {
+				"FILTERBAR_DONE": "onLoaded"
+			}
+		},
+		"filterbarBeforeRemoveChip": {
+			"onEntry": [
+				"onFilterbarBeforeRemoveChip"
+			],
+			"on": {
+				"FILTERBAR_REMOVE_CHIP": "filterbarRemoveChip"
+			}
+		},
+		"filterbarRemoveChip": {
+			"onEntry": [
+				"onFilterbarRemoveChip"
+			],
+			"on": {
+				"FILTERBAR_DONE": "onLoaded"
+			}
+		},
+		"filterbarUpdate": {
+			"onEntry": [
+				"onfilterbarUpdate"
+			],
+			"on": {
+				"FILTERBAR_DONE": "onLoaded"
+			}
+		}
+	}
+}

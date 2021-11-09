@@ -1,0 +1,45 @@
+{
+	"initial": "onLoaded",
+	"states": {
+		"onLoaded": {
+			"on": {
+				"TOOLBAR_BEFORE_INIT": "toolbarBeforeInit",
+				"TOOLBAR_REFRESH": "toolbarRefresh",
+				"TOOLBAR_COMMANDEXECUTE": "toolbarCommandExecute"
+			}
+		},
+		"toolbarBeforeInit": {
+			"onEntry": [
+				"onToolbarBeforeInit"
+			],
+			"on": {
+				"TOOLBAR_INIT": "toolbarInit"
+			}
+		},
+		"toolbarInit": {
+			"onEntry": [
+				"onToolbarInit"
+			],
+			"on": {
+				"TOOLBAR_REFRESH": "toolbarRefresh"
+			}
+		},
+		"toolbarRefresh": {
+			"onEntry": [
+				"onToolbarRefresh"
+			],
+			"on": {
+				"TOOLBAR_ON_LOADED": "onLoaded"
+			}
+		},
+		"toolbarCommandExecute": {
+			"onEntry": [
+				"onToolbarCommandExecute"
+			],
+			"on": {
+				"TOOLBAR_REFRESH": "toolbarRefresh",
+				"TOOLBAR_ON_LOADED": "onLoaded"
+			}
+		}
+	}
+}

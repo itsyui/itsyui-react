@@ -1,0 +1,10 @@
+{
+    "copy": {
+        "targets": [
+            {
+                "src": "src/styles/fonts",
+                "dest": "dist/styles"
+            }
+        ]
+    }
+}

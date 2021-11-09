@@ -1,0 +1,18 @@
+[
+  {
+    "commandConfig": {
+      "commandOperation": "navigate",
+      "pageURL": "second"
+    },
+    "commandDisplayName": "Go to second screen",
+    "commandKey": "go_second"
+  },
+  {
+    "commandConfig": {
+      "commandOperation": "navigate",
+      "pageURL": "home"
+    },
+    "commandDisplayName": "Go home",
+    "commandKey": "go_home"
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "id": "home",
+  "title": "Home",
+  "url": "/home",
+  "isDefault": false,
+  "orderId": 2,
+  "roles": [],
+  "queryParams": [],
+  "components": {
+    "5f8fc28c-c744-486c-759c-d9fcae244ffe": {
+      "name": "5f8fc28c-c744-486c-759c-d9fcae244ffe",
+      "properties": {
+        "title": "Welcome",
+        "propertyType": "label",
+        "ui:widget": "label",
+        "widgetType": "unbound",
+        "headerSize": "h3",
+        "alignText": "center"
+      }
+    },
+    "84aae243-e5dc-1b43-0136-e38e43f92fc2": {
+      "name": "84aae243-e5dc-1b43-0136-e38e43f92fc2",
+      "properties": {
+        "title": "Home screen",
+        "propertyType": "label",
+        "ui:widget": "label",
+        "widgetType": "unbound",
+        "headerSize": "h5",
+        "alignText": "center"
+      }
+    },
+    "f35a7cc2-0f3e-31a1-48df-6789f218058a": {
+      "name": "f35a7cc2-0f3e-31a1-48df-6789f218058a",
+      "properties": {
+        "title": "Go to second page",
+        "propertyType": "commandButton",
+        "ui:widget": "commandButton",
+        "widgetType": "unbound",
+        "widget": "commandButtonWidget",
+        "iconPosition": "endIcon",
+        "iconName": "arrow_forward",
+        "span": null,
+        "commandName": "go_second",
+        "alignText": "center"
+      }
+    }
+  },
+  "pageBinding": {},
+  "layout": [
+    {
+      "widget": "5f8fc28c-c744-486c-759c-d9fcae244ffe"
+    },
+    {
+      "widget": "84aae243-e5dc-1b43-0136-e38e43f92fc2"
+    },
+    {
+      "widget": "f35a7cc2-0f3e-31a1-48df-6789f218058a"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+	"initial": "onLoaded",
+	"states": {
+		"onLoaded": {
+			"on": {
+				"CARD_ON_INIT": "cardInit",
+				"CARD_REFRESH": "cardRefresh",
+				"CARD_EXPAND": "cardExpand",
+				"CARD_COLLAPSE": "cardCollapse"
+			}
+		},
+		"cardInit": {
+			"onEntry": [
+				"onCardInit"
+			],
+			"on": {
+				"CARD_LOAD": "cardLoad"
+			}
+		},
+		"cardLoad": {
+			"onEntry": [
+				"onCardLoad"
+			],
+			"on": {
+				"CARD_REFRESH": "cardRefresh"
+			}
+		},
+		"cardRefresh": {
+			"onEntry": [
+				"onCardRefresh"
+			],
+			"on": {
+				"CARD_DONE": "onLoaded"
+			}
+		},
+		"cardExpand": {
+			"onEntry": [
+				"onCardExpand"
+			],
+			"on": {
+				"CARD_DONE": "onLoaded"
+			}
+		},
+		"cardCollapse": {
+			"onEntry": [
+				"onCardCollapse"
+			],
+			"on": {
+				"CARD_DONE": "onLoaded"
+			}
+		}
+	}
+}

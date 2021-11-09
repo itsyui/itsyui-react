@@ -1,0 +1,54 @@
+{
+	"name": "@itsy-ui/common",
+	"version": "1.0.0",
+	"main": "dist/npm/itsy-ui-common.js",
+	"jsdelivr": "dist/cdn/itsy-ui-common.js",
+	"module": "dist/es/itsy-ui-common.esm.js",
+	"jsnext:main": "dist/es/itsy-ui-common.esm.js",
+	"unpkg": "dist/cdn/itsy-ui-common.js",
+	"amd": "dist/amd/itsy-ui-common.amd.js",
+	"typings": "dist/types/index.d.ts",
+	"description": "ItsyUI common library",
+	"author": "ItsyUI",
+	"keywords": [
+		"react",
+		"react-dom",
+		"itsyui",
+		"itsy-ui",
+		"components"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/itsyui/itsyui-react.git",
+		"directory": "packages/common"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/itsyui/itsyui-react/issues"
+	},
+	"homepage": "https://www.itsyui.com/",
+	"files": [
+		"dist/*",
+		"license.md"
+	],
+	"dependencies": {
+		"@itsy-ui/core": "^1.0.0",
+		"axios": "^0.21.1",
+		"classnames": "^2.2.5",
+		"prop-types": "15.7.2",
+		"rx-lite": "^4.0.8",
+		"xstate": "4.0.0-1"
+	},
+	"devDependencies": {
+		"react": "^16.9.0",
+		"react-dom": "^16.9.0",
+		"react-router-dom": "5.1.2"
+	},
+	"scripts": {
+		"build": "rollup -c ../../rollup.config.js",
+		"build:prod": "NODE_ENV=production rollup -c ../../rollup.config.js"
+	}
+}

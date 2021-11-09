@@ -1,0 +1,30 @@
+name: CI
+on:
+  release:
+    types: [created]
+jobs:
+  publish-packages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node_version: "14"
+          registry-url: "https://registry.npmjs.org"
+      - run: yarn install
+      - run: yarn bootstrap
+      - run: yarn release:build
+        env:
+          NODE_ENV: production
+      - name: Authenticate with Registry
+        run: |
+          yarn logout
+          echo "@itsy-ui:registry=http://registry.npmjs.org/" > .npmrc
+          echo "registry=http://registry.npmjs.org/" >> .npmrc
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+          npm whoami
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: yarn release:publish
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

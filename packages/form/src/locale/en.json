@@ -1,0 +1,9 @@
+{
+    "app.Cancel": "Cancel",
+    "form.init": "Initializing form",
+    "form.Submit": "Submit",
+    "form.submitIndicator": "Submitting data...",
+    "comman.isRequired": " is required.",
+    "form.schema_error": "Please configure the form schema",
+    "save": "Save"
+}

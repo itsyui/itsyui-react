@@ -1,0 +1,46 @@
+{
+  "id": "login",
+  "title": "Login",
+  "url": "/login",
+  "isDefault": false,
+  "orderId": 1,
+  "roles": [],
+  "queryParams": [],
+  "components": {
+    "46fa5b0e-825b-9b93-459d-378f497ea7e6": {
+      "name": "46fa5b0e-825b-9b93-459d-378f497ea7e6",
+      "properties": {
+        "title": "Lets Login,",
+        "propertyType": "label",
+        "ui:widget": "label",
+        "widgetType": "unbound",
+        "headerSize": "h2",
+        "alignText": "center"
+      }
+    },
+    "d1681dbb-198d-ba46-74bf-3e3df77b7536": {
+      "name": "d1681dbb-198d-ba46-74bf-3e3df77b7536",
+      "properties": {
+        "title": "Form",
+        "typeId": "login",
+        "formSchemaId": "login",
+        "propertyType": "Form",
+        "controlID": "",
+        "widget": "FormWidget",
+        "ui:widget": "form",
+        "widgetType": "bound",
+        "dataSource": "dataSource",
+        "submitButtonText": "Login"
+      }
+    }
+  },
+  "pageBinding": {},
+  "layout": [
+    {
+      "widget": "46fa5b0e-825b-9b93-459d-378f497ea7e6"
+    },
+    {
+      "widget": "d1681dbb-198d-ba46-74bf-3e3df77b7536"
+    }
+  ]
+}

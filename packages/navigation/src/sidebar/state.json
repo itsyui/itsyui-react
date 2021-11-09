@@ -1,0 +1,54 @@
+{
+	"initial": "onLoaded",
+	"states": {
+		"onLoaded": {
+			"on": {
+				"SIDEBAR_INIT": "sidebarInit",
+				"SIDEBAR_REFRESH": "sidebarRefresh",
+				"SIDEBAR_COMMANDEXECUTE": "sidebarCommandExecute",
+				"SIDEBAR_SELECTED_ITEM": "sidebarSelectedItem",
+				"SIDEBAR_TOGGLE": "sidebarToggle"
+			}
+		},
+		"sidebarInit": {
+			"onEntry": [
+				"onSidebarInit"
+			],
+			"on": {
+				"SIDEBAR_REFRESH": "sidebarRefresh"
+			}
+		},
+		"sidebarRefresh": {
+			"onEntry": [
+				"onSidebarRefresh"
+			],
+			"on": {
+				"SIDEBAR_ON_LOADED": "onLoaded"
+			}
+		},
+		"sidebarCommandExecute": {
+			"onEntry": [
+				"onSidebarCommandExecute"
+			],
+			"on": {
+				"SIDEBAR_ON_LOADED": "onLoaded"
+			}
+		},
+		"sidebarSelectedItem": {
+			"onEntry": [
+				"onSidebarSelectedItem"
+			],
+			"on": {
+				"SIDEBAR_ON_LOADED": "onLoaded"
+			}
+		},
+		"sidebarToggle": {
+			"onEntry": [
+				"onSidebarToggle"
+			],
+			"on": {
+				"SIDEBAR_ON_LOADED": "onLoaded"
+			}
+		}
+	}
+}

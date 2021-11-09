@@ -1,0 +1,55 @@
+{
+	"name": "@itsy-ui/feedback",
+	"version": "1.0.0",
+	"main": "dist/npm/itsy-ui-feedback.js",
+	"jsdelivr": "dist/cdn/itsy-ui-feedback.js",
+	"module": "dist/es/itsy-ui-feedback.esm.js",
+	"jsnext:main": "dist/es/itsy-ui-feedback.esm.js",
+	"unpkg": "dist/cdn/itsy-ui-feedback.js",
+	"amd": "dist/amd/itsy-ui-feedback.amd.js",
+	"typings": "dist/types/index.d.ts",
+	"description": "ItsyUI feedback library",
+	"author": "ItsyUI",
+	"keywords": [
+		"react",
+		"react-dom",
+		"itsyui",
+		"itsy-ui",
+		"components",
+		"feedback",
+		"notification"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/itsyui/itsyui-react.git",
+		"directory": "packages/feedback"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/itsyui/itsyui-react/issues"
+	},
+	"homepage": "https://www.itsyui.com/",
+	"files": [
+		"dist/*",
+		"license.md"
+	],
+	"dependencies": {
+		"@itsy-ui/core": "^1.0.0",
+		"classnames": "^2.2.5",
+		"prop-types": "15.7.2",
+		"rx-lite": "^4.0.8",
+		"xstate": "4.0.0-1"
+	},
+	"devDependencies": {
+		"@types/node": "^12.0.0",
+		"@types/react": "^16.9.53",
+		"@types/react-dom": "^16.9.8"
+	},
+	"scripts": {
+		"build": "rollup -c ../../rollup.config.js",
+		"build:prod": "NODE_ENV=production rollup -c ../../rollup.config.js"
+	}
+}

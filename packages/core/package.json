@@ -1,0 +1,48 @@
+{
+    "name": "@itsy-ui/core",
+    "version": "1.0.0",
+    "main": "dist/npm/itsy-ui-core.js",
+    "jsdelivr": "dist/cdn/itsy-ui-core.js",
+    "module": "dist/es/itsy-ui-core.esm.js",
+    "jsnext:main": "dist/es/itsy-ui-core.esm.js",
+    "amd": "dist/amd/itsy-ui-core.amd.js",
+    "unpkg": "dist/cdn/itsy-ui-core.js",
+    "description": "ItsyUI core library",
+    "author": "ItsyUI",
+    "typings": "core.d.ts",
+    "keywords": [
+        "react",
+        "react-dom",
+        "itsyui",
+        "itsy-ui",
+        "components"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/itsyui/itsyui-react.git",
+        "directory": "packages/core"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/itsyui/itsyui-react/issues"
+    },
+    "homepage": "https://www.itsyui.com/",
+    "files": [
+        "dist/*",
+        "core.d.ts",
+        "license.md"
+    ],
+    "dependencies": {
+        "prop-types": "15.6.2",
+        "rx-lite": "^4.0.8",
+        "xstate": "4.0.0-1"
+    },
+    "scripts": {
+        "build": "rollup -c ../../rollup.config.js",
+        "build:prod": "set NODE_ENV=production && rollup -c ../../rollup.config.js",
+        "publish": "npm publish --access public"
+    }
+}

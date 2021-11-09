@@ -1,0 +1,18 @@
+{
+  "id": "login",
+  "title": "Default",
+  "propertyDefinitions": {
+    "email": {
+      "id": "email",
+      "displayName": "{{E-mail}}",
+      "propertyType": "string",
+      "title": "E-mail"
+    },
+    "password": {
+      "id": "password",
+      "displayName": "{{Password}}",
+      "propertyType": "string",
+      "title": "Password"
+    }
+  }
+}

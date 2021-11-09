@@ -1,0 +1,137 @@
+{
+	"initial": "onLoaded",
+	"states": {
+		"onLoaded": {
+			"on": {
+				"TENANT_AUTH_FORM_BEFORE_LOGIN_RENDER": "formBeforeLoginRender",
+				"TENANT_AUTH_FORM_LOGIN": "formLogin",
+				"TENANT_AUTH_FORM_SIGNUP": "formSignup",
+				"TENANT_AUTH_FORM_VERIFY_OTP": "verifyOtp",
+				"TENANT_AUTH_FORM_FORGOT_PASSWORD": "formForgotPassword",
+				"TENANT_AUTH_CONFIRM_USER_FORM": "formConfirmUser",
+				"TENANT_AUTH_FORM_VERIFY_USER": "formVerifyUser",
+				"TENANT_AUTH_FORM_BEFORE_SIGNUP_RENDER": "formBeforeSignupRender",
+				"TENANT_AUTH_FORM_BEFORE_FORGOT_PASSWORD_RENDER": "formBeforeForgotPasswordRender",
+				"TENANT_ERROR": "tenantError"
+			}
+		},
+		"tenantError": {
+			"onEntry": [
+				"onTenantShowError"
+			],
+			"on": {
+				"TENANT_ERROR_DONE": "onLoaded"
+			}
+		},
+		"verifyOtp": {
+			"onEntry": [
+				"onVerifyOtp"
+			],
+			"on": {
+				"VERIFY_OTP_DONE": "onLoaded",
+				"TENANT_ERROR": "tenantError"
+			}
+		},
+		"formForgotPassword": {
+			"onEntry": [
+				"onFormForgotPassword"
+			],
+			"on": {
+				"FORGOT_DONE": "onLoaded",
+				"TENANT_ERROR": "tenantError"
+			}
+		},
+		"formSignup": {
+			"onEntry": [
+				"onFormSignup"
+			],
+			"on": {
+				"SIGNUP_DONE": "onLoaded",
+				"TENANT_ERROR": "tenantError"
+			}
+		},
+		"formBeforeForgotPasswordRender": {
+			"onEntry": [
+				"onFormBeforeForgotPasswordRender"
+			],
+			"on": {
+				"TENANT_AUTH_FORM_AFTER_FORGOT_PASSWORD_RENDER": "formAfterForgotPasswordRender"
+			}
+		},
+		"formAfterForgotPasswordRender": {
+			"onEntry": [
+				"onFormAfterForgotPasswordRender"
+			],
+			"on": {
+				"TENANT_AUTH_FORM_DONE": "onLoaded",
+				"TENANT_ON_CANCEL_CLICKED": "formBeforeLoginRender"
+			}
+		},
+		"formBeforeSignupRender": {
+			"onEntry": [
+				"onFormBeforeSignupRender"
+			],
+			"on": {
+				"TENANT_AUTH_FORM_AFTER_SIGNUP_RENDER": "formAfterSignupRender"
+			}
+		},
+		"formAfterSignupRender": {
+			"onEntry": [
+				"onFormAfterSignupRender"
+			],
+			"on": {
+				"TENANT_AUTH_FORM_DONE": "onLoaded",
+				"TENANT_ON_CANCEL_CLICKED": "formBeforeLoginRender"
+			}
+		},
+		"formConfirmUser": {
+			"onEntry": [
+				"onFormConfirmUser"
+			],
+			"on": {
+				"VERIFY_OTP_BEFORE_RENDER": "formBeforeVerificationRender"
+			}
+		},
+		"formBeforeVerificationRender": {
+			"onEntry": [
+				"onFormBeforeVerificationRender"
+			],
+			"on": {
+				"TENANT_AUTH_FORM_AFTER_VERIFICATION_RENDER": "formAfterVerificationRender"
+			}
+		},
+		"formAfterVerificationRender": {
+			"onEntry": [
+				"onFormAfterVerificationRender"
+			],
+			"on": {
+				"TENANT_AUTH_FORM_DONE": "onLoaded"
+			}
+		},
+		"formBeforeLoginRender": {
+			"onEntry": [
+				"onFormBeforeLoginRender"
+			],
+			"on": {
+				"TENANT_AUTH_FORM_AFTER_LOGIN_RENDER": "formAfterLoginRender"
+			}
+		},
+		"formAfterLoginRender": {
+			"onEntry": [
+				"onFormAfterLoginRender"
+			],
+			"on": {
+				"TENANT_AUTH_FORM_DONE": "onLoaded"
+			}
+		},
+		"formLogin": {
+			"onEntry": [
+				"onLoginValidate"
+			],
+			"on": {
+				"TENANT_AUTH_FORM_LOGIN_SUCCESS": "onLoaded",
+				"TENANT_ERROR": "tenantError"
+			}
+		}
+	}
+}

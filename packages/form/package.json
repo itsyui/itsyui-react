@@ -1,0 +1,61 @@
+{
+	"name": "@itsy-ui/form",
+	"version": "1.0.0",
+	"main": "dist/npm/itsy-ui-form.js",
+	"jsdelivr": "dist/cdn/itsy-ui-form.js",
+	"module": "dist/es/itsy-ui-form.esm.js",
+	"jsnext:main": "dist/es/itsy-ui-form.esm.js",
+	"unpkg": "dist/cdn/itsy-ui-form.js",
+	"amd": "dist/amd/itsy-ui-form.amd.js",
+	"typings": "dist/types/index.d.ts",
+	"description": "ItsyUI form library",
+	"author": "ItsyUI",
+	"keywords": [
+		"react",
+		"react-dom",
+		"itsyui",
+		"itsy-ui",
+		"components",
+		"form",
+		"form-fields"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/itsyui/itsyui-react.git",
+		"directory": "packages/form"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/itsyui/itsyui-react/issues"
+	},
+	"homepage": "https://www.itsyui.com/",
+	"files": [
+		"dist/*",
+		"license.md"
+	],
+	"dependencies": {
+		"@itsy-ui/core": "^1.0.0",
+		"@itsy-ui/utils": "^1.0.0",
+		"classnames": "^2.2.5",
+		"prop-types": "15.7.2",
+		"rx-lite": "^4.0.8",
+		"xstate": "4.0.0-1"
+	},
+	"peerDependencies": {
+		"axios": "^0.21.1",
+		"formik": "^0.11.11",
+		"yup": "^0.26.2"
+	},
+	"devDependencies": {
+		"react": "^16.9.0",
+		"react-dom": "^16.9.0",
+		"react-router-dom": "5.1.2"
+	},
+	"scripts": {
+		"build": "rollup -c ../../rollup.config.js",
+		"build:prod": "NODE_ENV=production rollup -c ../../rollup.config.js"
+	}
+}

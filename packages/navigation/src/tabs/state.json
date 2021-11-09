@@ -1,0 +1,70 @@
+{
+	"initial": "onLoaded",
+	"states": {
+		"onLoaded": {
+			"on": {
+				"TABS_INIT": "tabsInit",
+				"TABS_BEFORE_ADD_NEW_TAB": "tabsBeforeAddNewTab",
+				"TABS_ACTIVE_TAB_CHANGE": "tabsActiveTabChange",
+				"TABS_CLOSE_CURRENT_TAB": "tabsCloseCurrentTab",
+				"TABS_GET_STATE": "tabsGetState"
+			}
+		},
+		"tabsInit": {
+			"onEntry": [
+				"onTabsInit"
+			],
+			"on": {
+				"TABS_LOAD": "tabsLoad"
+			}
+		},
+		"tabsLoad": {
+			"onEntry": [
+				"onTabsLoad"
+			],
+			"on": {
+				"TABS_DONE": "onLoaded"
+			}
+		},
+		"tabsBeforeAddNewTab": {
+			"onEntry": [
+				"onTabsBeforeAddNewTab"
+			],
+			"on": {
+				"TABS_ADD_NEW_TAB": "tabsAddNewTab"
+			}
+		},
+		"tabsAddNewTab": {
+			"onEntry": [
+				"onTabsAddNewTab"
+			],
+			"on": {
+				"TABS_DONE": "onLoaded"
+			}
+		},
+		"tabsActiveTabChange": {
+			"onEntry": [
+				"onTabsActiveTabChange"
+			],
+			"on": {
+				"TABS_DONE": "onLoaded"
+			}
+		},
+		"tabsCloseCurrentTab": {
+			"onEntry": [
+				"onTabsCloseCurrentTab"
+			],
+			"on": {
+				"TABS_DONE": "onLoaded"
+			}
+		},
+		"tabsGetState": {
+			"onEntry": [
+				"ontabsGetState"
+			],
+			"on": {
+				"TABS_DONE": "onLoaded"
+			}
+		}
+	}
+}

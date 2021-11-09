@@ -1,0 +1,18 @@
+{
+	"initial": "onLoaded",
+	"states": {
+		"onLoaded": {
+			"on": {
+				"UPDATE_CARD_SCHEMA": "updateSchema"
+			}
+		},
+		"updateSchema": {
+			"onEntry": [
+				"onUpdateSchema"
+			],
+			"on": {
+				"UPDATE_CARD_SCHEMA_DONE": "onLoaded"
+			}
+		}
+	}
+}

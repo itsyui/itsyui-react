@@ -1,0 +1,129 @@
+{
+	"initial": "onLoaded",
+	"states": {
+		"onLoaded": {
+			"on": {
+				"WIZARD_BEFORE_STEP_0_INIT": "wizardStep0BeforeInit",
+				"WIZARD_BEFORE_STEP_1_INIT": "wizardStep1BeforeInit",
+				"WIZARD_BEFORE_STEP_2_INIT": "wizardStep2BeforeInit",
+				"WIZARD_STEP_ON_NEXT": "wizardStepOnNext",
+				"WIZARD_STEP_ON_PREVIOUS": "wizardStepOnPrevious",
+				"WIZARD_STATE_UPDATE": "wizardStateUpdate",
+				"WIZARD_FINAL_STEP_SUBMIT": "wizardFinalStepSubmit",
+				"WIZARD_GET_STATE": "wizardGetState"
+			}
+		},
+		"wizardStep0BeforeInit": {
+			"onEntry": [
+				"onWizardStepBeforeInit"
+			],
+			"on": {
+				"WIZARD_STEP_0_INIT": "wizardStep0Init"
+			}
+		},
+		"wizardStep0Init": {
+			"onEntry": [
+				"onWizardStepInit"
+			],
+			"on": {
+				"WIZARD_AFTER_STEP_0_INIT": "wizardStep0AfterInit"
+			}
+		},
+		"wizardStep0AfterInit": {
+			"onEntry": [
+				"onWizardStepAfterInit"
+			],
+			"on": {
+				"WIZARD_LOADED": "onLoaded"
+			}
+		},
+		"wizardStep1BeforeInit": {
+			"onEntry": [
+				"onWizardStepBeforeInit"
+			],
+			"on": {
+				"WIZARD_STEP_1_INIT": "wizardStep1Init"
+			}
+		},
+		"wizardStep1Init": {
+			"onEntry": [
+				"onWizardStepInit"
+			],
+			"on": {
+				"WIZARD_AFTER_STEP_1_INIT": "wizardStep1AfterInit"
+			}
+		},
+		"wizardStep1AfterInit": {
+			"onEntry": [
+				"onWizardStepAfterInit"
+			],
+			"on": {
+				"WIZARD_LOADED": "onLoaded"
+			}
+		},
+		"wizardStep2BeforeInit": {
+			"onEntry": [
+				"onWizardStepBeforeInit"
+			],
+			"on": {
+				"WIZARD_STEP_2_INIT": "wizardStep2Init"
+			}
+		},
+		"wizardStep2Init": {
+			"onEntry": [
+				"onWizardStepInit"
+			],
+			"on": {
+				"WIZARD_AFTER_STEP_2_INIT": "wizardStep2AfterInit"
+			}
+		},
+		"wizardStep2AfterInit": {
+			"onEntry": [
+				"onWizardStepAfterInit"
+			],
+			"on": {
+				"WIZARD_LOADED": "onLoaded"
+			}
+		},
+		"wizardStepOnNext": {
+			"onEntry": [
+				"onWizardStepOnNext"
+			],
+			"on": {
+				"WIZARD_LOADED": "onLoaded"
+			}
+		},
+		"wizardStepOnPrevious": {
+			"onEntry": [
+				"onWizardStepOnPrevious"
+			],
+			"on": {
+				"WIZARD_LOADED": "onLoaded"
+			}
+		},
+		"wizardStateUpdate": {
+			"onEntry": [
+				"onWizardStateUpdate"
+			],
+			"on": {
+				"WIZARD_STATE_UPDATE_DONE": "onLoaded"
+			}
+		},
+		"wizardFinalStepSubmit": {
+			"onEntry": [
+				"onWizardFinalStepSubmit"
+			],
+			"on": {
+				"WIZARD_DONE": "onLoaded"
+			}
+		},
+		"wizardGetState": {
+			"onEntry": [
+				"onWizardGetState"
+			],
+			"on": {
+				"WIZARD_DONE": "onLoaded"
+			}
+		}
+	}
+}

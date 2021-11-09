@@ -1,0 +1,90 @@
+{
+	"initial": "onLoaded",
+	"states": {
+		"onLoaded": {
+			"on": {
+				"SLIDER_INIT": "sliderInit",
+				"SLIDER_LOAD": "sliderLoad",
+				"SLIDER_ON_NEXT": "sliderOnNext",
+				"SLIDER_ON_NEXT_COMPLETE": "sliderOnNextComplete",
+				"SLIDER_ON_PREVIOUS": "sliderOnPrevious",
+				"SLIDER_ON_PREVIOUS_COMPLETE": "sliderOnPreviousComplete",
+				"SLIDER_STATE_UPDATE": "sliderStateUpdate",
+				"SLIDER_STATE_UPDATE_COMPLETE": "sliderStateUpdateComplete",
+				"SLIDER_GET_STATE": "sliderGetState"
+			}
+		},
+		"sliderInit": {
+			"onEntry": [
+				"onSliderInit"
+			],
+			"on": {
+				"SLIDER_LOAD": "sliderLoad"
+			}
+		},
+		"sliderLoad": {
+			"onEntry": [
+				"onSliderLoad"
+			],
+			"on": {
+				"SLIDER_LOADED": "onLoaded"
+			}
+		},
+		"sliderOnNext": {
+			"onEntry": [
+				"onSliderOnNext"
+			],
+			"on": {
+				"SLIDER_ON_NEXT_COMPLETE": "sliderOnNextComplete"
+			}
+		},
+		"sliderOnNextComplete": {
+			"onEntry": [
+				"onSliderOnNextComplete"
+			],
+			"on": {
+				"SLIDER_LOADED": "onLoaded"
+			}
+		},
+		"sliderOnPrevious": {
+			"onEntry": [
+				"onSliderOnPrevious"
+			],
+			"on": {
+				"SLIDER_ON_PREVIOUS_COMPLETE": "sliderOnPreviousComplete"
+			}
+		},
+		"sliderOnPreviousComplete": {
+			"onEntry": [
+				"onSliderOnPreviousComplete"
+			],
+			"on": {
+				"SLIDER_LOADED": "onLoaded"
+			}
+		},
+		"sliderStateUpdate": {
+			"onEntry": [
+				"onSliderStateUpdate"
+			],
+			"on": {
+				"SLIDER_STATE_UPDATE_COMPLETE": "sliderStateUpdateComplete"
+			}
+		},
+		"sliderStateUpdateComplete": {
+			"onEntry": [
+				"onSliderStateUpdateComplete"
+			],
+			"on": {
+				"SLIDER_LOADED": "onLoaded"
+			}
+		},
+		"sliderGetState": {
+			"onEntry": [
+				"onSliderGetState"
+			],
+			"on": {
+				"SLIDER_LOADED": "onLoaded"
+			}
+		}
+	}
+}

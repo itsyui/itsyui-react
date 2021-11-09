@@ -1,0 +1,62 @@
+{
+	"initial": "start",
+	"states": {
+		"start": {
+			"on": {
+				"APP_CONTAINER_BEFORE_READY": "appContainerBeforeReady",
+				"APP_CONTAINER_SHOW_REGION": "appContainerShowRegion",
+				"APP_CONTAINER_HIDE_REGION": "appContainerHideRegion",
+				"APP_CONTAINER_CHANGE_LAYOUT": "appContainerChangeLayout"
+			}
+		},
+		"appContainerBeforeReady": {
+			"onEntry": [
+				"onAppContainerBeforeReady"
+			],
+			"on": {
+				"APP_CONTAINER_READY": "appContainerReady",
+				"APP_CONTAINER_UPDATESCHEMA": "appContainerUpdateSchema"
+			}
+		},
+		"appContainerUpdateSchema": {
+			"onEntry": [
+				"onAppContainerUpdateSchema"
+			],
+			"on": {
+				"APP_CONTAINER_READY": "appContainerReady"
+			}
+		},
+		"appContainerReady": {
+			"onEntry": [
+				"onAppContainerReady"
+			],
+			"on": {
+				"APP_CONTAINER_READY_DONE": "start"
+			}
+		},
+		"appContainerShowRegion": {
+			"onEntry": [
+				"onAppContainerShowRegion"
+			],
+			"on": {
+				"APP_CONTAINER_DONE": "start"
+			}
+		},
+		"appContainerHideRegion": {
+			"onEntry": [
+				"onAppContainerHideRegion"
+			],
+			"on": {
+				"APP_CONTAINER_DONE": "start"
+			}
+		},
+		"appContainerChangeLayout": {
+			"onEntry": [
+				"onAppContainerChangeLayout"
+			],
+			"on": {
+				"APP_CONTAINER_DONE": "start"
+			}
+		}
+	}
+}

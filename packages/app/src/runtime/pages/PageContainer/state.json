@@ -1,0 +1,26 @@
+{
+	"initial": "onLoaded",
+	"states": {
+		"onLoaded": {
+			"on": {
+				"PAGE_CONTAINER_INIT": "pageContainerInit"
+			}
+		},
+		"pageContainerInit": {
+			"onEntry": [
+				"onPageContainerInit"
+			],
+			"on": {
+				"PAGE_CONTAINER_LOAD": "pageContainerLoad"
+			}
+		},
+		"pageContainerLoad": {
+			"onEntry": [
+				"onPageContainerLoad"
+			],
+			"on": {
+				"PAGE_CONTAINER_LOADED": "onLoaded"
+			}
+		}
+	}
+}

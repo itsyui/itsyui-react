@@ -6,7 +6,7 @@
     "scripts": {
         "bootstrap": "lerna bootstrap",
         "release:build": "lerna run --sort --scope \"@itsy-ui/*\" build",
-        "release:publish": "lerna publish from-git --no-git-tag-version --no-push --yes",
+        "release:publish": "lerna run --sort --scope \"@itsy-ui/*\" publish",
         "clean": "rimraf ./**/dist",
         "clean:nm": "rimraf node_modules && rimraf ./**/node_modules && rimraf yarn.lock",
         "format": "prettier --write 'packages/*/src/**/*' 'packages/*/test/**/*' 'README.md'"

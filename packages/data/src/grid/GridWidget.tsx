@@ -94,7 +94,7 @@ class GridWidget extends React.Component<GridWidgetProps, {}> {
 		const { typeId, gridSchemaId } = this.getControlSchemaProperties();
 		const { customDataSource, viewAttributes, renderCustomCell, sortingInfo } = this.props;
 		const preAppliedFilter = viewAttributes.filter !== undefined ? viewAttributes.filter : {};
-		const selectedRecords = incrementalAdd ? this.props.selectedRows : null;
+		const selectedRecords = this.props.selectedRows;
 		this.props.fetchDataServer(typeId, gridSchemaId, customDataSource, renderCustomCell, preAppliedFilter, selectedRecords, incrementalAdd, sortingInfo);
 	}
 

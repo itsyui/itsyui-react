@@ -14,11 +14,11 @@ function _getCurrentUserInfo(data, isLocal) {
 const AvatarComponent = props => {
 	const { value, isLocal } = props
 	if (value && value.includes("base64")) {
-		return <div className="base64-img"><Image roundedCircle className={"image_style"} src={value} /></div>;
+		return <div className="base64-img"><Image tabIndex={0} roundedCircle className={"image_style"} src={value} /></div>;
 	}
 	const loggedInUser = _getCurrentUserInfo(value, isLocal);
 	return (Array.isArray(loggedInUser) && loggedInUser.length > 0 ?
-		<div className="text-avatar-icon" >
+		<div className="text-avatar-icon" tabIndex={0} >
 			{loggedInUser[0].substr(0, 2)}
 		</div > : null
 	);

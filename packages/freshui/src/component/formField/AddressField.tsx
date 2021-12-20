@@ -32,6 +32,8 @@ class AddressField extends React.Component<IWidgetControlProps, {}> {
 					type={"string"}
 					label={getlocaleText("{{address1}}")}
 					onChange={(e) => this.handleChange && this.handleChange(e, "address1")}
+					tabIndex={0}
+					aria-label={getlocaleText("{{address1}}")}
 				/>
 			</InputGroup>
 			<InputGroup className="mb-3">
@@ -40,6 +42,8 @@ class AddressField extends React.Component<IWidgetControlProps, {}> {
 					type={"string"}
 					label={getlocaleText("{{address2}}")}
 					onChange={(e) => this.handleChange && this.handleChange(e, "address2")}
+					tabIndex={0}
+					aria-label={getlocaleText("{{address2}}")}
 				/>
 			</InputGroup>
 			<div className="address-container">
@@ -50,6 +54,8 @@ class AddressField extends React.Component<IWidgetControlProps, {}> {
 						label={getlocaleText("{{country}}")}
 						className="address-textBox"
 						onChange={(e) => this.handleChange && this.handleChange(e, "country")}
+						tabIndex={0}
+						aria-label={getlocaleText("{{country}}")}
 					/>
 				</InputGroup>
 				<InputGroup className="mb-3">
@@ -58,6 +64,8 @@ class AddressField extends React.Component<IWidgetControlProps, {}> {
 						type={"string"}
 						label={getlocaleText("{{state}}")}
 						onChange={(e) => this.handleChange && this.handleChange(e, "state")}
+						tabIndex={0}
+						aria-label={getlocaleText("{{state}}")}
 					/>
 				</InputGroup>
 			</div>
@@ -69,6 +77,8 @@ class AddressField extends React.Component<IWidgetControlProps, {}> {
 						label={getlocaleText("{{city}}")}
 						className="address-textBox"
 						onChange={(e) => this.handleChange && this.handleChange(e, "city")}
+						tabIndex={0}
+						aria-label={getlocaleText("{{city}}")}
 					/>
 				</InputGroup>
 				<InputGroup className="mb-3">
@@ -77,6 +87,8 @@ class AddressField extends React.Component<IWidgetControlProps, {}> {
 						type={"number"}
 						label={getlocaleText("{{pin}}")}
 						onChange={(e) => this.handleChange && this.handleChange(e, "pin")}
+						tabIndex={0}
+						aria-label={getlocaleText("{{pin}}")}
 					/>
 				</InputGroup>
 			</div>

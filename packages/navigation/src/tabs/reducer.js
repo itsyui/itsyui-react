@@ -12,7 +12,7 @@ function reducer(state, action) {
 			return {
 				...state,
 				tabs: action.newItem,
-				activeKey: Array.isArray(action.newItem) && action.newItem.length > 0 ? action.newItem[0].key : null
+				activeKey: action.activeTabKey
 			};
 		case TabsActions.NewTab:
 			return {

@@ -19,12 +19,12 @@ const SignUpPageComponent = props => {
 				<div className="signup-contianer">
 					<div className="signup-paper">
 						<div className="login-logo">
-							{logo ? <img alt="appLogo" src={logo} className="applogo" /> : <div className="default-applogo" />}
+							{logo ? <img alt="appLogo" tabIndex={0} src={logo} className="applogo" /> : <div className="default-applogo" />}
 						</div>
 						<div className="login-input-desktop">
 							{props._getFormWidgetControlSchema(formSchema)}
 							<div className="login-button">
-								<Button className="MuiFormControl-marginNormal" onClick={props.handleSubmit} variant="primary" color="secondary" key="submit">
+								<Button className="MuiFormControl-marginNormal" tabIndex={0} onClick={props.handleSubmit} variant="primary" color="secondary" key="submit" aria-label={getlocaleText("{{submit}}")}>
 									{getlocaleText("{{submit}}")}
 								</Button>
 							</div>

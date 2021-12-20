@@ -14,10 +14,10 @@ function getListItemActions(id: string, actions: any, props: any, executeCommand
         const nonPrimaryActions = actions.filter(t => primaryItem ? (t.name !== primaryItem.name && t.enabled) : t.enabled);
         const primaryAction = primaryItem && (primaryItem.iconPosition == "none"
 			? <Button color="secondary" variant="outline-primary" size="sm" className=""
-				onClick={(e) => executeCommand(primaryItem, id, props, e)}
+				onClick={(e) => executeCommand(primaryItem, id, props, e)} tabIndex={0} aria-label={primaryItem.displayText}
 			>{primaryItem.displayText}</Button >
 			: <Button color="secondary" variant="outline-primary" size="sm" className="freshui-btn-control"
-				onClick={(e) => executeCommand(primaryItem, id, props, e)}
+				onClick={(e) => executeCommand(primaryItem, id, props, e)} tabIndex={0} aria-label={primaryItem.displayText}
 			>
 				{primaryItem.iconPosition === "startIcon" && <i className="freshui-icons">{primaryItem.icon}</i>}
 				{primaryItem.displayText}
@@ -60,12 +60,12 @@ const AvatarCard = props => {
     };
     const avatarImageSrc = Array.isArray(avatarSrc) && avatarSrc.length > 0 ? avatarSrc[0] : avatarSrc;
     return (
-        <Card border={isSelected(cardId) ? "primary" : ""} className="simple-card-root-contain" onClick={(event) => onCardSelect(event, cardId, { ...cardViewProps })}>
+        <Card border={isSelected(cardId) ? "primary" : ""} className="simple-card-root-contain" onClick={(event) => onCardSelect(event, cardId, { ...cardViewProps })} tabIndex={0}>
             {(avatarImageSrc || tertiaryValue) &&
                 < div className="image-card-display">
                     <div className="card-header-inner">
                         {avatarImageSrc &&
-                            <Card.Img
+                            <Card.Img tabIndex={0}
                                 className="card-image"
                                 src={avatarImageSrc}
                             />
@@ -82,13 +82,13 @@ const AvatarCard = props => {
                 <div className={`antd-card-content-design ${!(avatarImageSrc || tertiaryValue) ? "" : ""}`} >
 
                     {primaryValue &&
-                        <Card.Title color="textPrimary" className="">
+                        <Card.Title color="textPrimary" className="" tabIndex={0}>
                             {renderCell(primaryValue["column"], primaryValue["value"], 0, { ...cardViewProps })}
                         </Card.Title>
                     }
                     <div className={"card-text antd-image-card-text"}>
                         {secondaryValue &&
-                            <Card.Text className={""}>
+                            <Card.Text className={""} tabIndex={0}>
                                 {renderCell(secondaryValue["column"], secondaryValue["value"], 0, { ...cardViewProps })}
                             </Card.Text>
                         }

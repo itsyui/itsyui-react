@@ -27,7 +27,7 @@ class ButtonControl extends React.Component<IWidgetControlProps, {}> {
 		return (
 			<div className={`freshui-btn-control ${customClass}`} style={customStyle}>
 				{
-					<Button variant="primary" size="sm" style={style} onClick={this.handleClick.bind(this)} >
+					<Button variant="primary" size="sm" style={style} onClick={this.handleClick.bind(this)} tabIndex={0} >
 						{iconPosition === "startIcon" && <i className="freshui-icons">{iconName}</i>}
 						{displayName ? getlocaleText(displayName) : fieldSchema && fieldSchema.displayName}
 						{this.props.children && this.props.children}

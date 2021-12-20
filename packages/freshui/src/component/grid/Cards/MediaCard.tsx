@@ -14,10 +14,10 @@ function getListItemActions(id: string, actions: any, props: any, executeCommand
         const nonPrimaryActions = actions.filter(t => primaryItem ? (t.name !== primaryItem.name && t.enabled) : t.enabled);
         const primaryAction = primaryItem && (primaryItem.iconPosition == "none"
 			? <Button color="secondary" variant="outline-primary" size="sm" className=""
-				onClick={(e) => executeCommand(primaryItem, id, props, e)}
+				onClick={(e) => executeCommand(primaryItem, id, props, e)} tabIndex={0} aria-label={primaryItem.displayText}
 			>{primaryItem.displayText}</Button >
 			: <Button color="secondary" variant="outline-primary" size="sm" className="freshui-btn-control"
-				onClick={(e) => executeCommand(primaryItem, id, props, e)}
+				onClick={(e) => executeCommand(primaryItem, id, props, e)} tabIndex={0} aria-label={primaryItem.displayText}
 			>
 				{primaryItem.iconPosition === "startIcon" && <i className="freshui-icons">{primaryItem.icon}</i>}
 				{primaryItem.displayText}
@@ -57,17 +57,18 @@ const MediaCard = props => {
 		<Card className="freshui-media-card-container" onClick={(event) => onCardSelect(event, cardId, { ...cardViewProps })}>
 			{mediaSrc && mediaSrc ?
 				<Card.Img
+					tabIndex={0}
 					src={mediaSrc}
 					title={primaryValue && primaryValue["value"] ? primaryValue["value"] : null}
 				/> : null
 			}
 			<Card.Body>
 				{primaryValue &&
-					<Card.Title className="media-card-title">
+					<Card.Title className="media-card-title" tabIndex={0}>
 						{renderCell(primaryValue["column"], primaryValue["value"], 0, { ...props })}
 					</Card.Title>}
 				{secondaryValue &&
-					<Card.Text className="media-card-secondary">
+					<Card.Text className="media-card-secondary" tabIndex={0}>
 						{renderCell(secondaryValue["column"], secondaryValue["value"], 0, { ...props })}
 					</Card.Text>
 				}

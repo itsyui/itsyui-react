@@ -30,8 +30,8 @@ class LinkControl extends React.Component<IWidgetControlProps, {}> {
 		const customClass = fieldSchema.className ? fieldSchema.className : "";
 		const customStyle = fieldSchema.style ? fieldSchema.style : {};
 		return (
-			<div style={{ "justifyContent": alignstyle, ...customStyle }} className={`link-container ${customClass}`}>
-				<Card.Link onClick={this.onLinkClick.bind(commandName, contextParams)}>
+			<div style={{ "justifyContent": alignstyle, ...customStyle }} className={`link-container ${customClass}`} tabIndex={0}>
+				<Card.Link onClick={this.onLinkClick.bind(commandName, contextParams)} tabIndex={0} aria-label={fieldSchema.title ? fieldSchema.title : title}>
 					{fieldSchema.title ? fieldSchema.title : title}
 				</Card.Link>
 			</div>

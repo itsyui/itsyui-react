@@ -1,4 +1,5 @@
 import { FormActions } from './actions';
+import _ from "lodash";
 
 const initialState = {
 	typeId: "",
@@ -80,7 +81,7 @@ function reducer(state, action) {
 				if (action.mode === 0) {
 					const id = Object.keys(action.propertyDefinitions);
 					const newPropertyDefinitions = state.metadata && state.metadata.propertyDefinitions ? JSON.parse(JSON.stringify(state.metadata.propertyDefinitions)) : {};
-					const newFormValues = state.formValues ? JSON.parse(JSON.stringify(state.formValues)) : {};
+					const newFormValues = state.formValues ? _.cloneDeep(state.formValues) : {};
 					const newValidationSchema = { ...state.validationSchema };
 					delete newPropertyDefinitions[id];
 					delete newFormValues[id];

@@ -34,7 +34,7 @@ function renderCell(col: any, cellValue: any, idx: any, props: any) {
 	if (col.type === "datetime") {
 		const displayType = col.fieldSchema && col.fieldSchema.displayType ? col.fieldSchema.displayType : DateTimeMode.DATE;
 		const dateValue = getDate(cellValue, displayType);
-		return <span> {dateValue} </span>;
+		return <span tabIndex={0} aria-label={dateValue}> {dateValue} </span>;
 	} else if (col.type === "custom") {
 		return renderCustomCell && renderCustomCell(col, cellValue, idx);
 	} else if (col.type === "widget") {
@@ -45,7 +45,7 @@ function renderCell(col: any, cellValue: any, idx: any, props: any) {
 		const boolValue = cellValue && cellValue[col.name] !== undefined ? `${cellValue[col.name]}` : `false`;    //if user didn't toggle switch & submit
 		return <span>{`${boolValue}`}</span>;
 	} else {
-		return <span title={cellValue}>{cellValue}</span>;
+		return <span title={cellValue} tabIndex={0} aria-label={cellValue}>{cellValue}</span>;
 	}
 }
 
@@ -112,7 +112,7 @@ function getShowMore(handleScroll, pageInfo, rows) {
 	if (!visibleShowMore) {
 		return <ul className="pagination react-bootstrap-table-page-btns-ul">
 			<li className="active page-item" title="show more record(s)">
-				<a className="page-link" onClick={handleScroll}>{getlocaleText("{{grid.showmore}}")}</a>
+				<a className="page-link" onClick={handleScroll} tabIndex={0} aria-label={getlocaleText("{{grid.showmore}}")}>{getlocaleText("{{grid.showmore}}")}</a>
 			</li>
 		</ul>
 	}

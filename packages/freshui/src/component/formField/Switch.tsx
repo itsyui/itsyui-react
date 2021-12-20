@@ -24,10 +24,10 @@ class SwitchType extends React.Component<IWidgetControlProps, {}> {
 				<Form.Group className={customClass} style={customStyle}>
 					<Row>
 						<Col xs={6} sm={6} md={6} lg={6}>
-							<Form.Label >{`${fieldSchema.displayName}:`}</Form.Label>
+							<Form.Label tabIndex={0} aria-label={`${fieldSchema.displayName}:`}>{`${fieldSchema.displayName}:`}</Form.Label>
 						</Col>
 						<Col xs={6} md={6} lg={6}>
-							<Form.Label>{controlProps.value}</Form.Label>
+							<Form.Label tabIndex={0} aria-label={controlProps.value}>{controlProps.value}</Form.Label>
 						</Col>
 					</Row>
 				</Form.Group>
@@ -41,6 +41,8 @@ class SwitchType extends React.Component<IWidgetControlProps, {}> {
 					disabled={fieldSchema.readOnly ? true : false}
 					checked={controlProps.value !== undefined ? controlProps.value : fieldSchema.checked ? fieldSchema.checked : false}
 					value={fieldSchema.displayName}
+					tabIndex={0}
+					aria-label={fieldSchema.displayName}
 					color="secondary"
 					onChange={e => controlProps.handleChange && controlProps.handleChange(e, e.target.checked)}
 					label={fieldSchema.displayName}

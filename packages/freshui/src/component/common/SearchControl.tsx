@@ -49,7 +49,7 @@ const SearchComponent = props => {
 							{schema.enableQRScan && <BsColumnsGap />}
 						</InputGroup.Text>
 					</InputGroup.Prepend>
-					<Form.Control size="lg" type="text"
+					<Form.Control size="lg" tabIndex={0} type="text"
 						placeholder={getlocaleText(schema.placeholder)}
 						ref={searchInput}
 					/>

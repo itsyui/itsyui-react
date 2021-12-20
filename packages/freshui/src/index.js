@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./styles/variable.css"
 import "./styles/customizeStyle.css"
 import "./component/grid";
 import "./component/formField";

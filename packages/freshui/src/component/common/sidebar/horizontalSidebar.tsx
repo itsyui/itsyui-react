@@ -34,13 +34,13 @@ const HorizontalSidebarComponent = props => {
                                 let listItemClass = layout === "layout_type_c" ? "horizontalTop-list-item" : "freshui-horizontal-list-item"
                                 listItemClass = containUrl ? listItemClass + ' ' + "active" : listItemClass;
                                 return (<li className={listItemClass}>
-                                    <a href={subOption.url && window.location.origin + basePath + subOption.url} className="sidebar-atag-item">
+                                    <a href={subOption.url && window.location.origin + basePath + subOption.url} className="sidebar-atag-item"  tabIndex={0} aria-label={subOption.title}>
                                         <div className={layout === "layout_type_c" ? "horizontal_top_icon" : "freshui-horizontal-list-item"}
                                             onClick={props.onSidebarItemClicked.bind(this, subOption)}
                                             key={subOption.title}>
                                             {subOption.image && subOption.image !== "" ? <img src={subOption.image} className="sidebar-imageIcon" /> : subOption.iconName && subOption.iconName !== "" ?
                                                 <i className={subOption.className}>{subOption.iconName}</i> : <i className="freshui-icons">blur_circular</i>}
-                                            <div className="freshui-horizontal-sidebar-menu-text">
+                                            <div className="freshui-horizontal-sidebar-menu-text" aria-label={subOption.title}>
                                                 {subOption.title}
                                             </div>
                                         </div>
@@ -48,7 +48,7 @@ const HorizontalSidebarComponent = props => {
                                 </li>);
                             } else if (subOption.children && subOption.children.length > 0) {
                                 return (<li className={layout === "layout_type_c" ? "horizontalTop-list-item" : "freshui-horizontal-list-item"}>
-                                    <a href={subOption.url && window.location.origin + basePath + subOption.url} className="sidebar-atag-item">
+                                    <a href={subOption.url && window.location.origin + basePath + subOption.url} className="sidebar-atag-item" tabIndex={0} aria-label={subOption.title}>
                                         <div className={layout === "layout_type_c" ? "horizontal_top_icon" : "freshui-horizontal-list-item"}
                                             onClick={(e) => props.handleClick(e)}
                                             key={subOption.title}>

@@ -19,7 +19,7 @@ class ExternalLinkControl extends Component {
         const customClass = className ? className : "";
         const customStyle = style ? { ...style } : {};
         return (
-            <a href={url} target="_blank" className={customClass} style={customStyle}>{label}</a>
+            <a href={url} target="_blank" className={customClass} tabIndex={0} aria-label={label} style={customStyle}>{label}</a>
         );
     }
 }

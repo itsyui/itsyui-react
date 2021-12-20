@@ -24,10 +24,12 @@ class FilterControl extends Component {
 							variant="primary"
 							className="filter-chip"
 							label={badgeLabel}
+							tabIndex={0}
+							ariaLabel={badgeLabel}
 							key={`filter-badge-${index}`}
 						>
 							{badgeLabel}
-							<i className="freshui-icons" onClick={(event) => onRemoveFilter(event, cKey)}>cancel</i>
+							<i className="freshui-icons" onClick={(event) => onRemoveFilter(event, cKey)} tabIndex={0} aria-label="cancel">cancel</i>
 						</Badge>
 					);
 				}
@@ -57,11 +59,11 @@ class FilterControl extends Component {
 	renderHeader = (chips, onResetFilters) => {
 		return (<Container>
 			<Row lg={2} md={2} sm={2} xl={2} xs={2}>
-				<Col lg={10} md={10} sm={10} xl={10} xs={10} className="col-filter-chips" >
+				<Col lg={10} md={10} sm={10} xl={10} xs={10} className="col-filter-chips" tabIndex={0}>
 					{this.renderChips(chips)}
 				</Col>
 				<Col lg={2} md={2} sm={2} xl={2} xs={2} className="filter-clear-btn">
-					<Button variant="link" size="sm" onClick={onResetFilters}>Clear</Button>
+					<Button variant="link" size="sm" onClick={onResetFilters} tabIndex={0} aria-label="clear">Clear</Button>
 				</Col>
 			</Row>
 		</Container>);

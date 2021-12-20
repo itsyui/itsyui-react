@@ -33,7 +33,7 @@ class TabsWidget extends React.Component<TabsWidgetProps, {}> {
 
 	initializeTab(schema = null) {
 		if (this.props.transition) {
-			const { typeId, schemaId, relationshipViews, objectId, record, tabItems, items, designerMetadata } = this.getControlSchemaProperties();
+			const { typeId, schemaId, relationshipViews, objectId, record, tabItems, items, designerMetadata, activeTab } = this.getControlSchemaProperties();
 			let tabItemsData = tabItems && Array.isArray(tabItems) && tabItems.length > 0 ? tabItems : items; //first prefer to tabItems then items (changes done for builder)
 			const objectData = record !== undefined ? record : objectId;
 			tabItemsData = schema && schema.items ? schema.items : tabItemsData;
@@ -45,6 +45,7 @@ class TabsWidget extends React.Component<TabsWidgetProps, {}> {
 				objectData,
 				tabItems: tabItemsData,
 				designerMetadata,
+				activeTab
 			});
 		}
 	}
@@ -136,7 +137,7 @@ class TabsWidget extends React.Component<TabsWidgetProps, {}> {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		onTabsInit: (event) => dispatch(doTabsInit(event)),
-		onTabsLoad: (event) => dispatch(doTabsLoad(event.data)),
+		onTabsLoad: (event) => dispatch(doTabsLoad(event.data, event.activeTab)),
 		onTabsBeforeAddNewTab: (event) => dispatch(doTabsBeforeAddNewTab(event.previousTabs)),
 		onTabsAddNewTab: (event) => dispatch(doTabsAddNewTab(event.Tabs, event.activeKey)),
 		onTabsActiveTabChange: (event) => dispatch(doTabsActiveTabChange(event.activeKey)),

@@ -4,8 +4,8 @@ import { BsPlusCircle } from "react-icons/bs";
 function SubFormHeader(props) {
     const { fieldSchema, onIconClick } = props.schema;
     return <>
-        <label className={fieldSchema.readOnly ? "repeater-title label-disabled" : "repeater-title"}> {fieldSchema.displayName}</label>
-        <BsPlusCircle onClick={() => onIconClick()} className={fieldSchema.readOnly ? "disableSubFormIcon" : ""} />
+        <label className={fieldSchema.readOnly ? "repeater-title label-disabled" : "repeater-title"} tabIndex={0} aria-label={fieldSchema.displayName}> {fieldSchema.displayName}</label>
+        <BsPlusCircle tabIndex={0} onClick={() => onIconClick()} className={fieldSchema.readOnly ? "disableSubFormIcon" : ""} />
     </>
 }
 

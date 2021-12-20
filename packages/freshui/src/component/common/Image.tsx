@@ -13,7 +13,7 @@ class ImageControl extends React.Component {
         const { loaded, onClick, imgSrc, image_width, image_height, className, style } = this._getControlSchemaProperties();
         const customClass = className ? className : "";
         const customStyle = style ? { ...style } : {};
-        return loaded ? <img className={customClass} style={customStyle} src={imgSrc} width={image_width} height={image_height} onClick={onClick} alt="image" /> : <span className="img-loading-text">Loading image</span>
+        return loaded ? <img className={customClass} style={customStyle} src={imgSrc} width={image_width} height={image_height} onClick={onClick} alt="image" tabIndex={0} /> : <span tabIndex={0} className="img-loading-text">Loading image</span>
     }
 }
 

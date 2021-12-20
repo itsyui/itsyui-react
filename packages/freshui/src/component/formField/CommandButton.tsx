@@ -50,7 +50,7 @@ class CommandButton extends React.Component<IWidgetControlProps, {}> {
         return (
             <div className={`freshui-btn-control ${customClass}`} style={customStyle}>
                 {
-                    <Button variant="primary" size="sm" onClick={(e) => { this.handleClick(e); }} >
+                    <Button variant="primary" size="sm" onClick={(e) => { this.handleClick(e); }} tabIndex={0} aria-label={title} >
                         {iconPosition === "startIcon" && <i className="freshui-icons">{iconName}</i>}
                         {title}
                         {this.props.children && this.props.children}

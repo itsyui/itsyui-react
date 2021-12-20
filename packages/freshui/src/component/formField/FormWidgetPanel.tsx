@@ -73,9 +73,9 @@ const createGroup = (group: any, formItemMap: any) => {
 	const rows = getGroupRows(group, formItemMap);
 	if (group["headerText"]) {
 		group["headerText"] = getLocaleString(group, "headerText");
-		return (<section className="box">
+		return (<section className="box" tabIndex={0}>
 			<section className="box-meta markdown">
-				<div className="box-title">
+				<div className="box-title" tabIndex={0} aria-label={group.headerText}>
 					<label>{group.headerText}</label>
 				</div>
 				{rows}
@@ -103,6 +103,7 @@ const getCells = (columns, formItems, processedFormInputs) => {
 				"ui:widget": "col_control",
 				"span": 12 / columns.length,
 				className: "form-multi-column",
+				...getNegatedProps(["widget"], column),
 			}
 		};
 		let cells = [];
@@ -115,6 +116,17 @@ const getCells = (columns, formItems, processedFormInputs) => {
 			{cells}
 		</SchemaContainer>;
 	});
+}
+
+const getNegatedProps = (props, obj) => {
+	const val = {};
+	for (const key in obj) {
+		if (props.indexOf(key) < 0) {
+			val[key] = obj[key];
+		}
+	}
+
+	return val;
 }
 
 const getRows = (layoutRows, formItems, processedFormInputs) => {
@@ -145,12 +157,12 @@ const getRows = (layoutRows, formItems, processedFormInputs) => {
 		if (item["headerText"]) {
 			item["headerText"] = getLocaleString(item, "headerText");
 			return (
-				<section className="box">
+				<section className="box" tabIndex={0}>
 					<section className="box-meta markdown">
-						<div className="box-title">
+						<div className="box-title" tabIndex={0} aria-label={item.headerText}>
 							<label>{item.headerText}</label>
 						</div>
-						<SchemaContainer schema={rowControlSchema}>
+						<SchemaContainer schema={rowControlSchema} tabIndex={0}>
 							{cells}
 						</SchemaContainer>
 					</section>

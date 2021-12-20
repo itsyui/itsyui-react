@@ -12,10 +12,10 @@ function getListItemActions(id: string, actions: any, props: any, executeCommand
 		const primaryItem = actions.find(t => t.isPrimary && t.enabled);
 		const primaryAction = primaryItem && (primaryItem.iconPosition == "none"
 			? <Button color="secondary" variant="outline-primary" size="sm" className=""
-				onClick={(e) => executeCommand(primaryItem, id, props, e)}
+				onClick={(e) => executeCommand(primaryItem, id, props, e)} tabIndex={0} aria-label={primaryItem.displayText}
 			>{primaryItem.displayText}</Button >
 			: <Button color="secondary" variant="outline-primary" size="sm" className="freshui-btn-control"
-				onClick={(e) => executeCommand(primaryItem, id, props, e)}
+				onClick={(e) => executeCommand(primaryItem, id, props, e)} tabIndex={0} aria-label={primaryItem.displayText}
 			>
 				{primaryItem.iconPosition === "startIcon" && <i className="freshui-icons">{primaryItem.icon}</i>}
 				{primaryItem.displayText}
@@ -62,12 +62,12 @@ const SimpleHorizontalList = props => {
 	const textAvatar = listProps.viewAttributes["isTextAvatar"];
 	return (
 		<div onClick={(event) => onListSelect(event, listId, { ...listProps })} className={gridStyle === "condensed" ? "condensed-row" : "normal-row"}>
-			<ListGroup horizontal className={isSelected(listId) ? `${"freshui-select-listView"} ${"Listmodel-whole-container"}` : `${"Listmodel-whole-container"}`}>
+			<ListGroup horizontal className={isSelected(listId) ? `${"freshui-select-listView"} ${"Listmodel-whole-container"}` : `${"Listmodel-whole-container"}`} tabIndex={0}>
 				{avatarValue && <ListGroup.Item className={textAvatar ? "list-text-avatar list-avatar" : "list-avatar"} key={"grid_item_avatar" + listId}>
 					{renderCell(avatarValue.column, row, "avatar", listProps)}
 				</ListGroup.Item>
 				}
-				<ListGroup.Item className={textAvatar ? "list-text-avatar-content list-view-details-container" : "list-view-details-container"}>
+				<ListGroup.Item className={textAvatar ? "list-text-avatar-content list-view-details-container" : "list-view-details-container"} tabIndex={0}>
 					{primaryValue && <div className="list-primary-text" key={"grid_item_primary" + listId} >
 						{renderCell(primaryValue.column, row, "primary", listProps)}
 					</div>
@@ -79,7 +79,7 @@ const SimpleHorizontalList = props => {
 						{renderCell(tertiaryValue.column, row, "tertiary", listProps)}
 					</div>} */}
 				</ListGroup.Item>
-				{actionItems && <ListGroup.Item className="simple-list-action" key={"grid_item_actions" + listId} >
+				{actionItems && <ListGroup.Item tabIndex={0} className="simple-list-action" key={"grid_item_actions" + listId} >
 					{actionItems}
 				</ListGroup.Item>}
 			</ListGroup>

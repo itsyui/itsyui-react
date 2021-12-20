@@ -34,12 +34,14 @@ const renderPrimaryItems = (primaryItems, props) => {
 	return Array.isArray(primaryItems) && primaryItems.map((tab, index) => {
 		const { title, icon, path, primary } = tab;
 		if (primary && icon) {
-			return <Nav.Item key={`tab-${index}`}>
+			return <Nav.Item key={`tab-${index}`} tabIndex={0}>
 				<Button
 					variant="light"
 					className="nav-link bottom-nav-link"
 					activeClassName="active"
 					onClick={() => handleChange(path)}
+					tabIndex={0}
+					aria-label={title}
 				>
 					<div className="row d-flex flex-column justify-content-center align-items-center">
 						<i className="freshui-icons">{icon}</i>

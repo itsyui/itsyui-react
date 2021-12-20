@@ -45,11 +45,11 @@ export class DynamicCardWidget extends React.Component<any> {
             let classNames = styles ? styles.className : "";
             classNames = className ? `${classNames} ${className}` : classNames;
             const customStyle = style ? style : {};
-            return <div className={`root-card-container ${classNames}`} style={customStyle} >
-                {<div className={this.getSelectedRows(id, styles)} key="card-attributes" onClick={this.onRowSelect.bind(this, id)}>
+            return <div className={`root-card-container ${classNames}`} style={customStyle} tabIndex={0}>
+                {<div className={this.getSelectedRows(id, styles)} tabIndex={0} key="card-attributes" onClick={this.onRowSelect.bind(this, id)}>
                     {onRenderCardAttributes(layout.rows, widgets)}
                 </div>}
-                <div className="card-btn-align" key="card-actions">{onRenderCardActions()}</div>
+                <div className="card-btn-align" key="card-actions" tabIndex={0}>{onRenderCardActions()}</div>
             </div>
         }
     }

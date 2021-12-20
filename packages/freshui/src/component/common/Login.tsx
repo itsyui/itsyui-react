@@ -25,16 +25,16 @@ const LoginPageComponent = props => {
 				<div className="desktopview">
 					<div className="mobilepaper">
 						<div className="login-logo">
-							{logo ? <img alt="appLogo" src={logo} className="applogo" /> : <div className="default-applogo" />}
+							{logo ? <img alt="appLogo" tabIndex={0} src={logo} className="applogo" /> : <div className="default-applogo" />}
 						</div>
 						<div className="login-input-desktop">
 							{props._getFormWidgetControlSchema(formSchema, formSchemaId)}
 							<div className="login-button">
-								<Button onClick={props.handleLogin} variant="primary" color="secondary" key="submit">
+								<Button onClick={props.handleLogin} tabIndex={0} variant="primary" color="secondary" key="submit" aria-label={getLocaleString({ login: "{{login.submitButton}}" }, "login")}>
 									{getLocaleString({ login: "{{login.submitButton}}" }, "login")}
 								</Button>
 								{showForgotPasswordButton && <Form.Text className={"forgotpassword"}>
-									<a className="forgot_text" onClick={props.handleForgotPassword.bind(this)} hidden={showForgotPasswordButton === true ? undefined : true}>{getlocaleText("{{login.forgotPassword}}")}</a>
+									<a className="forgot_text" tabIndex={0} onClick={props.handleForgotPassword.bind(this)} hidden={showForgotPasswordButton === true ? undefined : true} aria-label={getlocaleText("{{login.forgotPassword}}")}>{getlocaleText("{{login.forgotPassword}}")}</a>
 								</Form.Text>}
 							</div>
 						</div>
@@ -42,7 +42,7 @@ const LoginPageComponent = props => {
 					{showSignupButton && <div>
 						<Form.Text className="signup-text">
 							{getlocaleText("{{signupcontent}}")}
-							<a className="signup-align" color="secondary" onClick={props.handleSignup.bind(this)} hidden={showSignupButton === true ? undefined : true}>{getlocaleText("{{signup}}")}</a>
+							<a className="signup-align" color="secondary" tabIndex={0} onClick={props.handleSignup.bind(this)} hidden={showSignupButton === true ? undefined : true} aria-label={getlocaleText("{{signup}}")}>{getlocaleText("{{signup}}")}</a>
 						</Form.Text>
 					</div>}
 				</div>
@@ -56,23 +56,23 @@ const LoginPageComponent = props => {
 					<div className="login_mobile_container">
 						<div className="mobilepaper">
 							<div className="login-logo">
-								<img alt="appLogo" src={logo} className="applogo" />
+								<img alt="appLogo" src={logo} tabIndex={0} className="applogo" />
 							</div>
 							<div className=" login-input">
 								{props._getFormWidgetControlSchema(formSchema, formSchemaId)}
 								<div className="login-button">
-									<Button onClick={props.handleLogin.bind(this)} variant="primary" color="secondary" key="submit">
+									<Button onClick={props.handleLogin.bind(this)} tabIndex={0} variant="primary" aria-label={getLocaleString({ login: "{{login.submitButton}}" }, "login")} color="secondary" key="submit">
 										{getLocaleString({ login: "{{login.submitButton}}" }, "login")}
 									</Button>
 									{showForgotPasswordButton && <Form.Text className={"forgotpassword"}>
-										<a className="forgot_text" color="secondary" onClick={props.handleForgotPassword.bind(this)} hidden={showForgotPasswordButton === true ? undefined : true}>{getlocaleText("{{login.forgotPassword}}")}</a>
+										<a className="forgot_text" tabIndex={0} color="secondary" onClick={props.handleForgotPassword.bind(this)} hidden={showForgotPasswordButton === true ? undefined : true} aria-label={getlocaleText("{{login.forgotPassword}}")}>{getlocaleText("{{login.forgotPassword}}")}</a>
 									</Form.Text>}
 								</div>
 							</div>
 							{showSignupButton && <div>
 								<Form.Text className="signup-text">
 									{getlocaleText("{{signupcontent}}")}
-									<a className="signup-align" color="secondary" onClick={props.handleSignup.bind(this)} hidden={showSignupButton === true ? undefined : true}>{getlocaleText("{{signup}}")}</a>
+									<a className="signup-align" tabIndex={0} color="secondary" onClick={props.handleSignup.bind(this)} hidden={showSignupButton === true ? undefined : true} aria-label={getlocaleText("{{signup}}")}>{getlocaleText("{{signup}}")}</a>
 								</Form.Text>
 							</div>}
 						</div>

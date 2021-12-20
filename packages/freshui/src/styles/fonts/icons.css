@@ -1,18 +1,15 @@
 @font-face {
-  font-family: 'FreshUI Icons';
+  font-family: "FreshUI Icons";
   font-style: normal;
   font-weight: 400;
-  src: url("./freshui-regular.eot");
-  src: url("./freshui-regular.woff2") format('woff2'),
-       url("./freshui-regular.woff") format('woff'),
-       url("./freshui-regular.ttf") format('truetype');
+  src: url("./freshui-regular.ttf") format("truetype");
 }
 
 .freshui-icons {
-  font-family: 'FreshUI Icons';
+  font-family: "FreshUI Icons";
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
+  font-size: 24px; /* Preferred icon size */
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -30,5 +27,5 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* Support for IE. */
-  font-feature-settings: 'liga';
+  font-feature-settings: "liga";
 }

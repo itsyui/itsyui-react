@@ -29,12 +29,12 @@ const TableViewActions = (props: any) => {
 		const { handleMoreBtnClick, anchorEl, handleClose, currentFocusedRow, record, handleCustomButtonClick, id } = props;
 		const primaryItem = customAction.find(t => t.isPrimary && t.enabled);
 		const primaryAction = primaryItem && (primaryItem.iconPosition == "none" ? <Button color="secondary" variant="outline-primary" size="sm" className=""
-			onClick={handleCustomButtonClick.bind(this, primaryItem, record)}
+			onClick={handleCustomButtonClick.bind(this, primaryItem, record)} tabIndex={0} aria-label={primaryItem.displayText}
 		>
 			{primaryItem.displayText}
 		</Button >
 			: <Button color="secondary" variant="outline-primary" size="sm" className="freshui-btn-control"
-				onClick={handleCustomButtonClick.bind(this, primaryItem, record)}
+				onClick={handleCustomButtonClick.bind(this, primaryItem, record)} tabIndex={0} aria-label={primaryItem.displayText}
 			>
 				{primaryItem.iconPosition === "startIcon" && <i className="freshui-icons">{primaryItem.icon}</i>}
 				{primaryItem.displayText}
@@ -72,7 +72,7 @@ const getShowMore = (handleShowMore, totalSize, data) => {
 	if (!visibleShowMore) {
 		return <ul className="pagination react-bootstrap-table-page-btns-ul">
 			<li className="active page-item" title="show more record(s)">
-				<a className="page-link" onClick={handleShowMore}>{getlocaleText("{{grid.showmore}}")}</a>
+				<a className="page-link" onClick={handleShowMore} tabIndex={0} aria-label={getlocaleText("{{grid.showmore}}")}>{getlocaleText("{{grid.showmore}}")}</a>
 			</li>
 		</ul>
 	}
@@ -108,7 +108,7 @@ const RenderTable = (props: any) => {
 	const customClassName = className ? `root ${className}` : "root";
 	const showPaging = totalSize > sizePerPage;
 	return <div className={customClassName} style={style}>
-		<PaginationProvider pagination={paginationFactory(options)}>
+		<PaginationProvider pagination={paginationFactory(options)} tabIndex={0}>
 			{({ paginationProps, paginationTableProps }) => (
 				<div className="TableWrapper">
 					<BootstrapTable

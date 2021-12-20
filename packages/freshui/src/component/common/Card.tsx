@@ -53,18 +53,18 @@ class CardComponent extends React.Component {
 				</div>
 				);
 			case Actions.Type.WithAvatar:
-				return (<div className={className ? className : ""} style={style ? style : {}}>
-					<Card className="cards-avatar">
-						<Card.Header as="h6" style={{ display: "flex" }} >
-							<div>
+				return (<div className={className ? className : ""} style={style ? style : {}} tabIndex={0}>
+					<Card className="cards-avatar" tabIndex={0}>
+						<Card.Header as="h6" style={{ display: "flex" }} tabIndex={0} >
+							<div tabIndex={0}>
 								{<SchemaContainer schema={AvatarIconControlSchema} />}
 							</div>
-							<div className="Av-title-card">
+							<div className="Av-title-card" tabIndex={0} aria-label={title}>
 								{title}
 							</div>
 						</Card.Header>
-						<Card.Body>
-							<Card.Text>
+						<Card.Body tabIndex={0}>
+							<Card.Text tabIndex={0} aria-label={secondaryTitle}>
 								{secondaryTitle}
 							</Card.Text>
 						</Card.Body>

@@ -179,8 +179,9 @@ class DynamicCardWidget extends React.Component<any> {
 				const isAlreadySelected = selectedRows.find(rec => {
 					if (rec["objectId"]) {
 						return rec["objectId"] === id;
-					}
-					else {
+					} else if (rec["id"]) {
+						return rec["id"] === id
+					} else {
 						return rec["cmis:objectId"] === id
 					}
 				});
@@ -193,8 +194,9 @@ class DynamicCardWidget extends React.Component<any> {
 						const index = selectedRows.findIndex(rec => {
 							if (rec["objectId"]) {
 								return rec["objectId"] === id;
-							}
-							else {
+							} else if (rec["id"]) {
+								return rec["id"] === id
+							} else {
 								return rec["cmis:objectId"] === id
 							}
 						});

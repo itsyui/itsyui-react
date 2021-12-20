@@ -517,14 +517,14 @@ function updatePropertyDefinitions(propertyDefinitions: any, mode: number, updat
 export function doFormUpdatePropertyDefinitions(event: any) {
 	return async (getState, dispatch: any, transition: any) => {
 		const { validationSchema } = getState();
-		const validation = event.mode && event.mode === 0 ? {} : getValidationSchema(event.propertyDefinitions);
+		const validation = event.mode !== undefined && event.mode === 0 ? {} : getValidationSchema(event.propertyDefinitions);
 		const updateValidationSchema = { ...validationSchema, ...validation };
 		dispatch(updatePropertyDefinitions(event.propertyDefinitions, event.mode, updateValidationSchema));
 		const { metadata } = getState();
 		const currentVS = getValidationSchema(metadata.propertyDefinitions);
 		dispatch({
 			type: FormActions.UpdateVisibleFieldValidationSchema,
-			visibleFieldVSchema: currentVS,
+			visibleFieldVSchema: { ...currentVS, ...updateValidationSchema },
 		});
 		transition({
 			type: FormActions.State.FORM_LOADED,

@@ -26,8 +26,9 @@ const FormError = (props) => {
 				variant={fieldSchema !== undefined && fieldSchema.variant ? fieldSchema.variant : "danger"}
 				onClose={onClose}
 				dismissible
+				tabIndex={0}
 			>
-				<div aria-describedby="client-snackbar">
+				<div aria-describedby="client-snackbar" tabIndex={0} aria-label={errorMessage}>
 					{errorMessage}
 				</div>
 			</Alert>

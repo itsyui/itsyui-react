@@ -31,7 +31,7 @@ class InputDate extends React.Component<IWidgetControlProps, {}>  {
 		const disabledClass = fieldSchema.readOnly ? "borderDisable" : ""
 		return (
 			<Form.Group className={`date-time-contianer ${className}`} style={style} controlId={fieldSchema.id}>
-				<label className={fieldSchema.readOnly ? "text-label label-disabled" : "text-label"}>{fieldSchema.displayName}</label>
+				<label className={fieldSchema.readOnly ? "text-label label-disabled" : "text-label"} tabIndex={0} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</label>
 				<div className="date-component">
 					<Form.Control
 						type="date"
@@ -39,11 +39,13 @@ class InputDate extends React.Component<IWidgetControlProps, {}>  {
 						min={fieldSchema.minDate}
 						max={fieldSchema.maxDate}
 						disabled={fieldSchema.readOnly}
+						tabIndex={0} 
+						aria-label={this.getISODate(controlProps.value)}
 						value={this.getISODate(controlProps.value)}
 						onChange={this.handleDateChange && this.handleDateChange.bind(this)}
 					/>
-					{fieldSchema.helptext && <Form.Text>{getlocaleText(fieldSchema.helptext)}</Form.Text>}
-					{controlProps.error && <Form.Text>{controlProps.error}</Form.Text>}
+					{fieldSchema.helptext && <Form.Text tabIndex={0} aria-label={getlocaleText(fieldSchema.helptext)}>{getlocaleText(fieldSchema.helptext)}</Form.Text>}
+					{controlProps.error && <Form.Text tabIndex={0} aria-label={controlProps.error}>{controlProps.error}</Form.Text>}
 				</div>
 			</Form.Group>
 		);
@@ -52,18 +54,20 @@ class InputDate extends React.Component<IWidgetControlProps, {}>  {
 	renderDateTime(controlProps, fieldSchema, className, style) {
 		return (
 			<Form.Group className={`date-time-contianer ${className}`} style={style} controlId={fieldSchema.id}>
-				<label className="text-label">{fieldSchema.displayName}</label>
+				<label className="text-label" tabIndex={0} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</label>
 				<div className="date-component">
 					<Form.Control
 						type="datetime-local"
 						className="date-time-control date-time-border MuiOutlinedInput-root"
 						min={this.getISODateTime(fieldSchema.minDate)}
 						max={this.getISODateTime(fieldSchema.maxDate)}
+						tabIndex={0} 
+						aria-label={this.getISODateTime(controlProps.value)}
 						value={this.getISODateTime(controlProps.value)}
 						onChange={this.handleDateChange && this.handleDateChange.bind(this)}
 					/>
-					{fieldSchema.helptext && <Form.Text>{getlocaleText(fieldSchema.helptext)}</Form.Text>}
-					{controlProps.error && <Form.Text>{controlProps.error}</Form.Text>}
+					{fieldSchema.helptext && <Form.Text tabIndex={0} aria-label={getlocaleText(fieldSchema.helptext)}>{getlocaleText(fieldSchema.helptext)}</Form.Text>}
+					{controlProps.error && <Form.Text tabIndex={0} aria-label={controlProps.error}>{controlProps.error}</Form.Text>}
 				</div>
 			</Form.Group>
 		);
@@ -71,22 +75,30 @@ class InputDate extends React.Component<IWidgetControlProps, {}>  {
 	renderTime(controlProps, fieldSchema, className, style) {
 		return (
 			<Form.Group className={`date-time-contianer ${className}`} style={style} controlId={fieldSchema.id}>
-				<label className="text-label">{fieldSchema.displayName}</label>
+				<label className="text-label" tabIndex={0} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</label>
 				<div className="date-component">
 					<Form.Control
 						type="time"
 						className="date-time-control date-time-border"
+						tabIndex={0} 
+						aria-label={controlProps.value}
 						value={controlProps.value}
 						onChange={this.handleDateChange && this.handleDateChange.bind(this)}
 					/>
-					{fieldSchema.helptext && <Form.Text>{getlocaleText(fieldSchema.helptext)}</Form.Text>}
-					{controlProps.error && <Form.Text>{controlProps.error}</Form.Text>}
+					{fieldSchema.helptext && <Form.Text tabIndex={0} aria-label={getlocaleText(fieldSchema.helptext)}>{getlocaleText(fieldSchema.helptext)}</Form.Text>}
+					{controlProps.error && <Form.Text tabIndex={0} aria-label={controlProps.error}>{controlProps.error}</Form.Text>}
 				</div>
 			</Form.Group>
 		);
 	}
 	pad(x) {
 		return x < 10 ? `0${x}` : x;
+	}
+	padYear(y) {
+		return y.toLocaleString('en-US', {
+			minimumIntegerDigits: 4,
+			useGrouping: false
+		})
 	}
 	//yyyy-MM-ddThh:mm format
 	getISODateTime(value, includeMS = false) {
@@ -109,7 +121,7 @@ class InputDate extends React.Component<IWidgetControlProps, {}>  {
 	getISODate(value) {
 		const date = new Date(value);
 		if (date.toString() !== "Invalid Date") {
-			return date.getFullYear() +
+			return this.padYear(date.getFullYear()) +
 				'-' + this.pad(date.getMonth() + 1) +
 				'-' + this.pad(date.getDate());
 		}
@@ -137,15 +149,17 @@ class InputDate extends React.Component<IWidgetControlProps, {}>  {
 	renderDateRange = (controlProps, fieldSchema, className, style) => {
 		const { minDate, maxDate } = this.getMinMaxDate();
 		return <>{
-			fieldSchema.readOnly ? <div className={className} style={style}><label className={fieldSchema.readOnly ? "text-label label-disabled" : "text-label"}>{fieldSchema.displayName}</label>
+			fieldSchema.readOnly ? <div className={className} style={style}><label className={fieldSchema.readOnly ? "text-label label-disabled" : "text-label"} tabIndex={0} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</label>
 				<Form.Control
 					id={fieldSchema.id}
 					key={fieldSchema.id}
+					tabIndex={0} 
+					aria-label={controlProps.value ? controlProps.value : " "}
 					value={controlProps.value ? controlProps.value : " "}
 					disabled={fieldSchema.readOnly}
 				/></div>
 				: <Form.Group className="date-time-contianer date-range" controlId={fieldSchema.id}>
-					<Form.Label className="text-label">{fieldSchema.displayName}</Form.Label>
+					<Form.Label className="text-label" tabIndex={0} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
 					<div className="date-component">
 						<DateRangePicker
 							key={fieldSchema.id}
@@ -163,7 +177,7 @@ class InputDate extends React.Component<IWidgetControlProps, {}>  {
 						>
 							<Form.Control type="text" className="form-control" />
 						</DateRangePicker>
-						{fieldSchema.helptext && <Form.Text>{getlocaleText(fieldSchema.helptext)}</Form.Text>}
+						{fieldSchema.helptext && <Form.Text tabIndex={0} aria-label={getlocaleText(fieldSchema.helptext)}>{getlocaleText(fieldSchema.helptext)}</Form.Text>}
 					</div>
 				</Form.Group>
 		}
@@ -221,10 +235,10 @@ class InputDate extends React.Component<IWidgetControlProps, {}>  {
 				<Form.Group className={customClass} style={customStyle}>
 					<Row>
 						<Col xs={6} sm={6} md={6} lg={6}>
-							<Form.Label className="read-only-label">{`${fieldSchema.displayName}:`}</Form.Label>
+							<Form.Label className="read-only-label" tabIndex={0} aria-label={`${fieldSchema.displayName}:`}>{`${fieldSchema.displayName}:`}</Form.Label>
 						</Col>
 						<Col xs={6} md={6} lg={6}>
-							{controlProps.value && <Form.Label>{this.getISODate(controlProps.value)}</Form.Label>}
+							{controlProps.value && <Form.Label tabIndex={0} aria-label={this.getISODate(controlProps.value)}>{this.getISODate(controlProps.value)}</Form.Label>}
 						</Col>
 					</Row>
 				</Form.Group>

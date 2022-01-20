@@ -10,12 +10,12 @@ const ToolbarComponents = props => {
 	const matches = deviceType === "desktop" ? false : true;
 	const alignstyle = align !== undefined && align === "right" ? "flex-end" : align === "center" ? "center" : "flex-start";
 	return (
-		<div className={className ? `${className} fresh-inner-header-menu` : "fresh-inner-header-menu"} style={style}>
-			{!matches && <div style={{ "justifyContent": alignstyle }} className={"sectionDesktop"}>
+		<div className={className ? `${className} fresh-inner-header-menu` : "fresh-inner-header-menu"} style={style} tabIndex={0}>
+			{!matches && <div style={{ "justifyContent": alignstyle }} className={"sectionDesktop"} tabIndex={0}>
 				{renderPrimaryButtons(items, itemClick, alignstyle)}
 				{renderToolbarActionItems(props)}
 			</div>}
-			{matches && <div style={{ "justifyContent": alignstyle }} className={"sectionMobile"}>
+			{matches && <div style={{ "justifyContent": alignstyle }} className={"sectionMobile"} tabIndex={0}>
 				{renderPrimaryMobileIconButtons(items, itemClick, alignstyle)}
 				{renderMobileMenu(props)}
 			</div>}

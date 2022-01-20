@@ -118,7 +118,8 @@ class PageContainer extends Component {
 			schema["properties"]["pageContext"] = {
 				pageId,
 				pagesPath,
-				queryParams
+				queryParams,
+				...schema["properties"]["pageContext"]
 			};
 			const schemaContainer = <SchemaContainer key={schema.name} schema={schema} />;
 			widgets[key] = schemaContainer;

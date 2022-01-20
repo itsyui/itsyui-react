@@ -38,7 +38,7 @@ export class LayoutWidget extends React.Component<LayoutUIControlProps, {}> {
 		}
 		return <>
 
-			<div className="freshui-body-sub-container">
+			<div className="freshui-body-sub-container" tabIndex={0}>
 				<div className="freshui-inner-body-container">
 					<div className={'freshui-inner-body-container-contentarea'}>
 						{
@@ -64,7 +64,7 @@ export class LayoutWidget extends React.Component<LayoutUIControlProps, {}> {
 			regions["navbar"]["properties"]["layout"] = "pos";
 		}
 		return <>
-			<div className="freshui-body-sub-container">
+			<div className="freshui-body-sub-container" tabIndex={0}>
 				<div className="freshui-inner-body-container">
 					<div className={'freshui-inner-body-container-contentarea'}>
 						{
@@ -120,7 +120,7 @@ export class LayoutWidget extends React.Component<LayoutUIControlProps, {}> {
 				"sidebar" in regions &&
 				<SchemaContainer schema={regions["sidebar"]} />
 			}
-			<div className="freshui-body-sub-container">
+			<div className="freshui-body-sub-container" tabIndex={0}>
 				<div className="freshui-inner-body-container">
 					<div className={'freshui-inner-body-container-contentarea'}>
 						{
@@ -138,7 +138,7 @@ export class LayoutWidget extends React.Component<LayoutUIControlProps, {}> {
 	contentOnlyLayout = () => {
 		const { regions } = this._getControlSchemaProperties();
 		return <>
-			<div className="freshui-body-sub-container">
+			<div className="freshui-body-sub-container" tabIndex={0}>
 				<div className="freshui-inner-body-container">
 					<div className={'freshui-inner-body-container-contentarea'}>
 						<div className="freshui-root-content-container without-sidebar">

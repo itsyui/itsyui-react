@@ -70,7 +70,7 @@ class Confirmation extends React.Component<IWidgetControlProps, {}> {
             },
         };
         return <>
-            <Alert component="h1" variant="h5">
+            <Alert component="h1" variant="h5" tabIndex={0} aria-label={getlocaleText("{{common.password}}")}>
                 {getlocaleText("{{common.password}}")}
             </Alert>
             <div className="control login-input-mar">
@@ -78,11 +78,11 @@ class Confirmation extends React.Component<IWidgetControlProps, {}> {
             </div>
             <div className="password-button-container">
                 <div className="password-button">
-                    <Button variant="primary" onClick={() => { this.handleBackButton() }} fullWidth variant="contained" color="primary">
+                    <Button variant="primary" tabIndex={0} aria-label={getlocaleText("{{back}}")} onClick={() => { this.handleBackButton() }} fullWidth variant="contained" color="primary">
                         {getlocaleText("{{back}}")}
                     </Button>
                 </div>
-                <Button variant="primary" onClick={() => { this.handleSubmit() }} fullWidth variant="contained" color="primary">
+                <Button variant="primary" tabIndex={0} aria-label={getlocaleText("{{submit}}")} onClick={() => { this.handleSubmit() }} fullWidth variant="contained" color="primary">
                     {getlocaleText("{{submit}}")}
                 </Button>
             </div>
@@ -102,14 +102,14 @@ class Confirmation extends React.Component<IWidgetControlProps, {}> {
                     <Container component="main" maxWidth="md">
                         <CssBaseline />
                         {this.state.showPassword === false && <div className="verification-text">
-                            <Alert component="h1" variant="h5">
+                            <Alert component="h1" variant="h5" tabIndex={0} aria-label={getlocaleText("{{verification}}")}>
                                 {getlocaleText("{{verification}}")}
                             </Alert>
-                            <div className="verification-textbox-container">
+                            <div className="verification-textbox-container" tabIndex={0}>
                                 {this.renderVerificationTextBox()}
                             </div>
                             <Button variant="primary" onClick={() => { this.handleNextButtonClick() }}
-                                fullWidth color="primary" key="next">
+                                fullWidth color="primary" key="next" tabIndex={0} aria-label={getlocaleText("{{next}}")}>
                                 {getlocaleText("{{next}}")}
                             </Button>
                         </div>}

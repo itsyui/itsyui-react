@@ -58,14 +58,15 @@ class TabsControl extends React.Component<TabsUIControlProps, {}>{
 		return (
 			<div className={className ? `tab-design-container ${className}` : "tab-design-container"} style={style ? style : {}}>
 				<Tabs
-					value={activeKey}
+					activeKey={activeKey}
 					onSelect={this.onChange}
 					aria-label="Tab"
 					defaultActiveKey={0}
+					tabIndex={0}
 				>
 					{
 						tabitems.map((pane, i) =>
-							<Tab key={i} title={pane.title} eventKey={pane.key} {...a11yProps(pane.key)} >
+							<Tab tabIndex={0} aria-label={pane.title} key={i} title={pane.title} eventKey={pane.key} {...a11yProps(pane.key)} >
 								{activeKey === i && <SchemaContainer key={pane.title} schema={tabItemsSchema} />}
 							</Tab>
 						)

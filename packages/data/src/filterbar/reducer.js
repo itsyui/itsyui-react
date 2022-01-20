@@ -16,6 +16,7 @@ function reducer(state, action) {
                 operation: action.operation,
                 filters: action.filters,
                 filterContextPath: action.filterContextPath,
+				...action.chips && { chips : action.chips }
             };
         case FilterbarActions.UPDATE_FILTERBAR:
             return {

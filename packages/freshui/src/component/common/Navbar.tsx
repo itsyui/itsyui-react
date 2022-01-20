@@ -46,11 +46,11 @@ const NavbarComponent = props => {
 	const matches = deviceType === "desktop" ? false : true;
 	return (
 		<div className={className ? `freshui-navbar-container ${className}` : "freshui-navbar-container"} style={style ? style : {}}>
-			<Navbar bg="light" variant="light" fixed="top" className={layout === "pos" ? "header-full-width" : "header-fixed-design"}>
+			<Navbar bg="light" variant="light" fixed="top" className={layout === "pos" ? "header-full-width navbar-nav-container" : "header-fixed-design navbar-nav-container"}>
 				<Navbar.Brand key="left-items" className="navbar-section">
 					<div key="mobile-sidebar" className="menu-sectionMobile">
 						<div className="logo-menu-Section">
-							<div aria-label="menuIcon" onClick={props.handleSideBarClick.bind(this)}>
+							<div aria-label="menuIcon" onClick={props.handleSideBarClick.bind(this)} tabIndex={0}>
 								<BsList />
 							</div>
 						</div>
@@ -63,7 +63,7 @@ const NavbarComponent = props => {
 							</div>
 						}
 						<ul className="horizmenu">
-							<div className={matches ? "mobile_nav_left_title" : "nav_left_title"}>
+							<div className={matches ? "mobile_nav_left_title" : "nav_left_title"} tabIndex={0}>
 								{data.items !== undefined && data.items.map(t => {
 									if (t["appTitle"] && t["appTitle"] !== "") {
 										return getTitle(t, props, layout);
@@ -129,20 +129,27 @@ class MaterialNavbar extends React.Component<NavbarUIControlProps, {}> {
 		onItemClick(item);
 	}
 
+	keyHandler(event, item) {
+        if (event.keyCode === 13 || event.keyCode === 32) {
+            event.preventDefault();
+            this.onNavItemClicked(item)
+        }
+    }
+
 	renderAppIcon(data, matches) {
 		const appIcon = [];
 		data.items.forEach((t, i) => {
 			// tslint:disable-next-line: no-unused-expression
 			appIcon.push(
 				<>
-					{t.appIcon && <div key={`nav-logo-${i}`} className="nav-logo" onClick={() => this.onNavItemClicked(t)} >
-						<div className="title-icon">< img alt="companyLogo" className={t.className ? t.className : "left-icon"} src={t.appIcon} />
+					{t.appIcon && <div key={`nav-logo-${i}`} className="nav-logo" onClick={() => this.onNavItemClicked(t)} onKeyDown={(e) => this.keyHandler(e,t)} >
+						<div className="title-icon">< img tabIndex={0} alt="companyLogo" className={t.className ? t.className : "left-icon"} src={t.appIcon} />
 						</div>
-						{t.appIcon && t.title && <div style={{ alignSelf: "center" }} className={matches ? "mobile_navbar_title_content" : "navbar_title_content"}>{t.title}</div>}
+						{t.appIcon && t.title && <div style={{ alignSelf: "center" }} tabIndex={0} aria-label={t.title} className={matches ? "mobile_navbar_title_content" : "navbar_title_content"}>{t.title}</div>}
 					</div>}
 					{
 						t.hasOwnProperty("ui:widget") &&
-						<div key={`nav-title-${i}`} className="nav-title">{this.renderNavbarSchemaWidget(t)}</div>
+						<div key={`nav-title-${i}`} className="nav-title" tabIndex={0}>{this.renderNavbarSchemaWidget(t)}</div>
 					}
 				</>
 			);
@@ -184,20 +191,26 @@ class MaterialNavbar extends React.Component<NavbarUIControlProps, {}> {
 			this.props.transition({ type: "TOGGLE_SIDEBAR" });
 		}
 	}
+	keyAvHandler(event) {
+        if (event.keyCode === 13 || event.keyCode === 32) {
+            event.preventDefault();
+            this.handleClick(event)
+        }
+    }
 
 	renderNavbarProfileActionItems(data, matches, AvatarIconControlSchema) {
-		return <Dropdown show={this.state.anchorEl} drop="left" key="profile" onToggle={(e) => this.handleClick(e)}>
-			<div onClick={(e) => this.handleClick(e)} >
+		return <Dropdown show={this.state.anchorEl} drop="left" tabIndex={0} key="profile" onToggle={(e) => this.handleClick(e)}>
+			<div onClick={(e) => this.handleClick(e)} onKeyDown={(e) => this.keyAvHandler(e)}>
 				<SchemaContainer schema={AvatarIconControlSchema} />
 			</div>
 			{
-				<Dropdown.Menu className="super-colors">
+				<Dropdown.Menu className="super-colors" tabIndex={0}>
 					{
 						data.rightItems !== undefined && data.rightItems.map(t => {
 							if (matches && !t.isApplaunch) {
-								return (<Dropdown.Item key={t.id} onClick={this.onNavItemClicked.bind(this, t)} >{t.title}</Dropdown.Item>)
+								return (<Dropdown.Item key={t.id} tabIndex={0} onClick={this.onNavItemClicked.bind(this, t)} onKeyDown={(e) => this.keyHandler(e,t)} aria-label={t.title} >{t.title}</Dropdown.Item>)
 							} else if (matches === false && !t.hasOwnProperty("isPrimary") && !t["isPrimary"]) {
-								return (<Dropdown.Item key={t.id} onClick={this.onNavItemClicked.bind(this, t)} >{t.title}</Dropdown.Item>);
+								return (<Dropdown.Item key={t.id} tabIndex={0} onClick={this.onNavItemClicked.bind(this, t)} onKeyDown={(e) => this.keyHandler(e,t)} aria-label={t.title} >{t.title}</Dropdown.Item>);
 							}
 						})
 					}

@@ -2,7 +2,6 @@ import { getDefaultRegistry, retrieveSchema, SchemaContainer, WidgetsFactory, wi
 import * as React from "react";
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { BsChevronDoubleLeft, BsChevronDoubleRight, BsChevronDown, BsChevronUp, BsXDiamond } from 'react-icons/bs';
-import "./sidebarStyle.css";
 import { getBasePath, getDeviceType } from "../../../utils/helper";
 import "./horizontalSidebar"
 
@@ -90,11 +89,11 @@ function drawer(data, props, layout) {
 			subOption.id = "navbar:title_command";
 			return <div className="sidebar-title-card">
 				<div className={subOption.className ? subOption.className : props.canShowSidebar ? "list-item-avatar-expand" : "list-item-avatar"}>
-					{props.canShowSidebar && <li onClick={() => props.onTitleClicked(subOption)} className="logo-text" >
+					{props.canShowSidebar && <li tabIndex={0} aria-label={subOption.title} onClick={() => props.onTitleClicked(subOption)} className="logo-text" >
 						{subOption.title}
 					</li>}
 					<div className={props.canShowSidebar ? "logo-avatar" : "logo-avatar-collabs"}>
-						<img alt="appLogo" src={subOption.appIcon} className="MuiAvatarImage" />
+						<img alt="appLogo" tabIndex={0} src={subOption.appIcon} className="MuiAvatarImage" />
 					</div>
 				</div>
 			</div>;
@@ -106,7 +105,7 @@ function drawer(data, props, layout) {
 				containUrl = getContainsURL(subOption.childUrl, pathName, queryParams);
 			}
 			let listItemClass = props.canShowSidebar ? "freshui-list-item icon-align list-item-avatar-expand" : "freshui-list-item icon-align";
-			listItemClass = containUrl ? listItemClass + ' ' + "active" : listItemClass + ' ' + "sidebar_text_color";
+			listItemClass = containUrl ? listItemClass + ' ' + "active" : listItemClass + ' ' + "sidebar_text_color fresh-sidebar-text-color";
 			return (
 				subOption.appIcon === undefined &&
 				<OverlayTrigger
@@ -118,10 +117,11 @@ function drawer(data, props, layout) {
 					<a href={subOption.url && window.location.origin + basePath + subOption.url} className="sidebar-atag-item">
 						<li className={listItemClass + ' ' + textDirection}
 							onClick={props.onSidebarItemClicked.bind(this, subOption)}
-							key={subOption.title}>
+							key={subOption.title} tabIndex={0} title={subOption.title} 
+							onKeyUp={props.onKeyHandler.bind(this, subOption)}>
 							{subOption.image && subOption.image !== "" ? <img src={subOption.image} className={props.canShowSidebar ? "sidebar-imageIcon" : "collabse-sidebar-image"} /> : (subOption.iconName && subOption.iconName !== "" || subOption.className && subOption.className !== "") ?
 								<i className={subOption.className + " " + "sidebar-icon"}>{subOption.iconName}</i> : <BsXDiamond className="default-sidebar-icon" />}
-							{props.canShowSidebar && <div className={layout === "layout_type_a" || layout === "layout_type_e" ? "sidebar-vertical-align-text" : "sidebar-menu-text"}
+							{props.canShowSidebar && <div aria-label={subOption.title} className={layout === "layout_type_a" || layout === "layout_type_e" ? "sidebar-vertical-align-text" : "sidebar-menu-text"}
 							>
 								{subOption.title}
 							</div>
@@ -150,9 +150,11 @@ function drawer(data, props, layout) {
 				>
 					<a href={subOption.url && window.location.origin + basePath + subOption.url} className="sidebar-atag-item">
 						<li className={"sidebar_text_color" + " " + "freshui-list-item icon-align textDirection"}
-							onClick={props.onSidebarItemClicked.bind(this, subOption)}>
+							onClick={props.onSidebarItemClicked.bind(this, subOption)} 
+							tabIndex={0} title={subOption.title} 
+							onKeyUp={props.onKeyHandler.bind(this, subOption)}>
 							{subOption.image && subOption.image !== "" ? <img src={subOption.image} className="sidebar-imageIcon" /> : (subOption.iconName && subOption.iconName !== "" || subOption.className && subOption.className !== "") ? <i className={subOption.className + " " + "sidebar-icon"}>{subOption.iconName}</i> : <BsXDiamond className="default-sidebar-icon" />}
-							{props.canShowSidebar && <> <div className="sidebar-menu-text">
+							{props.canShowSidebar && <> <div className="sidebar-menu-text" aria-label={subOption.title}>
 								{subOption.title}
 							</div>
 								<div>
@@ -163,7 +165,7 @@ function drawer(data, props, layout) {
 						</li>
 					</a>
 				</OverlayTrigger>
-				<div className="childe-item-render">
+				<div className="childe-item-render fresh-childe-item-render">
 					{isCollapsable() && drawer(subOption.children, props, layout)}
 				</div>
 			</div>
@@ -191,13 +193,13 @@ const Sidebar = props => {
 	} else {
 		return (<div className={className ? `freshui-drawer-root ${className}` : "freshui-drawer-root"} style={style ? style : {}}> {!matchs &&
 			<div className={props.canShowSidebar ? `${"freshui-expended-sidebar"} ${VerticalMenu}` : `${"freshui-collapse-sidebar"} ${VerticalMenu}`} >
-				<div className="sidebar-item">
+				<div className="sidebar-item fresh-sidebar-item">
 					{drawer(data, props, layout)}
 				</div>
-				< div className="sidebar-bottom-icon">
+				< div className="sidebar-bottom-icon fresh-sidebar-bottom-icon">
 					<div className="sidebar_bottom_line" />
-					<div className={props.canShowSidebar ? "drawerHeader" : "drawerHeader_close"}>
-						<div className="bottom-iconDiv" onClick={() => toggleSidebar(props.transition)}>
+					<div className={props.canShowSidebar ? "drawerHeader" : "drawerHeader_close"} tabIndex={0}>
+						<div className="bottom-iconDiv" onClick={() => toggleSidebar(props.transition)} tabIndex={0}>
 							{props.canShowSidebar ? <BsChevronDoubleLeft className="bottom-icon" /> : <BsChevronDoubleRight className="bottom-icon" />}
 						</div>
 					</div>
@@ -207,7 +209,7 @@ const Sidebar = props => {
 				<div className="freshui-mobile-root" >
 					<div className="backdrop" onClick={() => toggleSidebar(props.transition)} />
 					<div className="freshui-mobile-sidebar-inner-contianer">
-						<div className="sidebar-item">
+						<div className="sidebar-item" tabIndex={0}>
 							{drawer(data, props, layout)}
 						</div>
 					</div>
@@ -315,6 +317,12 @@ class MaterialSidebar extends React.Component<SidebarUIControlProps, {}> {
 		const { keySelected } = this._getControlSchemaProperties();
 		keySelected(item);
 	}
+	keyHandler(item: any, e: any) {
+        if (e.keyCode === 13 || e.keyCode === 32) {
+            this.onSidebarItemClicked(item, e)
+        }
+    }
+
 	render() {
 		const { data, keySelected, layout, className, style } = this._getControlSchemaProperties();
 		return <Sidebar
@@ -324,6 +332,7 @@ class MaterialSidebar extends React.Component<SidebarUIControlProps, {}> {
 			data={data}
 			keySelected={keySelected}
 			onSidebarItemClicked={this.onSidebarItemClicked.bind(this)}
+			onKeyHandler={this.keyHandler.bind(this)}
 			_getControlSchemaProperties={this._getControlSchemaProperties.bind(this)}
 			onTitleClicked={this.onTitleClicked.bind(this)}
 			{...this.props}

@@ -73,14 +73,14 @@ class GridPagination extends React.Component<{}> {
 		return (<>
 			<Pagination className="freshui-pageNation" size="sm">
 				{this.state.netxItem > PAGE_COUNT.VISIBLE_PAGE_ITEM && <Pagination.First onClick={e => this.handleChangePage(e, "first")} />}
-				<Pagination.Prev active={page > 0 ? true : false} disabled={this.state.netxItem === currentPage ? true : false} id="prev" onClick={e => this.handleChangePage(e, "prev")} />
-				{currentPage > PAGE_COUNT.VISIBLE_LEFT_ITEM && <Pagination.Item disabled>{1}</Pagination.Item>}
+				<Pagination.Prev active={page > 0 ? true : false} tabIndex={0} disabled={this.state.netxItem === currentPage ? true : false} id="prev" onClick={e => this.handleChangePage(e, "prev")} />
+				{currentPage > PAGE_COUNT.VISIBLE_LEFT_ITEM && <Pagination.Item tabIndex={0} disabled>{1}</Pagination.Item>}
 				{currentPage > PAGE_COUNT.VISIBLE_LEFT_ITEM && <Pagination.Ellipsis />}
 				{this.Pageitem(pageInfo.totalPage, currentPage, this.state.netxItem)}
 				{pageInfo.totalPage > PAGE_COUNT.VISIBLE_RIGHT_ITEM && this.state.lastIcon && <Pagination.Ellipsis />}
-				{pageInfo.totalPage > PAGE_COUNT.VISIBLE_RIGHT_ITEM && this.state.lastIcon && <Pagination.Item disabled>{pageInfo.totalPage}</Pagination.Item>}
-				<Pagination.Next active={pageInfo.totalPage > 0 && pageInfo.totalPage != currentPage  ? true : false} disabled={showButton ? true : pageInfo.totalPage > page + 1 ? false : true} id="next" onClick={e => this.handleChangePage(e, "next")} />
-				{pageInfo.totalPage > PAGE_COUNT.VISIBLE_PAGE_ITEM && this.state.lastIcon && <Pagination.Last onClick={e => this.handleChangePage(e, "last")} />}
+				{pageInfo.totalPage > PAGE_COUNT.VISIBLE_RIGHT_ITEM && this.state.lastIcon && <Pagination.Item tabIndex={0} disabled>{pageInfo.totalPage}</Pagination.Item>}
+				<Pagination.Next tabIndex={0} active={pageInfo.totalPage > 0 && pageInfo.totalPage != currentPage  ? true : false} disabled={showButton ? true : pageInfo.totalPage > page + 1 ? false : true} id="next" onClick={e => this.handleChangePage(e, "next")} />
+				{pageInfo.totalPage > PAGE_COUNT.VISIBLE_PAGE_ITEM && this.state.lastIcon && <Pagination.Last tabIndex={0} onClick={e => this.handleChangePage(e, "last")} />}
 			</Pagination>
 		</>
 		)

@@ -75,3 +75,14 @@ function getChipFilterValue(fValue: any, fieldSchema: any) {
 	}
 	return value;
 }
+
+export const getFormValueFromFilterObj = (filterObj) => {
+	const value = {};
+	if (filterObj) {
+		Object.keys(filterObj).forEach(val => {
+			if (Array.isArray(filterObj[val]) && filterObj[val].length > 0 && filterObj[val][0]["value"])
+				value[val] = filterObj[val][0]["value"];
+		});
+	}
+	return value;
+}

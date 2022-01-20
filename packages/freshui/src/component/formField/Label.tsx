@@ -19,12 +19,12 @@ class LabelControl extends React.Component<IWidgetControlProps, {}> {
 		if (CustomTag) {
 			return (
 				<div style={customStyle} className={customClass}>
-					<CustomTag>{getlocaleText(title)}</CustomTag>
+					<CustomTag tabIndex={0} aria-label={getlocaleText(title)}>{getlocaleText(title)}</CustomTag>
 				</div>
 			);
 		} else {
 			return (
-				<label style={customStyle} className={customClass} >
+				<label style={customStyle} className={customClass} tabIndex={0} aria-label={getlocaleText(title)}>
 					{getlocaleText(title)}
 				</label>
 			);

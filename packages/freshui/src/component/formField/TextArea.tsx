@@ -25,10 +25,10 @@ class InputTextArea extends React.Component<IWidgetControlProps, {}> {
 				<Form.Group className={customClass} style={customStyle}>
 					<Row>
 						<Col xs={6} sm={6} md={6} lg={6}>
-							<Form.Label className="read-only-label">{`${fieldSchema.displayName}:`}</Form.Label>
+							<Form.Label className="read-only-label" tabIndex={0} aria-label={`${fieldSchema.displayName}:`}>{`${fieldSchema.displayName}:`}</Form.Label>
 						</Col>
 						<Col xs={6} md={6} lg={6}>
-							<Form.Label>{controlProps.value}</Form.Label>
+							<Form.Label tabIndex={0} aria-label={controlProps.value}>{controlProps.value}</Form.Label>
 						</Col>
 					</Row>
 				</Form.Group>
@@ -37,7 +37,7 @@ class InputTextArea extends React.Component<IWidgetControlProps, {}> {
 		return (
 			<>
 				<Form.Group className={customClass} style={customStyle} controlId={fieldSchema.id}>
-					<Form.Label className={fieldSchema.readOnly ? "text-label label-disabled" : "text-label"}>{fieldSchema.displayName}</Form.Label>
+					<Form.Label className={fieldSchema.readOnly ? "text-label label-disabled" : "text-label"} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
 					<div className="input-textbox">
 						<Form.Control
 							as="textarea"
@@ -46,6 +46,8 @@ class InputTextArea extends React.Component<IWidgetControlProps, {}> {
 							rows={fieldSchema.rows ? fieldSchema.rows : "6"}
 							required={fieldSchema.required}
 							disabled={fieldSchema.readOnly}
+							tabIndex={0}
+							aria-label={controlProps.value !== undefined ? controlProps.value : ""}
 							value={controlProps.value !== undefined ? controlProps.value : ""}
 							className={controlProps.className ? controlProps.className : controlProps.error ? 'form-control error' : 'form-control'}
 							onBlur={(v) => {
@@ -53,9 +55,9 @@ class InputTextArea extends React.Component<IWidgetControlProps, {}> {
 							}}
 							onChange={e => controlProps.handleChange && controlProps.handleChange(e, e.target.value)}
 						></Form.Control>
-						{fieldSchema.helptext && <Form.Text className="helping-text">{getlocaleText(fieldSchema.helptext)}</Form.Text>}
+						{fieldSchema.helptext && <Form.Text aria-label={getlocaleText(fieldSchema.helptext)} className="helping-text">{getlocaleText(fieldSchema.helptext)}</Form.Text>}
 						{controlProps.error &&
-							<Form.Text id="component-error-text">{controlProps.error}</Form.Text>
+							<Form.Text aria-label={controlProps.error} id="component-error-text">{controlProps.error}</Form.Text>
 						}
 					</div>
 				</Form.Group>

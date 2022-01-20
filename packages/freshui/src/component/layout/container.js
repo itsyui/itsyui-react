@@ -12,7 +12,7 @@ const _getControlSchemaProperties = (props) => {
 
 const LayoutContainer = function content(props) {
 	const { style, children, className } = _getControlSchemaProperties(props);
-	const customClassName = className ? `content-container ${className}` : "content-container";
+	const customClassName = className ? `content-container fresh-content-container-layout ${className}` : "content-container fresh-content-container-layout";
 	return (<Container
 		className={customClassName}
 		style={style}

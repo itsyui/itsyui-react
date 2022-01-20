@@ -45,6 +45,7 @@ export function doLoadData(schema, queryParams) {
             const parameters = {
                 propertyDefinitions: [schema.metadata.valueKey, ...(Array.isArray(schema.metadata.displayKey) ? schema.metadata.displayKey : [])].reduce((propDefs, key) => { return { ...propDefs, ...{ [key]: {} } } }, {}),
                 filter: schema.metadata.filter ? (typeof schema.metadata.filter === "string" ? JSON.parse(schema.metadata.filter) : schema.metadata.filter) : {},
+                orderBy: schema.metadata.orderBy ? schema.metadata.orderBy : "",
             };
             parameters.filter = await getUpdatedFilter(parameters.filter, queryParams, transition);
 

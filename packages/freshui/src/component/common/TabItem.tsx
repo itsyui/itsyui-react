@@ -14,6 +14,7 @@ function TabPanel(props) {
             id={`scrollable-auto-tabpanel-${index}`}
             aria-labelledby={`scrollable-auto-tab-${index}`}
             {...other}
+            tabIndex={0}
         >
             {children}
         </div>
@@ -32,7 +33,7 @@ class TabItem extends React.Component<TabItemUIControlProps, {}>{
     render() {
         const { activeItem, data } = this._getControlSchemaProperties();
         return (
-            <TabPanel value={activeItem} index={data.key}>
+            <TabPanel value={activeItem} index={data.key} tabIndex={0}>
                 <SchemaContainer key={data.key} schema={data.content} />
             </TabPanel>
         );

@@ -16,7 +16,8 @@ import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 interface TenantListTableProps {
 	columnData: any[];
 	numSelected: number;
-	onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => void;
+	onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>, checked: any) => void;
+	onSelectRecord: (row: any[], isSelect: any, rowIndex: number, e: React.ChangeEvent<HTMLInputElement>) => void;
 	rowCount: number;
 	orderBy: string;
 	order: string;
@@ -29,12 +30,12 @@ const TableViewActions = (props: any) => {
 		const { handleMoreBtnClick, anchorEl, handleClose, currentFocusedRow, record, handleCustomButtonClick, id } = props;
 		const primaryItem = customAction.find(t => t.isPrimary && t.enabled);
 		const primaryAction = primaryItem && (primaryItem.iconPosition == "none" ? <Button color="secondary" variant="outline-primary" size="sm" className=""
-			onClick={handleCustomButtonClick.bind(this, primaryItem, record)}
+			onClick={handleCustomButtonClick.bind(this, primaryItem, record)} tabIndex={0} aria-label={primaryItem.displayText}
 		>
 			{primaryItem.displayText}
 		</Button >
 			: <Button color="secondary" variant="outline-primary" size="sm" className="freshui-btn-control"
-				onClick={handleCustomButtonClick.bind(this, primaryItem, record)}
+				onClick={handleCustomButtonClick.bind(this, primaryItem, record)} tabIndex={0} aria-label={primaryItem.displayText}
 			>
 				{primaryItem.iconPosition === "startIcon" && <i className="freshui-icons">{primaryItem.icon}</i>}
 				{primaryItem.displayText}
@@ -72,7 +73,7 @@ const getShowMore = (handleShowMore, totalSize, data) => {
 	if (!visibleShowMore) {
 		return <ul className="pagination react-bootstrap-table-page-btns-ul">
 			<li className="active page-item" title="show more record(s)">
-				<a className="page-link" onClick={handleShowMore}>{getlocaleText("{{grid.showmore}}")}</a>
+				<a className="page-link" onClick={handleShowMore} tabIndex={0} aria-label={getlocaleText("{{grid.showmore}}")}>{getlocaleText("{{grid.showmore}}")}</a>
 			</li>
 		</ul>
 	}
@@ -89,7 +90,7 @@ const getPagination = (paginationProps, handleShowMore, totalSize, data, isIncre
 
 const RenderTable = (props: any) => {
 	const { data, columns, page, sizePerPage, onTableChange, totalSize, keyField
-		, isIncrementalAdd, handleShowMore, onRowSelect, primaryColumn, rowSelectionMode, selectedRows, className, style } = props;
+		, isIncrementalAdd, handleShowMore, onRowSelect, primaryColumn, rowSelectionMode, selectedRows, className, style, onSelectAllClick, onSelectRecord, showCheckBox } = props;
 	const options: any = { custom: true, page, sizePerPage, totalSize };
 	const rowEvents = {
 		onClick: (e, row, rowIndex) => {
@@ -101,14 +102,17 @@ const RenderTable = (props: any) => {
 	const selectRow = {
 		mode: rowSelectionMode === 2 ? "checkbox" : "radio",
 		clickToSelect: true,
-		hideSelectColumn: true,
+		hideSelectColumn: rowSelectionMode === 2 ? false : true,
 		bgColor: "rgb(241 245 255)",
 		selected: selectedIds,
+		onSelectAll: rowSelectionMode === 2 ? onSelectAllClick : null,
+		onSelect: rowSelectionMode === 2 ? onSelectRecord : null,
+		hideSelectAll: showCheckBox !== undefined && showCheckBox ? showCheckBox : false
 	};
 	const customClassName = className ? `root ${className}` : "root";
 	const showPaging = totalSize > sizePerPage;
 	return <div className={customClassName} style={style}>
-		<PaginationProvider pagination={paginationFactory(options)}>
+		<PaginationProvider pagination={paginationFactory(options)} tabIndex={0}>
 			{({ paginationProps, paginationTableProps }) => (
 				<div className="TableWrapper">
 					<BootstrapTable
@@ -266,6 +270,18 @@ class TableViewWidget extends React.Component {
 		}
 	}
 
+	onSelectAllClick(event, selectData) {
+		const { onGridSelectedRows } = this._getControlSchemaProperties();
+		onGridSelectedRows(selectData);
+	}
+
+	onSelectRecord(row, isSelect, rowIndex, e) {
+		const { viewAttributes, data } = this._getControlSchemaProperties();
+		const primaryFieldId = viewAttributes && viewAttributes.primaryColumn ? viewAttributes.primaryColumn : Object.keys(data.records[0])[0];
+		const id = primaryFieldId ? row[primaryFieldId] : row[Object.keys(row)[0]];
+		this.onRowSelect(e, id);
+	}
+
 	isSelected = (id) => {
 		const { selectedRows, viewAttributes, data } = this._getControlSchemaProperties();
 		const primaryFieldId = viewAttributes && viewAttributes.primaryColumn ? viewAttributes.primaryColumn : Object.keys(data.records[0])[0];
@@ -376,7 +392,7 @@ class TableViewWidget extends React.Component {
 
 	render() {
 		const controlProps = this._getControlSchemaProperties();
-		const { data, selectedRows, viewAttributes, currentPage, pageInfo, onGridSelectedRows, customButtonClick, paginationChange, rowSelectionMode, className, style } = controlProps;
+		const { data, selectedRows, viewAttributes, currentPage, pageInfo, onGridSelectedRows, customButtonClick, paginationChange, rowSelectionMode, className, style, showCheckBox } = controlProps;
 		const { viewType, customGridViewId, emptyRecordsMessage, attributes, primaryColumn } = viewAttributes;
 		const rowSelection = {
 			selectedRowKeys: selectedRows && selectedRows.length > 0 ? selectedRows.map(t => data.records.indexOf(t)) : [],
@@ -405,6 +421,9 @@ class TableViewWidget extends React.Component {
 				primaryColumn={primaryColumn}
 				className={className}
 				style={style}
+				onSelectAllClick={this.onSelectAllClick.bind(this)}
+				showCheckBox={showCheckBox}
+				onSelectRecord={this.onSelectRecord.bind(this)}
 			/>;
 		} else if (viewType === "card") {
 			if (!data || (Array.isArray(columns) && columns.length === 0) || !Array.isArray(data.records) || data.records.length === 0) {

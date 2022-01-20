@@ -55,10 +55,10 @@ class SlideType extends React.Component<IWidgetControlProps, {}> {
 				<Form.Group>
 					<Row>
 						<Col xs={6} sm={6} md={6} lg={6}>
-							<Form.Label >{`${displayName}:`}</Form.Label>
+							<Form.Label tabIndex={0} aria-label={`${displayName}:`}>{`${displayName}:`}</Form.Label>
 						</Col>
 						<Col xs={6} md={6} lg={6}>
-							<Form.Label>{value}</Form.Label>
+							<Form.Label tabIndex={0} aria-label={value}>{value}</Form.Label>
 						</Col>
 					</Row>
 				</Form.Group>
@@ -66,7 +66,7 @@ class SlideType extends React.Component<IWidgetControlProps, {}> {
 		}
 		return (
 			<Form.Group controlId="formBasicRangeCustom" className={orientation === "vertical" ? `slider-height ${customClassName}` : `${customClassName}`} style={customeStyle} >
-				<Form.Label id="discrete-slider" className={readOnly ? "text-label label-disabled" : "text-label"}>
+				<Form.Label id="discrete-slider" aria-label={displayName} className={readOnly ? "text-label label-disabled" : "text-label"}>
 					{displayName}
 				</Form.Label>
 				<Slider
@@ -81,8 +81,8 @@ class SlideType extends React.Component<IWidgetControlProps, {}> {
 					min={min}
 					max={max}
 				/>
-				{helptext && <Form.Text>{getlocaleText(helptext)}</Form.Text>}
-				{error && <Form.Text id="component-error-slider">{error}</Form.Text>}
+				{helptext && <Form.Text tabIndex={0} aria-label={getlocaleText(helptext)}>{getlocaleText(helptext)}</Form.Text>}
+				{error && <Form.Text tabIndex={0} aria-label={error} id="component-error-slider">{error}</Form.Text>}
 			</Form.Group>
 		);
 	}

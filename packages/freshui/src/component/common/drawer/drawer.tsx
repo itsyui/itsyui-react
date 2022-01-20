@@ -2,7 +2,6 @@ import { getDefaultRegistry, IWidgetControlProps, retrieveSchema, SchemaContaine
 import * as React from "react";
 import { Button, Form } from 'react-bootstrap';
 import { getDeviceType } from '../../../utils/helper';
-import "./styles.css";
 
 type DrawerUIControlProps = IWidgetControlProps;
 
@@ -29,24 +28,24 @@ class DrawerControl extends React.Component<DrawerUIControlProps, {}> {
 		const deviceType = getDeviceType()
 		const matches = deviceType === "mobile" ? true : false;
 		return (<>
-			{visible && <div className={className ? `root-drawer ${className}` : "root-drawer"} style={style ? style : {}}>
+			{visible && <div className={className ? `root-drawer ${className}` : "root-drawer"} style={style ? style : {}} tabIndex={0}>
 				<div className="backdrop-drawer" />
 				<div style={{ width: matches ? "100%" : width ? width : 350 }} className="drawer">
 					<div className="drawer-header">
-						<Form.Label className="drawer-title">{title}</Form.Label>
+						<Form.Label className="drawer-title" tabIndex={0} aria-label={title}>{title}</Form.Label>
 					</div>
-					<div className="drawer-body">
+					<div className="drawer-body" tabIndex={0}>
 						<SchemaContainer className="drawer-form-box" schema={controlSchema} />
 					</div>
 					<div style={{ width: width ? width : 350 }} className="drawer-footer">
 						{showCancel &&
 							<div key="drawer_cancel_btn" >
-								<Button variant="secondary" className="cancel-btn" onClick={this.onClose}  >{cancelText}</Button>
+								<Button variant="secondary" tabIndex={0} className="cancel-btn" onClick={this.onClose} aria-label={cancelText} >{cancelText}</Button>
 							</div>
 						}
 						{showOK &&
 							<div key="drawer_ok_btn" >
-								<Button variant="primary" className="ok-btn" color="secondary" onClick={this.onOk} >{okText}</Button>
+								<Button variant="primary" tabIndex={0} className="ok-btn" color="secondary" onClick={this.onOk} aria-label={okText} >{okText}</Button>
 							</div>
 						}
 					</div>

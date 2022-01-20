@@ -88,25 +88,28 @@ export function doTabsInit(event: any) {
 		transition({
 			type: TabsActions.State.TABS_LOAD,
 			data,
+			activeTab: event.activeTab
 		});
 	};
 }
 
-function loadData(data: any) {
+function loadData(data: any, activeTabKey: any) {
 	return {
 		type: TabsActions.LoadData,
 		newItem: data,
+		activeTabKey
 	};
 }
 
-export function doTabsLoad(data: any) {
+export function doTabsLoad(data: any, activeTab: any) {
 	return (_getState: any, dispatch: any, transition: any) => {
 		if (data && data.length > 0) {
 			data = data.map(t => {
 				return { ...t, "title": getLocaleString(t, "title") };
 			});
 		}
-		dispatch(loadData(data));
+		const activeTabKey = activeTab !== undefined && activeTab !== null ? activeTab : Array.isArray(data) && data.length > 0 ? data[0].key : null;
+		dispatch(loadData(data, activeTabKey));
 		transition({
 			type: TabsActions.State.TABS_DONE,
 		});

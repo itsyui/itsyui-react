@@ -8,13 +8,13 @@ const RenderFooter = (props) => {
     const button = [];
     if (props.showCancelButton) {
         button.push(
-            <Button className="cancel-btn" variant="secondary" key="" size="lg" onClick={props.onCancel} style={{ margin: 8 }}>
+            <Button className="cancel-btn" tabIndex={0} aria-label={props.cancelText} variant="secondary" key="" size="lg" onClick={props.onCancel} style={{ margin: 8 }}>
                 {props.cancelText}
             </Button>);
     }
     if (props.showOKButton) {
         button.push(
-            <Button key="submit" size="lg" variant="primary" color="primary" onClick={props.onOk} style={{ margin: 8 }}>
+            <Button key="submit" size="lg" tabIndex={0} aria-label={props.okText} variant="primary" color="primary" onClick={props.onOk} style={{ margin: 8 }}>
                 {props.okText}
             </Button>);
     }
@@ -57,20 +57,21 @@ class ModalUI extends React.Component<ModalUIControlProps, {}> {
             <Modal className={className ? `Modal-Box ${className}` : "Modal-Box"}
                 style={style ? style : undefined}
                 show={visible}
+                tabIndex={0}
                 size={fullScreen}>
                 <Modal.Header id="dialog-title"
                     closeButton={closable ? closable : false}
                     onClick={closable ? this.handleCancel.bind(this) : null}>
                     <div className="modal-title-container">
-                        <Modal.Title className="modal-box-title">
+                        <Modal.Title className="modal-box-title" tabIndex={0} aria-label={title}>
                             {title}
                         </Modal.Title>
                     </div>
                 </Modal.Header>
-                <Modal.Body className="modal-dialog-box">
+                <Modal.Body className="modal-dialog-box" tabIndex={0}>
                     <SchemaContainer className="drawer-form-box" schema={controlSchema} />
                 </Modal.Body>
-                <Modal.Footer className="drawer-button-container">
+                <Modal.Footer className="drawer-button-container"  tabIndex={0}>
                     {
                         <RenderFooter okText={okText} cancelText={cancelText} showOKButton={showOKButton} showCancelButton={showCancelButton} onOk={this.handleOk.bind(this)} onCancel={this.handleCancel.bind(this)} />
                     }

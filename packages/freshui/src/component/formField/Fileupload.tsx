@@ -95,6 +95,13 @@ class FreshUiFileUpload extends React.Component<IWidgetControlProps, {}> {
 		return true;
 	}
 
+	keyHandler(event) {
+        if (event.keyCode === 13 || event.keyCode === 32) {
+			document.getElementById(this.state.id).click();
+            event.preventDefault();
+        }
+    }
+
 	async getExtensionsAndByte64ForFiles(files: any, fileExtensions: any, filesInBase64: any) {
 		if (files && Object.keys(files).length > 0 && Array.isArray(fileExtensions) && Array.isArray(filesInBase64)) {
 			const fileNames = [];
@@ -152,9 +159,9 @@ class FreshUiFileUpload extends React.Component<IWidgetControlProps, {}> {
 			const fileName = getFileName(fContent);
 			const fData = Array.isArray(fileData) ? fileData.find(f => f.name === fileName) : null;
 			if (isImageBase64Content(fileName)) {
-				return <div className="file-image-container">
-					<img src={fContent} className="file-image" alt={fileName} title={fileName} />
-					{fData && <span onClick={() => this.onDeleteFiles(fData)} className="image-close-icon">
+				return <div className="file-image-container" tabIndex={0}>
+					<img src={fContent} className="file-image" tabIndex={0} alt={fileName} title={fileName} />
+					{fData && <span onClick={() => this.onDeleteFiles(fData)} className="image-close-icon" tabIndex={0}>
 						<BsX />
 					</span>}
 				</div>;
@@ -176,8 +183,8 @@ class FreshUiFileUpload extends React.Component<IWidgetControlProps, {}> {
 				return this.renderImagePreviewFromBase64(value);
 			} else {
 				const fileContents = Array.isArray(value) ? [...value] : [value];
-				return <div className="file-chips">{
-					fileContents.map((fname, index) => <Badge key={index} className="filename-chip">{fname}</Badge>)
+				return <div className="file-chips" tabIndex={0}>{
+					fileContents.map((fname, index) => <Badge key={index} className="filename-chip" tabIndex={0} aria-label={fname}>{fname}</Badge>)
 				}
 				</div>;
 			}
@@ -203,20 +210,21 @@ class FreshUiFileUpload extends React.Component<IWidgetControlProps, {}> {
 						type="file"
 						onChange={(e) => {
 							this.onChange(e, acceptFileTypes);
-						}}
+						}}						
 						disabled={fieldSchema.readOnly}
+						tabIndex={0}
 					/>
-					<label className="file-upload-button-container btn btn-primary " htmlFor={this.state.id}>
+					<label className="file-upload-button-container btn btn-primary" onKeyDown={(e) => this.keyHandler(e)} tabIndex={0} aria-label={getlocaleText(fieldSchema.displayName)} htmlFor={this.state.id}>
 						{getlocaleText(fieldSchema.displayName)}
 					</label>
 
 					{fieldSchema.showFile ? this.renderChips() : null}
-					{controlProps.error && <div className="ant-alert ant-alert-error">
+					{controlProps.error && <div className="ant-alert ant-alert-error" tabIndex={0} aria-label={controlProps.error}>
 						<i className="anticon anticon-cross-circle ant-alert-icon"></i>
 						<span className="ant-alert-message">{controlProps.error}</span>
 					</div>}
 				</div>
-				{fieldSchema.helptext && <Form.Text>{getlocaleText(fieldSchema.helptext)}</Form.Text>}
+				{fieldSchema.helptext && <Form.Text tabIndex={0} aria-label={getlocaleText(fieldSchema.helptext)}>{getlocaleText(fieldSchema.helptext)}</Form.Text>}
 			</>
 		);
 	}

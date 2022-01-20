@@ -21,12 +21,12 @@ const UserVerificationPageComponent = props => {
 					<div className="login_mobile_container">
 						<div className="mobilepaper forgot_paper">
 							<div className="login-logo">
-								{logo ? <img alt="appLogo" src={logo} className="applogo" /> : <div className="default-applogo" />}
+								{logo ? <img alt="appLogo" src={logo} className="applogo" tabIndex={0} /> : <div className="default-applogo" tabIndex={0} />}
 							</div>
 							<div className="login-input-desktop">
 								{props._getFormWidgetControlSchema(formSchema)}
 								<div className="login-button">
-									<Button className="confirm_submit" onClick={props.handleSubmit} variant="primary" color="secondary" key="submit">
+									<Button className="confirm_submit" tabIndex={0} onClick={props.handleSubmit} variant="primary" color="secondary" key="submit" aria-label={getlocaleText("{{submit}}")}>
 										{getlocaleText("{{submit}}")}
 									</Button>
 								</div>
@@ -42,12 +42,12 @@ const UserVerificationPageComponent = props => {
 					<div className="login_mobile_container">
 						<div className="mobilepaper">
 							<div className="login-logo">
-								<img alt="appLogo" src={logo} className="applogo" />
+								<img alt="appLogo" src={logo} className="applogo" tabIndex={0} />
 							</div>
 							<div className=" login-input">
 								{props._getFormWidgetControlSchema(formSchema)}
 								<div className="login-button">
-									<Button className="confirm_submit" onClick={props.handleSubmit.bind(this)} variant="primary" color="secondary" key="submit">
+									<Button className="confirm_submit" tabIndex={0} onClick={props.handleSubmit.bind(this)} variant="primary" color="secondary" key="submit" aria-label={getlocaleText("{{submit}}")}>
 										{getlocaleText("{{submit}}")}
 									</Button>
 								</div>

@@ -22,12 +22,12 @@ const ForgotpasswordPageComponent = props => {
 					<div className="login_mobile_container">
 						<div className="mobilepaper forgot_paper">
 							<div className="login-logo">
-								{logo ? <img alt="appLogo" src={logo} className="applogo" /> : <div className="default-applogo" />}
+								{logo ? <img alt="appLogo" tabIndex={0} src={logo} className="applogo" /> : <div tabIndex={0} className="default-applogo" />}
 							</div>
 							<div className="login-input-desktop">
 								{props._getFormWidgetControlSchema(formSchema)}
 								<div className="login-button">
-									<Button className="forgot_submit" onClick={props.handleSubmit} variant="primary" color="secondary" key="submit">
+									<Button className="forgot_submit" tabIndex={0} aria-label={getlocaleText("{{submit}}")} onClick={props.handleSubmit} variant="primary" color="secondary" key="submit">
 										{getlocaleText("{{submit}}")}
 									</Button>
 								</div>
@@ -35,7 +35,7 @@ const ForgotpasswordPageComponent = props => {
 							<div className="forgot-bost" >
 								<Form.Text className="forgot-text">
 									{getlocaleText("{{sigincontent}}")}
-									<a className="signup-align" color="secondary" onClick={props.handleSignin.bind(this)}>{getlocaleText("{{signin}}")}</a>
+									<a className="signup-align" tabIndex={0} aria-label={getlocaleText("{{signin}}")} color="secondary" onClick={props.handleSignin.bind(this)}>{getlocaleText("{{signin}}")}</a>
 								</Form.Text>
 							</div>
 						</div>

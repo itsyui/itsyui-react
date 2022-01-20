@@ -7,15 +7,15 @@ type PopupUIControlProps = IWidgetControlProps;
 const RenderFooter = (props) => {
 	const button = [];
 	if (props.popupType === 1) {
-		button.push(null, <Button key="submit" variant="primary" size="lg" color="secondary" onClick={props.onOk} >
+		button.push(null, <Button key="submit" variant="primary" size="lg" color="secondary" tabIndex={0} aria-label={props.okText} onClick={props.onOk} >
 			{props.okText}
 		</Button>);
 	} else {
 		button.push(
-			<Button className="cancel-btn" variant="secondary" key="" size="lg" onClick={props.onCancel} style={{ margin: 8 }}>
+			<Button className="cancel-btn" variant="secondary" key="" size="lg" tabIndex={0} aria-label={props.cancelText} onClick={props.onCancel} style={{ margin: 8 }}>
 				{props.cancelText}
 			</Button>,
-			<Button key="submit" variant="primary" size="lg" color="secondary" onClick={props.onOk} style={{ margin: 8 }}>
+			<Button key="submit" variant="primary" size="lg" color="secondary" tabIndex={0} aria-label={props.okText} onClick={props.onOk} style={{ margin: 8 }}>
 				{props.okText}
 			</Button>
 		);
@@ -54,15 +54,15 @@ class PopupControl extends React.Component<PopupUIControlProps, {}> {
 	render() {
 		const { title, visible, closable, popupType, popupMessage, okText, cancelText, className, style } = this._getControlSchemaProperties();
 		return (
-			<Modal className={className ? `Modal-Box ${className}` : "Modal-Box"} style={style ? style : {}} onClick={this.handleCancel.bind(this)} onKeyUp={this.onEscape.bind(this)} show={visible}>
+			<Modal tabIndex={0} className={className ? `Modal-Box ${className}` : "Modal-Box"} style={style ? style : {}} onClick={this.handleCancel.bind(this)} onKeyUp={this.onEscape.bind(this)} show={visible}>
 				<Modal.Header id="dialog-title" closeButton={closable ? closable : false}>
 					<div className="modal-title-container">
-						<Modal.Title className="modal-box-title">
+						<Modal.Title className="modal-box-title" tabIndex={0} aria-label={title}>
 							{title}
 						</Modal.Title>
 					</div>
 				</Modal.Header>
-				<Modal.Body>
+				<Modal.Body tabIndex={0}>
 					{popupMessage !== null && popupMessage}
 				</Modal.Body>
 				<Modal.Footer className="drawer-button-container">

@@ -18,7 +18,7 @@ class LabelControl extends React.Component<IWidgetControlProps, {}> {
 		const customClass = className ? `${className} label-root-contain` : "label-root-contain";
 		if (CustomTag) {
 			return (
-				<div style={customStyle} className={customClass} tabIndex={0}>
+				<div style={customStyle} className={customClass}>
 					<CustomTag tabIndex={0} aria-label={getlocaleText(title)}>{getlocaleText(title)}</CustomTag>
 				</div>
 			);

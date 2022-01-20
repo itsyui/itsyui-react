@@ -42,6 +42,13 @@ class CommandButton extends React.Component<IWidgetControlProps, {}> {
         }
     }
 
+    keyHandler(event) {
+        if (event.keyCode === 13 || event.keyCode === 32) {
+            event.preventDefault();
+            this.handleClick(event)
+        }
+    }
+
     render() {
         const { title, style, alignText, iconPosition, iconName, className } = this._getControlSchemaProperties(this.props);
         const alignstyle = alignText !== undefined && alignText === "right" ? "flex-end" : alignText === "center" ? "center" : "flex-start";
@@ -50,7 +57,7 @@ class CommandButton extends React.Component<IWidgetControlProps, {}> {
         return (
             <div className={`freshui-btn-control ${customClass}`} style={customStyle}>
                 {
-                    <Button variant="primary" size="sm" onClick={(e) => { this.handleClick(e); }} tabIndex={0} aria-label={title} >
+                    <Button variant="primary" size="sm" onClick={(e) => { this.handleClick(e); }} onKeyDown={(e) => this.keyHandler(e)} tabIndex={0} aria-label={title} >
                         {iconPosition === "startIcon" && <i className="freshui-icons">{iconName}</i>}
                         {title}
                         {this.props.children && this.props.children}

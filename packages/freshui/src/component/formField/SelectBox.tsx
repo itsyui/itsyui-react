@@ -68,7 +68,7 @@ class SelectBoxControl extends React.Component<IWidgetControlProps, {}> {
 		return (fieldSchema.visibility === undefined || fieldSchema.visibility) &&
 			<Form.Group className={fieldClass}
 				controlId={fieldSchema.id}>
-				<Form.Label className={fieldSchema.readOnly ? "text-label label-disabled" : "text-label"} tabIndex={0} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
+				<Form.Label className={fieldSchema.readOnly ? "text-label label-disabled" : "text-label"} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
 				{isMulti ?
 					<Form.Control as="select"
 						className="select-option"
@@ -98,8 +98,8 @@ class SelectBoxControl extends React.Component<IWidgetControlProps, {}> {
 						}
 					</Form.Control>
 				}
-				{fieldSchema.helptext && <Form.Text tabIndex={0} aria-label={getlocaleText(fieldSchema.helptext)}>{getlocaleText(fieldSchema.helptext)}</Form.Text>}
-				{controlProps.error && <Form.Text id="component-error-text" tabIndex={0} aria-label={controlProps.error}>{controlProps.error}</Form.Text>}
+				{fieldSchema.helptext && <Form.Text aria-label={getlocaleText(fieldSchema.helptext)}>{getlocaleText(fieldSchema.helptext)}</Form.Text>}
+				{controlProps.error && <Form.Text id="component-error-text" aria-label={controlProps.error}>{controlProps.error}</Form.Text>}
 			</Form.Group>;
 	}
 }

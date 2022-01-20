@@ -19,7 +19,12 @@ class ButtonControl extends React.Component<IWidgetControlProps, {}> {
 			fieldSchema.onButtonClick();
 		}
 	}
-
+	keyHandler(event) {
+        if (event.keyCode === 13 || event.keyCode === 32) {
+            event.preventDefault();
+            this.handleClick()
+        }
+    }
 	render() {
 		const { fieldSchema, displayName, style, className, iconPosition, iconName } = this._getControlSchemaProperties(this.props);
 		const customClass = className ? className : "";
@@ -27,7 +32,7 @@ class ButtonControl extends React.Component<IWidgetControlProps, {}> {
 		return (
 			<div className={`freshui-btn-control ${customClass}`} style={customStyle}>
 				{
-					<Button variant="primary" size="sm" style={style} onClick={this.handleClick.bind(this)} tabIndex={0} >
+					<Button variant="primary" size="sm" style={style} onKeyDown={(e) => this.keyHandler(e)} onClick={this.handleClick.bind(this)} tabIndex={0} >
 						{iconPosition === "startIcon" && <i className="freshui-icons">{iconName}</i>}
 						{displayName ? getlocaleText(displayName) : fieldSchema && fieldSchema.displayName}
 						{this.props.children && this.props.children}

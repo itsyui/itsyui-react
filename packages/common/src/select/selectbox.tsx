@@ -44,7 +44,8 @@ export function doLoadOptions(controlProps) {
             if (schemaDatasource) {
                 const parameters = {
                     propertyDefinitions: [valueKey, ...(Array.isArray(displayKey) ? displayKey : [])].reduce((propDefs, key) => { return { ...propDefs, ...{ [key]: {} } } }, {}),
-                    filter: metadata.filter ? (typeof metadata.filter === "string" ? JSON.parse(metadata.filter) : metadata.filter) : {}
+                    filter: metadata.filter ? (typeof metadata.filter === "string" ? JSON.parse(metadata.filter) : metadata.filter) : {},
+                    orderBy: metadata.orderBy ? metadata.orderBy : "",
                 };
                 parameters.filter = await getUpdatedFilter(parameters.filter, queryParams, transition);
                 const data = await schemaDatasource.getAll(typeId ? typeId.toString() : "", parameters);

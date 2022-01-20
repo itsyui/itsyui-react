@@ -59,10 +59,10 @@ class InputRadioGroup extends React.Component<IWidgetControlProps, {}> {
 				<Form.Group className={customClass} style={customStyle}>
 					<Row>
 						<Col xs={6} sm={6} md={6} lg={6}>
-							<Form.Label className="read-only-label" tabIndex={0} aria-label={`${fieldSchema.displayName}:`}>{`${fieldSchema.displayName}:`}</Form.Label>
+							<Form.Label className="read-only-label" aria-label={`${fieldSchema.displayName}:`}>{`${fieldSchema.displayName}:`}</Form.Label>
 						</Col>
 						<Col xs={6} md={6} lg={6}>
-							<Form.Label tabIndex={0} aria-label={controlProps.value}>{controlProps.value}</Form.Label>
+							<Form.Label aria-label={controlProps.value}>{controlProps.value}</Form.Label>
 						</Col>
 					</Row>
 				</Form.Group>
@@ -71,13 +71,13 @@ class InputRadioGroup extends React.Component<IWidgetControlProps, {}> {
 		return (
 			(fieldSchema.visibility === undefined || fieldSchema.visibility) &&
 			<div className={`radio-group-button ${customClass}`} style={customStyle}>
-				<Form.Label className={fieldSchema.readOnly ? "text-label label-disabled" : "text-label"} tabIndex={0} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
+				<Form.Label className={fieldSchema.readOnly ? "text-label label-disabled" : "text-label"} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
 				<Form.Group controlId={fieldSchema.id}>
-					<div className={controlProps.fieldSchema.mode === "vertical" ? "freshui-radio-option" : "freshui-radio-horizontal"} tabIndex={0}>
+					<div className={controlProps.fieldSchema.mode === "vertical" ? "freshui-radio-option" : "freshui-radio-horizontal"}>
 						{this.getRadioOptions(fieldSchema.options, controlProps)}
 					</div>
-					{fieldSchema.helptext && <Form.Text tabIndex={0} aria-label={getlocaleText(fieldSchema.helptext)}>{getlocaleText(fieldSchema.helptext)}</Form.Text>}
-					{controlProps.error && <Form.Text tabIndex={0} aria-label={controlProps.error}>{controlProps.error}</Form.Text>}
+					{fieldSchema.helptext && <Form.Text aria-label={getlocaleText(fieldSchema.helptext)}>{getlocaleText(fieldSchema.helptext)}</Form.Text>}
+					{controlProps.error && <Form.Text  aria-label={controlProps.error}>{controlProps.error}</Form.Text>}
 				</Form.Group>
 			</div>
 		);

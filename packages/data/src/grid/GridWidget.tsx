@@ -4,9 +4,8 @@ import * as React from "react";
 import {
 	doGridAfterEndEdit, doGridBeforeEdit,
 	doGridBeforeSelectedRows, doGridEdit, doGridEndEdit, doGridFilter, doGridGetState, doGridInit,
-	doGridLoad, doGridLoadDone, doGridRefresh, doGridSelectedRows, doGridSelectedRowsDone,
-
-	doGridUpdateContext, doInitRowSummary, GridActions, onCurrentPageChange, onCustomButtonExecuteCommand, onFetchDataServer
+	doGridLoad, doGridLoadDone, doGridRefresh, doGridSelectedRows, doGridSelectedRowsDone, doGridUpdateContext,
+	doInitRowSummary, GridActions, onCurrentPageChange, onCustomButtonExecuteCommand, onFetchDataServer, doGridSort
 } from "./actions";
 import { IGridDataRecord, IGridWidgetDispatchProps, IGridWidgetStateProps, IGridWidgetStateTransitionProps } from "./grid";
 import { getlocaleText } from "@itsy-ui/utils";
@@ -57,7 +56,7 @@ class GridWidget extends React.Component<GridWidgetProps, {}> {
 
 	initializeGrid(schema = null) {
 		const { typeId, gridSchemaId, gridSchema, filterText, idField, selectedRecords,
-			rowSelectionMode, canTriggerGridSelectedRows, context, queryParams, dataSource, gridViewAttributes, pageContext } = this.getControlSchemaProperties();
+			rowSelectionMode, canTriggerGridSelectedRows, context, queryParams, dataSource, gridViewAttributes, pageContext, showCheckBox } = this.getControlSchemaProperties();
 		let { customDataSource, designerMetadata } = this.getControlSchemaProperties();
 		customDataSource = customDataSource ? customDataSource : dataSource && typeof dataSource === "string" && dataSource !== "datasource" ?
 			dataLoader.getLoader<IDataSourceLake>(dataSource) : dataSource && typeof dataSource === "object" ? dataSource : null;
@@ -77,7 +76,8 @@ class GridWidget extends React.Component<GridWidgetProps, {}> {
 				context: context,
 				queryParams: queryParams,
 				maxItems: gridViewAttributes && gridViewAttributes.attributes && gridViewAttributes.attributes.maxItems ? gridViewAttributes.attributes.maxItems : null,
-				pageContext: pageContext
+				pageContext: pageContext,
+				showCheckBox: showCheckBox
 			});
 		}
 	}
@@ -95,15 +95,15 @@ class GridWidget extends React.Component<GridWidgetProps, {}> {
 		const { customDataSource, viewAttributes, renderCustomCell, sortingInfo } = this.props;
 		const preAppliedFilter = viewAttributes.filter !== undefined ? viewAttributes.filter : {};
 		const selectedRecords = this.props.selectedRows;
-		this.props.fetchDataServer(typeId, gridSchemaId, customDataSource, renderCustomCell, preAppliedFilter, selectedRecords, incrementalAdd, sortingInfo);
+		const preAppliedSortingInfo = sortingInfo ? sortingInfo : {};
+		this.props.fetchDataServer(typeId, gridSchemaId, customDataSource, renderCustomCell, preAppliedFilter, selectedRecords, incrementalAdd, preAppliedSortingInfo);
 	}
 
 	_sortingChange(sortingInfo: any) {
-		const { typeId, gridSchemaId } = this.getControlSchemaProperties();
-		const { customDataSource, viewAttributes, renderCustomCell, incrementalAdd } = (this.props as any);
-		const preAppliedFilter = viewAttributes.filter !== undefined ? viewAttributes.filter : {};
-		const selectedRecords = incrementalAdd ? this.props.selectedRows : null;
-		this.props.fetchDataServer(typeId, gridSchemaId, customDataSource, renderCustomCell, preAppliedFilter, selectedRecords, incrementalAdd, sortingInfo);
+		this.props.transition({
+			type: GridActions.State.GRID_SORT,
+			sortingInfo
+		});
 	}
 
 	onGridSelectedRows(event: any) {
@@ -190,7 +190,7 @@ class GridWidget extends React.Component<GridWidgetProps, {}> {
 	}
 
 	_getGridUIControlSchema() {
-		const { typeId, gridViewType, gridViewAttributes, customGridViewId, emptyRecordsMessage, primaryColumn, className, pageContext } = this.getControlSchemaProperties();
+		const { typeId, gridViewType, gridViewAttributes, customGridViewId, emptyRecordsMessage, primaryColumn, className, pageContext, showCheckBox } = this.getControlSchemaProperties();
 		const gridUIControlSchema = {
 			name: `grid-ui-control-${typeId}`,
 			properties: {
@@ -214,7 +214,8 @@ class GridWidget extends React.Component<GridWidgetProps, {}> {
 				sortingInfo: this.props.sortingInfo,
 				className: this.props.className ? this.props.className : className,
 				style: this.props.style,
-				pageContext: pageContext
+				pageContext: pageContext,
+				showCheckBox: this.props.showCheckBox ? this.props.showCheckBox : showCheckBox
 			},
 		};
 
@@ -240,7 +241,7 @@ const mapDispatchToProps = (dispatch) => {
 		onGridLoad: (event) => dispatch(doGridLoad(event)),
 		fetchDataServer: (typeId, gridSchemaId, customDataSource, renderCustomCell, preAppliedFilter, selectedRecords, incrementalAdd, sortingInfo) =>
 			dispatch(onFetchDataServer(typeId, gridSchemaId, customDataSource, renderCustomCell, null, null, selectedRecords, incrementalAdd, preAppliedFilter, false, sortingInfo)),
-		onGridRefresh: () => dispatch(doGridRefresh()),
+		onGridRefresh: (event) => dispatch(doGridRefresh(event)),
 		onGridBeforeSelectedRows: (event) => dispatch(doGridBeforeSelectedRows(event)),
 		onGridSelectedRows: (event) => dispatch(doGridSelectedRows(event)),
 		onGridSelectedRowsDone: (event) => dispatch(doGridSelectedRowsDone(event.selectedRows)),
@@ -255,6 +256,7 @@ const mapDispatchToProps = (dispatch) => {
 		onGridEndEdit: (event) => dispatch(doGridEndEdit(event)),
 		onGridAfterEndEdit: (event) => dispatch(doGridAfterEndEdit(event)),
 		onGridUpdateContext: (event) => dispatch(doGridUpdateContext(event.context)),
+		onGridSort: (event) => dispatch(doGridSort(event))
 	};
 };
 

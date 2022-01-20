@@ -3,7 +3,7 @@
 	"states": {
 		"onLoaded": {
 			"on": {
-				"FILTERBAR_INIT": "filterbarInit",
+				"FILTERBAR_BEFORE_INIT": "filterbarBeforeInit",
 				"FILTERBAR_BEFORE_CHANGE": "filterbarBeforeChange",
 				"FILTERBAR_BEFORE_RESET": "filterbarBeforeReset",
 				"FILTERBAR_BEFORE_REMOVE_CHIP": "filterbarBeforeRemoveChip",
@@ -11,6 +11,14 @@
 				"FILTERBAR_GET_STATE": "filterbarGetState",
 				"FILTERBAR_AFTER_CHANGE": "filterbarAfterChange",
 				"FILTERBAR_UPDATE": "filterbarUpdate"
+			}
+		},
+		"filterbarBeforeInit":{
+			"onEntry": [
+				"onFilterbarBeforeInit"
+			],
+			"on": {
+				"FILTERBAR_INIT": "filterbarInit"
 			}
 		},
 		"filterbarInit": {

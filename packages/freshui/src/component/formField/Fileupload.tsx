@@ -95,6 +95,13 @@ class FreshUiFileUpload extends React.Component<IWidgetControlProps, {}> {
 		return true;
 	}
 
+	keyHandler(event) {
+        if (event.keyCode === 13 || event.keyCode === 32) {
+			document.getElementById(this.state.id).click();
+            event.preventDefault();
+        }
+    }
+
 	async getExtensionsAndByte64ForFiles(files: any, fileExtensions: any, filesInBase64: any) {
 		if (files && Object.keys(files).length > 0 && Array.isArray(fileExtensions) && Array.isArray(filesInBase64)) {
 			const fileNames = [];
@@ -192,7 +199,7 @@ class FreshUiFileUpload extends React.Component<IWidgetControlProps, {}> {
 		const customStyle = fieldSchema.style ? fieldSchema.style : {};
 		return (
 			<>
-				<div className={`File_Upload_Control ${customClass}`} style={customStyle} tabIndex={0}>
+				<div className={`File_Upload_Control ${customClass}`} style={customStyle}>
 					<input
 						accept={this.getAcceptType(acceptFileTypes)}
 						style={{
@@ -203,11 +210,11 @@ class FreshUiFileUpload extends React.Component<IWidgetControlProps, {}> {
 						type="file"
 						onChange={(e) => {
 							this.onChange(e, acceptFileTypes);
-						}}
+						}}						
 						disabled={fieldSchema.readOnly}
 						tabIndex={0}
 					/>
-					<label className="file-upload-button-container btn btn-primary" tabIndex={0} aria-label={getlocaleText(fieldSchema.displayName)} htmlFor={this.state.id}>
+					<label className="file-upload-button-container btn btn-primary" onKeyDown={(e) => this.keyHandler(e)} tabIndex={0} aria-label={getlocaleText(fieldSchema.displayName)} htmlFor={this.state.id}>
 						{getlocaleText(fieldSchema.displayName)}
 					</label>
 

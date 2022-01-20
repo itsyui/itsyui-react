@@ -358,11 +358,11 @@ html {
 }
 .freshui-navbar-container {
     width: 100%;
-    height: var(--navbar-container-height);
+    height: var(--freshui-navbar-container-height);
 }
 .freshui-navbar-container nav.header-fixed-design.navbar {
     width: 100%;
-    height: var(--navbar-container-nav-height);
+    height: var(--freshui-navbar-container-nav-height);
 }
 .freshui-body-main-container {
     display: flex;
@@ -564,7 +564,7 @@ small.helping-text.form-text {
 /* Navbar custom css */
 
 .navbar-nav-container{
-    padding: var(--navbar-nav-container-padding);
+    padding: var(--freshui-navbar-nav-container-padding);
 }
 .navbar-brand{
     padding-top: var(--freshui-nav-navbar-brand-padding-top);
@@ -574,17 +574,17 @@ small.helping-text.form-text {
     font-size: var(--freshui-nav-navbar-brand-font-size);
 }
 .dropdown-item{
-    font-size: var(--navbar-nav-dropdown-item-font-size);
+    font-size: var(--freshui-navbar-nav-dropdown-item-font-size);
 }
 .freshui-header-top-right-menu{
-    font-size: var(--navbar-nav-right-menu-font-size);
+    font-size: var(--freshui-navbar-nav-right-menu-font-size);
 }
 .navbar-title img.left-icon,.fresh-navbar-title img.left-icon{
     display: flex;
-    width: var(--navbar-logo-img-width);
-    height: var(--navbar-logo-img-height);
-    border-radius: var(--navbar-logo-img-bdr-radius);
-    margin-left: var(--navbar-logo-img-margin-left);
+    width: var(--freshui-navbar-logo-img-width);
+    height: var(--freshui-navbar-logo-img-height);
+    border-radius: var(--freshui-navbar-logo-img-bdr-radius);
+    margin-left: var(--freshui-navbar-logo-img-margin-left);
 }
 .table-col-sort, .pagination.react-bootstrap-table-page-btns-ul .page-item {
     cursor: pointer;
@@ -1278,10 +1278,10 @@ select.form-control:focus::-ms-value {
 }
 @media only screen and (max-width: 768px) {
     .navbar-title img.left-icon,.fresh-navbar-title img.left-icon{
-        width: var(--navbar-logo-img-max-768-width);
-        height: var(--navbar-logo-img-max-768-height);
-        border-radius: var(--navbar-logo-img-max-768-bdr-radius);
-        padding: var(--navbar-logo-img-max-768-padding);
+        width: var(--freshui-navbar-logo-img-max-768-width);
+        height: var(--freshui-navbar-logo-img-max-768-height);
+        border-radius: var(--freshui-navbar-logo-img-max-768-bdr-radius);
+        padding: var(--freshui-navbar-logo-img-max-768-padding);
     }
     .freshui-media-card-container{
         width: auto;

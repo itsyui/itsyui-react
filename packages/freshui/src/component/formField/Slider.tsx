@@ -66,7 +66,7 @@ class SlideType extends React.Component<IWidgetControlProps, {}> {
 		}
 		return (
 			<Form.Group controlId="formBasicRangeCustom" className={orientation === "vertical" ? `slider-height ${customClassName}` : `${customClassName}`} style={customeStyle} >
-				<Form.Label id="discrete-slider" tabIndex={0} aria-label={displayName} className={readOnly ? "text-label label-disabled" : "text-label"}>
+				<Form.Label id="discrete-slider" aria-label={displayName} className={readOnly ? "text-label label-disabled" : "text-label"}>
 					{displayName}
 				</Form.Label>
 				<Slider

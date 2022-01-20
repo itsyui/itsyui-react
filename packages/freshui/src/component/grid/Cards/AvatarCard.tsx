@@ -7,6 +7,18 @@ import { IAvatarCardWidgetProps } from "./cardTypes";
 
 type AvatarCardControlProps = IWidgetControlProps & IAvatarCardWidgetProps;
 
+function keyHandler(action: any, id: string, props: any, event: any, executeCommand: any) {
+	if (event.keyCode === 13 || event.keyCode === 32) {
+		executeCommand(action, id, props, event)
+	}
+}
+
+function KeyCardHandler(event: any, id: string, cardprops: any, onCardSelect: any) {
+	if (event.keyCode === 13 || event.keyCode === 32) {
+		onCardSelect(event, id, cardprops)
+	}
+}
+
 function getListItemActions(id: string, actions: any, props: any, executeCommand: any) {
     if (Array.isArray(actions) && actions.length > 0) {
         const { handleMoreBtnClick, anchorEl, handleClose, currentFocusedRow } = props;
@@ -14,10 +26,10 @@ function getListItemActions(id: string, actions: any, props: any, executeCommand
         const nonPrimaryActions = actions.filter(t => primaryItem ? (t.name !== primaryItem.name && t.enabled) : t.enabled);
         const primaryAction = primaryItem && (primaryItem.iconPosition == "none"
 			? <Button color="secondary" variant="outline-primary" size="sm" className=""
-				onClick={(e) => executeCommand(primaryItem, id, props, e)} tabIndex={0} aria-label={primaryItem.displayText}
+				onClick={(e) => executeCommand(primaryItem, id, props, e)} onKeyDown={(e) => keyHandler(primaryItem, id, props, e, executeCommand)} tabIndex={0} aria-label={primaryItem.displayText}
 			>{primaryItem.displayText}</Button >
 			: <Button color="secondary" variant="outline-primary" size="sm" className="freshui-btn-control"
-				onClick={(e) => executeCommand(primaryItem, id, props, e)} tabIndex={0} aria-label={primaryItem.displayText}
+				onClick={(e) => executeCommand(primaryItem, id, props, e)} onKeyDown={(e) => keyHandler(primaryItem, id, props, e, executeCommand)} tabIndex={0} aria-label={primaryItem.displayText}
 			>
 				{primaryItem.iconPosition === "startIcon" && <i className="freshui-icons">{primaryItem.icon}</i>}
 				{primaryItem.displayText}
@@ -27,8 +39,8 @@ function getListItemActions(id: string, actions: any, props: any, executeCommand
             <div className="model-actions">
                 {primaryAction}
                 {nonPrimaryActions && nonPrimaryActions.length > 0 &&
-                    <div className="customize-table-action" onClick={handleMoreBtnClick.bind(this, id)}>
-                        <Dropdown>
+                    <div className="customize-table-action" onClick={handleMoreBtnClick.bind(this, id)} tabIndex={0} onKeyUp={keyMoreHandler.bind(this, id)}>
+                        <Dropdown tabIndex={0}>
                             <Dropdown.Toggle>
                                 <BsThreeDotsVertical />
                             </Dropdown.Toggle>
@@ -36,7 +48,7 @@ function getListItemActions(id: string, actions: any, props: any, executeCommand
                                 <Dropdown.Menu show={Boolean(anchorEl)} className="super-colors">
                                     {
                                         nonPrimaryActions.map((t, i) => {
-                                            return <Dropdown.Item key={`${id}-${i}`} data-id={id} onClick={(e) => executeCommand(t, id, props, e)}>{t.displayText}</Dropdown.Item>;
+                                            return <Dropdown.Item key={`${id}-${i}`} data-id={id} onClick={(e) => executeCommand(t, id, props, e)} onKeyDown={(e) => keyHandler(t, id, props, e, executeCommand)} tabIndex={0}>{t.displayText}</Dropdown.Item>;
                                         })
                                     }
                                 </Dropdown.Menu>
@@ -60,7 +72,7 @@ const AvatarCard = props => {
     };
     const avatarImageSrc = Array.isArray(avatarSrc) && avatarSrc.length > 0 ? avatarSrc[0] : avatarSrc;
     return (
-        <Card border={isSelected(cardId) ? "primary" : ""} className="simple-card-root-contain" onClick={(event) => onCardSelect(event, cardId, { ...cardViewProps })} tabIndex={0}>
+        <Card border={isSelected(cardId) ? "primary" : ""} className="simple-card-root-contain" onClick={(event) => onCardSelect(event, cardId, { ...cardViewProps })} onKeyDown={(event) => KeyCardHandler(event, cardId, { ...cardViewProps }, onCardSelect)} tabIndex={0}>
             {(avatarImageSrc || tertiaryValue) &&
                 < div className="image-card-display">
                     <div className="card-header-inner">

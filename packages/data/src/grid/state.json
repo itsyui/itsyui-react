@@ -10,7 +10,8 @@
 				"GRID_FILTER": "gridFilter",
 				"GRID_GET_STATE": "gridGetState",
 				"GRID_BEFORE_EDIT": "gridBeforeEdit",
-				"GRID_UPDATE_CONTEXT": "gridUpdateContext"
+				"GRID_UPDATE_CONTEXT": "gridUpdateContext",
+				"GRID_SORT": "gridSort"
 			}
 		},
 		"gridInit": {
@@ -136,6 +137,14 @@
 		"gridUpdateContext": {
 			"onEntry": [
 				"onGridUpdateContext"
+			],
+			"on": {
+				"GRID_DONE": "onLoaded"
+			}
+		},
+		"gridSort":{
+			"onEntry":[
+				"onGridSort"
 			],
 			"on": {
 				"GRID_DONE": "onLoaded"

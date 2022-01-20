@@ -271,6 +271,14 @@ class CardViewLayout extends React.Component<CardViewUIControlProps, {}> {
 		}
 	}
 
+	
+	keyMoreHandler(id: string, event: any){
+		if (event.keyCode === 13 || event.keyCode === 32) {
+			event.preventDefault();
+			this.handleMoreBtnClick(id, event)
+		}
+	}
+
 	handleClose(event: any) {
 		event.stopPropagation();
 		event.preventDefault();
@@ -301,6 +309,7 @@ class CardViewLayout extends React.Component<CardViewUIControlProps, {}> {
 				rowSelectionMode={rowSelectionMode}
 				commandExecute={this.commandExecute.bind(this)}
 				handleMoreBtnClick={this.handleMoreBtnClick.bind(this)}
+				keyMoreHandler={this.keyMoreHandler.bind(this)}
 				handleClose={this.handleClose.bind(this)}
 				anchorEl={this.state.anchorEl} setAnchorEl={this.setAnchorEl.bind(this)}
 				currentFocusedRow={this.state.currentFocusedRow}

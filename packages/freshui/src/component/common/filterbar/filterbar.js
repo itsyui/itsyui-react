@@ -38,8 +38,19 @@ class FilterControl extends Component {
 		}
 	}
 
+	getFormValueFromFilterObj = (filterObj) => {
+		const value = {};
+		if (filterObj) {
+			Object.keys(filterObj).forEach(val => {
+				if (Array.isArray(filterObj[val]) && filterObj[val].length > 0 && filterObj[val][0]["value"])
+					value[val] = filterObj[val][0]["value"];
+			});
+		}
+		return value;
+	}
+
 	renderForm = () => {
-		const { formSchema, filterContextPath, applyFilterOnChange, controlID } = this._getControlSchemaProperties();
+		const { formSchema, filterContextPath, applyFilterOnChange, defaultFilter, controlID } = this._getControlSchemaProperties();
 		const filterbarFormSchema = {
 			name: "filterbar-form",
 			properties: {
@@ -49,6 +60,7 @@ class FilterControl extends Component {
 				controlID: `${controlID}`,
 				submitButtonText: "Apply",
 				...applyFilterOnChange && { showSubmitButton: false },
+				...defaultFilter && { record: this.getFormValueFromFilterObj(defaultFilter) }
 			},
 		};
 		return <StateManagerContext.Provider key="filterbar-form-state-provider" value={{ contextPath: filterContextPath }}>

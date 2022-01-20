@@ -37,7 +37,7 @@ const HorizontalSidebarComponent = props => {
                                     <a href={subOption.url && window.location.origin + basePath + subOption.url} className="sidebar-atag-item"  tabIndex={0} aria-label={subOption.title}>
                                         <div className={layout === "layout_type_c" ? "horizontal_top_icon" : "freshui-horizontal-list-item"}
                                             onClick={props.onSidebarItemClicked.bind(this, subOption)}
-                                            key={subOption.title}>
+                                            key={subOption.title} onKeyUp={props.onKeyHandler.bind(this, subOption)}>
                                             {subOption.image && subOption.image !== "" ? <img src={subOption.image} className="sidebar-imageIcon" /> : subOption.iconName && subOption.iconName !== "" ?
                                                 <i className={subOption.className}>{subOption.iconName}</i> : <i className="freshui-icons">blur_circular</i>}
                                             <div className="freshui-horizontal-sidebar-menu-text" aria-label={subOption.title}>
@@ -106,7 +106,7 @@ class HorizontalSidebar extends React.Component<any, any> {
                     data.map(t => {
                         if (t.children && t.children.length > 0) {
                             t.children.map(subchilder => {
-                                <Dropdown.Item key={subchilder.id} onClick={this.onSidebarItemClicked.bind(this, subchilder)} >{subchilder.title}</Dropdown.Item>
+                                <Dropdown.Item key={subchilder.id} onClick={this.onSidebarItemClicked.bind(this, subchilder)}>{subchilder.title}</Dropdown.Item>
                             });
                         }
                     })
@@ -131,6 +131,11 @@ class HorizontalSidebar extends React.Component<any, any> {
         this.setState({ selectedItems: updatedItems });
         e.preventDefault();
     }
+    keyHandler(item: any, e: any) {
+        if (e.keyCode === 13 || e.keyCode === 32) {
+            this.onSidebarItemClicked(item, e)
+        }
+    }
 
     render() {
         const { data, container, layout, className, style } = this._getControlSchemaProperties();
@@ -140,7 +145,8 @@ class HorizontalSidebar extends React.Component<any, any> {
                 container={container}
                 layout={layout}
                 selectedItems={this.state.selectedItems}
-                onSidebarItemClicked={this.onSidebarItemClicked.bind(this)}
+                onSidebarItemClicked={this.onSidebarItemClicked.bind(this)}                
+			    onKeyHandler={this.keyHandler.bind(this)}
                 renderChildItem={this.renderChildItem.bind(this)}
                 handleClick={this.handleClick.bind(this)}
                 {...this.props}

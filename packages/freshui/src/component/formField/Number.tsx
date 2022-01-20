@@ -60,7 +60,7 @@ class MuiInputNumber extends React.Component<IWidgetControlProps, {}> {
 		if (fieldSchema.useMask) {
 			return <>
 				<Form.Group className={customClass} style={customStyle}>
-					<Form.Label className={fieldSchema.readOnly ? "text-label label-disabled" : "text-label"} tabIndex={0} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
+					<Form.Label className={fieldSchema.readOnly ? "text-label label-disabled" : "text-label"} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
 					<div className="input-textbox">
 						<MaskedInput
 							mask={userMask ? userMask : []}
@@ -89,9 +89,9 @@ class MuiInputNumber extends React.Component<IWidgetControlProps, {}> {
 								value && controlProps.handleBlur && controlProps.handleBlur(e, isNaN(value) ? "" : value);
 							}}
 						/>
-						{fieldSchema.helptext && <Form.Text className="helping-text" tabIndex={0} aria-label={getlocaleText(fieldSchema.helptext)}>{getlocaleText(fieldSchema.helptext)}</Form.Text>}
+						{fieldSchema.helptext && <Form.Text className="helping-text" aria-label={getlocaleText(fieldSchema.helptext)}>{getlocaleText(fieldSchema.helptext)}</Form.Text>}
 						{controlProps.error &&
-							<Form.Text id="component-error-text" tabIndex={0} aria-label={controlProps.error}>{controlProps.error}</Form.Text>
+							<Form.Text id="component-error-text" aria-label={controlProps.error}>{controlProps.error}</Form.Text>
 						}
 					</div>
 				</Form.Group>
@@ -99,7 +99,7 @@ class MuiInputNumber extends React.Component<IWidgetControlProps, {}> {
 		}
 		return <>
 			<Form.Group className={customClass} style={customStyle} controlId={fieldSchema.id}>
-				<Form.Label className={fieldSchema.readOnly ? "text-label label-disabled" : "text-label"} tabIndex={0} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
+				<Form.Label className={fieldSchema.readOnly ? "text-label label-disabled" : "text-label"} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
 				<div className="input-textbox">
 					<Form.Control
 						type="number"
@@ -117,7 +117,7 @@ class MuiInputNumber extends React.Component<IWidgetControlProps, {}> {
 					></Form.Control>
 				</div>
 				{controlProps.error &&
-					<Form.Text id="component-error-text" tabIndex={0} aria-label={controlProps.error}>{controlProps.error}</Form.Text>
+					<Form.Text id="component-error-text" aria-label={controlProps.error}>{controlProps.error}</Form.Text>
 				}
 			</Form.Group>
 		</>;

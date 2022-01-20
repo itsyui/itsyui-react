@@ -51,7 +51,7 @@ class InputTextBox extends React.Component<IWidgetControlProps, {}> {
 			(fieldSchema.visibility === undefined || fieldSchema.visibility) &&
 			<>
 				<Form.Group className={customClass} style={customStyle} controlId={fieldSchema.id}>
-					<Form.Label className="text-label" tabIndex={0} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
+					<Form.Label className="text-label" aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
 					<div className="input-textbox">
 						<Form.Control
 							type={type === "password" ? this.state.showPassword ? "text" : "password" : type}
@@ -68,9 +68,9 @@ class InputTextBox extends React.Component<IWidgetControlProps, {}> {
 							}}
 							onChange={e => controlProps.handleChange && controlProps.handleChange(e, e.target.value)}
 						/>
-						{fieldSchema.helptext && <Form.Text tabIndex={0} aria-label={getlocaleText(fieldSchema.helptext)} className="helping-text">{getlocaleText(fieldSchema.helptext)}</Form.Text>}
+						{fieldSchema.helptext && <Form.Text aria-label={getlocaleText(fieldSchema.helptext)} className="helping-text">{getlocaleText(fieldSchema.helptext)}</Form.Text>}
 						{controlProps.error &&
-							<Form.Text tabIndex={0} aria-label={controlProps.error} id="component-error-text">{controlProps.error}</Form.Text>
+							<Form.Text aria-label={controlProps.error} id="component-error-text">{controlProps.error}</Form.Text>
 						}
 					</div>
 				</Form.Group>

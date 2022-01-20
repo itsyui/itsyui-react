@@ -145,6 +145,7 @@ export interface IGridWidgetStateProps {
 	onRowSelect: any;
 	loaded: boolean;
 	pageContext: any;
+	showCheckBox: boolean;
 }
 
 export interface IGridWidgetStateTransitionProps {

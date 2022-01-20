@@ -114,10 +114,11 @@ function drawer(data, props, layout) {
 					overlay={renderTooltip(subOption, props)}
 					key={i}
 				>
-					<a href={subOption.url && window.location.origin + basePath + subOption.url} className="sidebar-atag-item" tabIndex={0} title={subOption.title}>
+					<a href={subOption.url && window.location.origin + basePath + subOption.url} className="sidebar-atag-item">
 						<li className={listItemClass + ' ' + textDirection}
 							onClick={props.onSidebarItemClicked.bind(this, subOption)}
-							key={subOption.title}>
+							key={subOption.title} tabIndex={0} title={subOption.title} 
+							onKeyUp={props.onKeyHandler.bind(this, subOption)}>
 							{subOption.image && subOption.image !== "" ? <img src={subOption.image} className={props.canShowSidebar ? "sidebar-imageIcon" : "collabse-sidebar-image"} /> : (subOption.iconName && subOption.iconName !== "" || subOption.className && subOption.className !== "") ?
 								<i className={subOption.className + " " + "sidebar-icon"}>{subOption.iconName}</i> : <BsXDiamond className="default-sidebar-icon" />}
 							{props.canShowSidebar && <div aria-label={subOption.title} className={layout === "layout_type_a" || layout === "layout_type_e" ? "sidebar-vertical-align-text" : "sidebar-menu-text"}
@@ -147,9 +148,11 @@ function drawer(data, props, layout) {
 					trigger={props.canShowSidebar ? "" : "hover"}
 					key={i}
 				>
-					<a href={subOption.url && window.location.origin + basePath + subOption.url} tabIndex={0} className="sidebar-atag-item" title={subOption.title}>
+					<a href={subOption.url && window.location.origin + basePath + subOption.url} className="sidebar-atag-item">
 						<li className={"sidebar_text_color" + " " + "freshui-list-item icon-align textDirection"}
-							onClick={props.onSidebarItemClicked.bind(this, subOption)}>
+							onClick={props.onSidebarItemClicked.bind(this, subOption)} 
+							tabIndex={0} title={subOption.title} 
+							onKeyUp={props.onKeyHandler.bind(this, subOption)}>
 							{subOption.image && subOption.image !== "" ? <img src={subOption.image} className="sidebar-imageIcon" /> : (subOption.iconName && subOption.iconName !== "" || subOption.className && subOption.className !== "") ? <i className={subOption.className + " " + "sidebar-icon"}>{subOption.iconName}</i> : <BsXDiamond className="default-sidebar-icon" />}
 							{props.canShowSidebar && <> <div className="sidebar-menu-text" aria-label={subOption.title}>
 								{subOption.title}
@@ -314,6 +317,12 @@ class MaterialSidebar extends React.Component<SidebarUIControlProps, {}> {
 		const { keySelected } = this._getControlSchemaProperties();
 		keySelected(item);
 	}
+	keyHandler(item: any, e: any) {
+        if (e.keyCode === 13 || e.keyCode === 32) {
+            this.onSidebarItemClicked(item, e)
+        }
+    }
+
 	render() {
 		const { data, keySelected, layout, className, style } = this._getControlSchemaProperties();
 		return <Sidebar
@@ -323,6 +332,7 @@ class MaterialSidebar extends React.Component<SidebarUIControlProps, {}> {
 			data={data}
 			keySelected={keySelected}
 			onSidebarItemClicked={this.onSidebarItemClicked.bind(this)}
+			onKeyHandler={this.keyHandler.bind(this)}
 			_getControlSchemaProperties={this._getControlSchemaProperties.bind(this)}
 			onTitleClicked={this.onTitleClicked.bind(this)}
 			{...this.props}

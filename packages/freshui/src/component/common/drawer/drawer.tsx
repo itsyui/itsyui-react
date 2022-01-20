@@ -28,7 +28,7 @@ class DrawerControl extends React.Component<DrawerUIControlProps, {}> {
 		const deviceType = getDeviceType()
 		const matches = deviceType === "mobile" ? true : false;
 		return (<>
-			{visible && <div className={className ? `root-drawer ${className}` : "root-drawer"} style={style ? style : {}}>
+			{visible && <div className={className ? `root-drawer ${className}` : "root-drawer"} style={style ? style : {}} tabIndex={0}>
 				<div className="backdrop-drawer" />
 				<div style={{ width: matches ? "100%" : width ? width : 350 }} className="drawer">
 					<div className="drawer-header">

@@ -40,7 +40,7 @@ const DataFormater = (number) => {
     return number.toString();
   }
 }
-const dateFormatter = item => moment(item).format("MMM YY");
+const dateFormatter = item => moment(item).format("DD MMM YY");
 const colors = ["#EA80FC", "#E1BEE7", "#CE93D8","#BA68C8", "#AB47BC", "#9C27B0", "#8E24AA", "#7B1FA2","#6A1B94","#4A148C"];
 const xAxisFormatter = (item) => {
   if (moment(item).isValid()) {

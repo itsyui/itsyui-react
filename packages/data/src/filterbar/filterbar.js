@@ -1,9 +1,9 @@
 import { getDefaultRegistry, retrieveSchema, SchemaContainer, WidgetsFactory, withReducer, StateManagerContext } from "@itsy-ui/core";
 import React, { Component } from "react";
 import {
-	doFilterbarInit, doFilterbarLoad, doFilterbarBeforeChange, doFilterbarAfterChange, doFilterbarApplyFilter
+	doFilterbarBeforeInit, doFilterbarInit, doFilterbarLoad, doFilterbarBeforeChange, doFilterbarAfterChange, doFilterbarApplyFilter
 	, doFilterbarAfterApplyFilter, doFilterbarBeforeReset, doFilterbarReset, doFilterbarBeforeRemoveChip, doFilterbarRemoveChip
-	, doFilterbarGetState, FilterbarActions, doFilterbarUpdate
+	, doFilterbarGetState, FilterbarActions, doFilterbarUpdate,
 } from "./actions";
 import "./filterbarApplyFilterHandler";
 import reducer from "./reducer";
@@ -22,7 +22,7 @@ class Filterbar extends Component {
 		const { schemaId, schema, operation, applyFilterOnChange, defaultFilter, controlID } = this._getControlSchemaProperties();
 		const { transition } = this.props;
 		transition({
-			type: FilterbarActions.State.FILTERBAR_INIT,
+			type: FilterbarActions.State.FILTERBAR_BEFORE_INIT,
 			schemaId,
 			schema,
 			operation,
@@ -55,7 +55,7 @@ class Filterbar extends Component {
 	}
 
 	renderFilterbarUiControl = () => {
-		const { applyFilterOnChange, controlID, isExpanded } = this._getControlSchemaProperties();
+		const { applyFilterOnChange, controlID, isExpanded, defaultFilter } = this._getControlSchemaProperties();
 		const { formSchema, filterContextPath, chips } = this.props;
 		const filterBarUiSchema = {
 			name: "filterbar-list",
@@ -68,7 +68,8 @@ class Filterbar extends Component {
 				controlID,
 				onResetFilters: this.onResetFilters.bind(this),
 				onRemoveFilter: this.onRemoveFilter.bind(this),
-				isExpanded: isExpanded
+				isExpanded: isExpanded,
+				defaultFilter
 			},
 		};
 		return <SchemaContainer key="filterbar-ui-widget" schema={filterBarUiSchema} />;
@@ -85,6 +86,7 @@ class Filterbar extends Component {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
+		onFilterbarBeforeInit: (event) => dispatch(doFilterbarBeforeInit(event)),
 		onFilterbarInit: (event) => dispatch(doFilterbarInit(event)),
 		onFilterbarLoad: (event) => dispatch(doFilterbarLoad(event)),
 		onFilterbarBeforeChange: (event) => dispatch(doFilterbarBeforeChange(event)),
@@ -96,7 +98,7 @@ const mapDispatchToProps = (dispatch) => {
 		onFilterbarBeforeRemoveChip: (event) => dispatch(doFilterbarBeforeRemoveChip(event)),
 		onFilterbarRemoveChip: (event) => dispatch(doFilterbarRemoveChip(event)),
 		onFilterbarGetState: (event) => dispatch(doFilterbarGetState(event)),
-		onfilterbarUpdate: (event) => dispatch(doFilterbarUpdate(event)),
+		onfilterbarUpdate: (event) => dispatch(doFilterbarUpdate(event))
 	};
 };
 

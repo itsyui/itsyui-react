@@ -2,10 +2,11 @@ import { WidgetsFactory } from "@itsy-ui/core";
 import { DataLoaderFactory, ISchemaLoader } from "@itsy-ui/core";
 import { initApplyFilterFormCustomState } from "./filterbarApplyFilterHandler";
 import { initFilterOnChangeFormCustomState } from "./filterbarOnChangeHandler";
-import { getFilterQueryAndChips, applyGridFilter } from "./utils";
+import { getFilterQueryAndChips, applyGridFilter, getFormValueFromFilterObj } from "./utils";
 
 export const FilterbarActions = {
 	State: {
+		FILTERBAR_BEFORE_INIT: "FILTERBAR_BEFORE_INIT",
 		FILTERBAR_INIT: "FILTERBAR_INIT",
 		FILTERBAR_LOAD: "FILTERBAR_LOAD",
 		FILTERBAR_DONE: "FILTERBAR_DONE",
@@ -36,7 +37,7 @@ export const FilterbarActions = {
 	UPDATE_FILTERBAR: "UPDATE_FILTERBAR",
 };
 
-export function doFilterbarInit(data: any) {
+export function doFilterbarBeforeInit(data: any) {
 	return async (_, __, transition) => {
 		const { schemaId, operation, applyFilterOnChange, defaultFilter, controlID } = data;
 		let { schema } = data;
@@ -58,7 +59,7 @@ export function doFilterbarInit(data: any) {
 			console.error(`Error in filtebar init method: ${err}`);
 		}
 		transition({
-			type: FilterbarActions.State.FILTERBAR_LOAD,
+			type: FilterbarActions.State.FILTERBAR_INIT,
 			formSchema: schema,
 			operation,
 			filterContextPath,
@@ -69,15 +70,39 @@ export function doFilterbarInit(data: any) {
 	};
 }
 
+export function doFilterbarInit(data: any) {
+	return async (_, __, transition) => {
+		const { formSchema, operation, filterContextPath, defaultFilter, controlID } = data;
+		let currentFilter, currentChip = null;
+		if (defaultFilter) {
+			const formValue = getFormValueFromFilterObj(defaultFilter);
+			[currentFilter, currentChip] = getFilterQueryAndChips(formValue, operation, formSchema);
+		}
+		transition({
+			type: FilterbarActions.State.FILTERBAR_LOAD,
+			formSchema: formSchema,
+			operation,
+			filterContextPath,
+			defaultFilter,
+			chips: currentChip,
+			controlID,
+			strict: true,
+		});
+	};
+}
+
 export function doFilterbarLoad(event: any) {
 	return async (_getState, dispatch, transition) => {
-		const { formSchema, operation, filterContextPath, defaultFilter, controlID } = event;
-		dispatch(updateSchema(formSchema, operation, defaultFilter, filterContextPath));
+		const { formSchema, operation, filterContextPath, defaultFilter, chips, controlID } = event;
+		dispatch(updateSchema(formSchema, operation, defaultFilter, filterContextPath, chips));
 		transition({
 			type: FilterbarActions.State.FILTERBAR_DONE,
 			controlID,
 			strict: true,
 		});
+		if (defaultFilter) {
+			applyGridFilter({ transition, controlID, defaultFilter });
+		}
 	};
 }
 
@@ -255,13 +280,16 @@ export function doFilterbarUpdate(_evt: any) {
 	};
 }
 
-function updateSchema(formSchema: any, operation: any, defaultFilter: any, filterContextPath: any) {
+function updateSchema(formSchema: any, operation: any, defaultFilter: any, filterContextPath: any, chips: any) {
 	return {
 		type: FilterbarActions.LOAD_SCHEMA,
 		filters: defaultFilter && typeof (defaultFilter) === "string" ? JSON.parse(defaultFilter) : defaultFilter ? defaultFilter : {},
 		formSchema,
 		operation: operation && typeof (operation) === "string" ? JSON.parse(operation) : operation ? operation : {},
 		filterContextPath,
+		...defaultFilter && {
+			chips,
+		}
 	};
 }
 

@@ -1,68 +1,68 @@
 {
-	"name": "@itsy-ui/freshui-theme",
-	"version": "1.0.0",
-	"main": "dist/npm/itsy-ui-freshui-theme.js",
-	"jsdelivr": "dist/cdn/itsy-ui-freshui-theme.js",
-	"module": "dist/es/itsy-ui-freshui-theme.esm.js",
-	"jsnext:main": "dist/es/itsy-ui-freshui-theme.esm.js",
-	"unpkg": "dist/cdn/itsy-ui-freshui-theme.js",
-	"amd": "dist/amd/itsy-ui-freshui-theme.amd.js",
-	"description": "ItsyUI freshui theme library",
-	"author": "ItsyUI",
-	"extract": true,
-	"keywords": [
-		"react",
-		"react-dom",
-		"itsyui",
-		"itsy-ui",
-		"components"
-	],
-	"publishConfig": {
-		"access": "public"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/itsyui/itsyui-react.git",
-		"directory": "packages/freshui"
-	},
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/itsyui/itsyui-react/issues"
-	},
-	"homepage": "https://www.itsyui.com/",
-	"files": [
-		"dist/*",
-		"license.md"
-	],
-	"dependencies": {
-		"@date-io/date-fns": "^1.3.13",
-		"@itsy-ui/core": "^1.0.0",
-		"@popperjs/core": "^2.9.2",
-		"bootstrap": "<=4.6.0",
-		"bootstrap-daterangepicker": "^3.1.0",
-		"date-fns": "^2.4.1",
-		"jquery": "^3.6.0",
-		"prop-types": "15.7.2",
-		"rc-slider": "^9.7.2",
-		"react-bootstrap": "<=1.5.0",
-		"react-bootstrap-daterangepicker": "^7.0.0",
-		"react-bootstrap-table-next": "^4.0.3",
-		"react-bootstrap-table2-paginator": "^2.1.2",
-		"react-bootstrap-typeahead": "^5.1.4",
-		"react-icons": "^4.2.0",
-		"react-text-mask": "^5.4.3",
-		"text-mask-addons": "3.8.0"
-	},
-	"devDependencies": {
-		"react": "^16.9.0",
-		"react-dom": "^16.9.0",
-		"react-router-dom": "^5.0.1"
-	},
-	"resolutions": {
-		"styled-components": "^5"
-	},
-	"scripts": {
-		"build": "rollup -c ../../rollup.config.js",
-		"build:prod": "NODE_ENV=production rollup -c ../../rollup.config.js"
-	}
+  "name": "@itsy-ui/freshui-theme",
+  "version": "1.0.3",
+  "main": "dist/npm/itsy-ui-freshui-theme.js",
+  "jsdelivr": "dist/cdn/itsy-ui-freshui-theme.js",
+  "module": "dist/es/itsy-ui-freshui-theme.esm.js",
+  "jsnext:main": "dist/es/itsy-ui-freshui-theme.esm.js",
+  "unpkg": "dist/cdn/itsy-ui-freshui-theme.js",
+  "amd": "dist/amd/itsy-ui-freshui-theme.amd.js",
+  "description": "ItsyUI freshui theme library",
+  "author": "ItsyUI",
+  "extract": true,
+  "keywords": [
+    "react",
+    "react-dom",
+    "itsyui",
+    "itsy-ui",
+    "components"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/itsyui/itsyui-react.git",
+    "directory": "packages/freshui"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/itsyui/itsyui-react/issues"
+  },
+  "homepage": "https://www.itsyui.com/",
+  "files": [
+    "dist/*",
+    "license.md"
+  ],
+  "dependencies": {
+    "@date-io/date-fns": "^1.3.13",
+    "@itsy-ui/core": "^1.0.0",
+    "@popperjs/core": "^2.9.2",
+    "bootstrap": "<=4.6.0",
+    "bootstrap-daterangepicker": "^3.1.0",
+    "date-fns": "^2.4.1",
+    "jquery": "^3.6.0",
+    "prop-types": "15.7.2",
+    "rc-slider": "^9.7.2",
+    "react-bootstrap": "<=1.5.0",
+    "react-bootstrap-daterangepicker": "^7.0.0",
+    "react-bootstrap-table-next": "^4.0.3",
+    "react-bootstrap-table2-paginator": "^2.1.2",
+    "react-bootstrap-typeahead": "^5.1.4",
+    "react-icons": "^4.2.0",
+    "react-text-mask": "^5.4.3",
+    "text-mask-addons": "3.8.0"
+  },
+  "devDependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-router-dom": "^5.0.1"
+  },
+  "resolutions": {
+    "styled-components": "^5"
+  },
+  "scripts": {
+    "build": "rollup -c ../../rollup.config.js",
+    "build:prod": "NODE_ENV=production rollup -c ../../rollup.config.js"
+  }
 }

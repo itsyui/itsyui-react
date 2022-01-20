@@ -25,6 +25,7 @@ export const GridActions = {
     GRID_END_EDIT: "GRID_END_EDIT",
     GRID_AFTER_END_EDIT: "GRID_AFTER_END_EDIT",
     GRID_CANCEL_EDIT: "GRID_CANCEL_EDIT",
+	GRID_SORT: "GRID_SORT",
     Indicator: {
       SHOW_INDICATOR: "SHOW_INDICATOR",
       HIDE_INDICATOR: "HIDE_INDICATOR",
@@ -60,6 +61,7 @@ export function doGridInit(event: any) {
       context: event.context,
       maxItems: event.maxItems,
       pageContext: event.pageContext,
+      showCheckBox: event.showCheckBox
     });
   };
 }
@@ -77,7 +79,7 @@ export function doGridLoad(event: any) {
           : event.rowSelectionMode,
       canTriggerGridSelectedRows:
         event.canTriggerGridSelectedRows === undefined ||
-        event.canTriggerGridSelectedRows === null
+          event.canTriggerGridSelectedRows === null
           ? true
           : event.canTriggerGridSelectedRows,
       context: event.context ? event.context : {},
@@ -156,16 +158,19 @@ export function onFetchDataServer(
   incrementalAdd?: boolean,
   searchValue: any = null,
   isRefresh = false,
-  sortingInfo: any = null
+  sortingInfo: any = null,
+  showLoadingIndicator = true
 ): any {
   const dataLoader = WidgetsFactory.instance.services[
     "DataLoaderFactory"
   ] as DataLoaderFactory;
   return async (getState, dispatch: any, transition: any) => {
-    transition({
-      type: GridActions.State.Indicator.SHOW_INDICATOR,
-      loadingMessage: "{{grid.Loadingdata}}",
-    });
+	if (showLoadingIndicator) {
+		transition({
+			type: GridActions.State.Indicator.SHOW_INDICATOR,
+			loadingMessage: "{{grid.Loadingdata}}",
+		  });
+	}
     const datasource =
       customDatasource !== undefined && customDatasource !== null
         ? customDatasource
@@ -213,7 +218,7 @@ export function onFetchDataServer(
       //Computing default filter
       parameters.defaultFilter =
         parameters.defaultFilter &&
-        Object.keys(parameters.defaultFilter).length > 0
+          Object.keys(parameters.defaultFilter).length > 0
           ? parameters.defaultFilter
           : {};
 
@@ -349,9 +354,11 @@ export function onFetchDataServer(
           dispatch(rowSelected(selectedRecords));
         }
       }
-      transition({
-        type: GridActions.State.Indicator.HIDE_INDICATOR,
-      });
+      if (showLoadingIndicator) {
+		transition({
+			type: GridActions.State.Indicator.HIDE_INDICATOR,
+		  });
+	  }
       transition({
         type: GridActions.State.GRID_LOAD_DONE,
         event: event,
@@ -462,8 +469,9 @@ export function doGridSelectedRowsDone(selectedRows: any[]) {
   };
 }
 
-export function doGridRefresh() {
+export function doGridRefresh(event: any) {
   return async (getState: any, dispatch: any, transition: any) => {
+	const showLoadingIndicator = event && event.showLoadingIndicator !== undefined && event.showLoadingIndicator !== null ? event.showLoadingIndicator : true;
     const {
       typeId,
       gridSchemaId,
@@ -473,9 +481,11 @@ export function doGridRefresh() {
       gridSchema,
       incrementalAdd,
       viewAttributes,
+	  sortingInfo
     } = getState();
     const preAppliedFilter =
       viewAttributes.filter !== undefined ? viewAttributes.filter : {};
+	  const preAppliedSortingInfo = sortingInfo ? sortingInfo : {};
     dispatch(
       onFetchDataServer(
         typeId,
@@ -487,7 +497,9 @@ export function doGridRefresh() {
         selectedRows,
         incrementalAdd,
         preAppliedFilter,
-        true
+        true,
+		preAppliedSortingInfo,
+		showLoadingIndicator
       )
     );
     transition({
@@ -617,7 +629,9 @@ export function doGridFilter(params: any) {
       renderCustomCell,
       incrementalAdd,
       selectedRows,
+	  sortingInfo
     } = getState();
+	const preAppliedSortingInfo = sortingInfo ? sortingInfo : {};
     let searchValue = {};
     if (params.searchValue) {
       if (typeof params.searchValue === "object") {
@@ -646,7 +660,8 @@ export function doGridFilter(params: any) {
         selectedRows,
         incrementalAdd,
         searchValue,
-        true
+        true,
+		preAppliedSortingInfo
       )
     );
     transition({
@@ -747,4 +762,16 @@ export function doGridUpdateContext(context: {}) {
       type: GridActions.State.GRID_DONE,
     });
   };
+}
+
+export function doGridSort(event:any) {
+	return (getState, dispatch: any, transition: any) => {
+		const { sortingInfo } = event;
+		const { viewAttributes, typeId,	gridSchemaId, customDataSource,	renderCustomCell, incrementalAdd, selectedRows,	} = getState();
+		const preAppliedFilter = viewAttributes.filter !== undefined ? viewAttributes.filter : {};
+		dispatch(onFetchDataServer(typeId, gridSchemaId, customDataSource, renderCustomCell, null, null, selectedRows, incrementalAdd, preAppliedFilter, false, sortingInfo));
+		transition({
+			type: GridActions.State.GRID_DONE,
+		});
+	}
 }

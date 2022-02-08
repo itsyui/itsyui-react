@@ -2,7 +2,7 @@ import { getDefaultRegistry, IWidgetControlProps, retrieveSchema, WidgetsFactory
 import * as React from "react";
 import { Row, Col } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
-import { getlocaleText } from "../../utils/helper";
+import { getFormLabelClassName, getlocaleText } from "../../utils/helper";
 
 class CheckBoxControl extends React.Component<IWidgetControlProps, {}> {
 
@@ -31,6 +31,7 @@ class CheckBoxControl extends React.Component<IWidgetControlProps, {}> {
 					label={itemValue}
 					onChange={e => handleChange && handleChange(e, e.target.value)}
 					tabIndex={0}
+					disabled={controlProps.fieldSchema && controlProps.fieldSchema.readOnly}
 				/>;
 			});
 		}
@@ -60,7 +61,7 @@ class CheckBoxControl extends React.Component<IWidgetControlProps, {}> {
 		return (
 			(fieldSchema.visibility === undefined || fieldSchema.visibility) &&
 			<div style={customStyle} className={customClass}>
-				<Form.Label className={fieldSchema.readOnly ? "text-label label-disabled" : "text-label"} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
+				<Form.Label className={getFormLabelClassName(fieldSchema)} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
 				<Form.Group controlId={fieldSchema.id}>
 					<div className={`${controlProps.error ? "error" : ""} ${fieldSchema.mode === "vertical" ? "freshui-radio-option" : "freshui-radio-horizontal"}`} aria-label={this.getCheckOptions(fieldSchema.options, controlProps)}>
 						{this.getCheckOptions(fieldSchema.options, controlProps)}

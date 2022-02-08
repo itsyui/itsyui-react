@@ -1230,7 +1230,10 @@ select.form-control:focus::-ms-value {
     color: var(--freshui-select-form-control-focus-color);
     background-color: var(--freshui-select-form-control-focus-bg-color);
 }
-
+.required-field::after {
+    content: "*";
+    color: red;
+}
 /* media queries*/
 @media only screen and (max-width: 958px) {
 

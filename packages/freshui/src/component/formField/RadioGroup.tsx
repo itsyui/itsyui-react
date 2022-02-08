@@ -2,7 +2,7 @@ import { getDefaultRegistry, IWidgetControlProps, retrieveSchema, WidgetsFactory
 import * as React from "react";
 import { Row, Col } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
-import { getlocaleText } from "../../utils/helper";
+import { getlocaleText, getFormLabelClassName } from "../../utils/helper";
 
 class InputRadioGroup extends React.Component<IWidgetControlProps, {}> {
 
@@ -28,6 +28,7 @@ class InputRadioGroup extends React.Component<IWidgetControlProps, {}> {
 						checked={selected}
 						value={t}
 						label={t}
+						disabled={controlProps.fieldSchema && controlProps.fieldSchema.readOnly}
 						onChange={e => handleChange && handleChange(e, t)}
 					/>;
 				} else {
@@ -41,6 +42,7 @@ class InputRadioGroup extends React.Component<IWidgetControlProps, {}> {
 						value={t.key}
 						label={t.value}
 						checked={selected}
+						disabled={controlProps.fieldSchema && controlProps.fieldSchema.readOnly}
 						onChange={e => handleChange && handleChange(e, t.key)}
 					/>;
 				}
@@ -71,7 +73,7 @@ class InputRadioGroup extends React.Component<IWidgetControlProps, {}> {
 		return (
 			(fieldSchema.visibility === undefined || fieldSchema.visibility) &&
 			<div className={`radio-group-button ${customClass}`} style={customStyle}>
-				<Form.Label className={fieldSchema.readOnly ? "text-label label-disabled" : "text-label"} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
+				<Form.Label className={getFormLabelClassName(fieldSchema)} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
 				<Form.Group controlId={fieldSchema.id}>
 					<div className={controlProps.fieldSchema.mode === "vertical" ? "freshui-radio-option" : "freshui-radio-horizontal"}>
 						{this.getRadioOptions(fieldSchema.options, controlProps)}

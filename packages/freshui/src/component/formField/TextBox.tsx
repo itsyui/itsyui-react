@@ -2,7 +2,7 @@ import { getDefaultRegistry, IWidgetControlProps, retrieveSchema, WidgetsFactory
 import * as React from "react";
 import Form from 'react-bootstrap/Form';
 import { Row, Col } from "react-bootstrap";
-import { getlocaleText } from "../../utils/helper";
+import { getlocaleText, getFormLabelClassName } from "../../utils/helper";
 
 class InputTextBox extends React.Component<IWidgetControlProps, {}> {
 
@@ -51,7 +51,7 @@ class InputTextBox extends React.Component<IWidgetControlProps, {}> {
 			(fieldSchema.visibility === undefined || fieldSchema.visibility) &&
 			<>
 				<Form.Group className={customClass} style={customStyle} controlId={fieldSchema.id}>
-					<Form.Label className="text-label" aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
+					<Form.Label className={getFormLabelClassName(fieldSchema)} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
 					<div className="input-textbox">
 						<Form.Control
 							type={type === "password" ? this.state.showPassword ? "text" : "password" : type}

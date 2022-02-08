@@ -96,11 +96,11 @@ class FreshUiFileUpload extends React.Component<IWidgetControlProps, {}> {
 	}
 
 	keyHandler(event) {
-        if (event.keyCode === 13 || event.keyCode === 32) {
+		if (event.keyCode === 13 || event.keyCode === 32) {
 			document.getElementById(this.state.id).click();
-            event.preventDefault();
-        }
-    }
+			event.preventDefault();
+		}
+	}
 
 	async getExtensionsAndByte64ForFiles(files: any, fileExtensions: any, filesInBase64: any) {
 		if (files && Object.keys(files).length > 0 && Array.isArray(fileExtensions) && Array.isArray(filesInBase64)) {
@@ -214,7 +214,7 @@ class FreshUiFileUpload extends React.Component<IWidgetControlProps, {}> {
 						disabled={fieldSchema.readOnly}
 						tabIndex={0}
 					/>
-					<label className="file-upload-button-container btn btn-primary" onKeyDown={(e) => this.keyHandler(e)} tabIndex={0} aria-label={getlocaleText(fieldSchema.displayName)} htmlFor={this.state.id}>
+					<label className={fieldSchema.required ? "file-upload-button-container btn btn-primary required-field" : "file-upload-button-container btn btn-primary"} onKeyDown={(e) => this.keyHandler(e)} tabIndex={0} aria-label={getlocaleText(fieldSchema.displayName)} htmlFor={this.state.id}>
 						{getlocaleText(fieldSchema.displayName)}
 					</label>
 

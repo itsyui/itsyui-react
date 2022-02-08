@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Typeahead } from 'react-bootstrap-typeahead';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import { Form } from 'react-bootstrap';
-import { getlocaleText } from "../../utils/helper"
+import { getlocaleText, getFormLabelClassName } from "../../utils/helper"
 import { Row, Col } from "react-bootstrap";
 
 class Lookup extends React.Component {
@@ -81,7 +81,7 @@ class Lookup extends React.Component {
 			{(fieldSchema.visibility === undefined || fieldSchema.visibility) &&
 				<>
 					<Form.Group className={customClass} style={customStyle} controlId={fieldSchema.id}>
-						<Form.Label className={fieldSchema.readOnly ? "text-label label-disabled" : "text-label"} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
+						<Form.Label className={getFormLabelClassName(fieldSchema)} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
 						<div className="input-textbox">
 							<Typeahead
 								className="lookup-component"

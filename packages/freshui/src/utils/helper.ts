@@ -209,3 +209,15 @@ export function getAlignItems(vAlignment, schema, style) {
 	}
 	return alignItem
 }
+
+export function getFormLabelClassName(fieldSchema: any = {}) {
+	const { readOnly, required } = fieldSchema;
+	if (readOnly && required) {
+		return "text-label label-disabled required-field";
+	} else if (readOnly) {
+		return "text-label label-disabled";
+	} else if (required) { 
+		return "text-label required-field";
+	}
+	return "text-label";
+}

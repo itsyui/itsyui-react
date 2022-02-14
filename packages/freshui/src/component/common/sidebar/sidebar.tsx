@@ -157,7 +157,7 @@ function drawer(data, props, layout) {
 							{props.canShowSidebar && <> <div className="sidebar-menu-text" aria-label={subOption.title}>
 								{subOption.title}
 							</div>
-								<div>
+								<div onClick={props.onSubMenuToggle.bind(this, subOption)}>
 									{props.canShowSidebar ? isCollapsable() ?
 										<BsChevronUp /> : <BsChevronDown /> : ""}
 								</div></>
@@ -294,24 +294,31 @@ class MaterialSidebar extends React.Component<SidebarUIControlProps, {}> {
 
 	onSidebarItemClicked(item: any, e: any) {
 		const { keySelected } = this._getControlSchemaProperties();
-		let updatedItems = {};
 		if (!item["children"] || item.children.length === 0) {
 			keySelected(item);
-		}
-		if (Object.keys(this.state.selectedItems).length === 0) {
-			updatedItems = { [item.title]: true }
-		} else {
-			const foundItem = this.state.selectedItems.hasOwnProperty(item.title);
-			updatedItems = foundItem ? { [item.title]: !this.state.selectedItems[item.title] } : item.parentId ?
-				{ [item.title]: true } : item.children ? item.children.find(t => this.state.selectedItems[t.title]) ? { [item.title]: false } : { [item.title]: true } : { [item.title]: false };
+		} else if (Array.isArray(item["children"]) && item["children"].length > 0 ) {
+			const { initialLoadIndex } = item;
+			if (initialLoadIndex !== undefined && initialLoadIndex !== null && item["children"][initialLoadIndex]) {
+				keySelected(item["children"][initialLoadIndex]);
+			}
 		}
 		
 		if (deviceType !== "desktop" && !item["children"]) {
 			this.props.transition({ type: "TOGGLE_SIDEBAR" });
 		}
 
+	}
+
+	onSubMenuToggle(item, e) {
+		const url = window.location.href;
+		const foundItem = this.state.selectedItems.hasOwnProperty(item.title);
+	  const updatedItems = foundItem ? { [item.title]: !this.state.selectedItems[item.title] } 
+			: Array.isArray(item.children) && item.children.find (t => url.includes(t.url)) 
+			? { [item.title]: false } : { [item.title]: true }
+
 		this.setState({ selectedItems: updatedItems });
-		e.preventDefault();
+
+		e.stopPropagation();
 	}
 	onTitleClicked(item: any) {
 		const { keySelected } = this._getControlSchemaProperties();
@@ -338,6 +345,7 @@ class MaterialSidebar extends React.Component<SidebarUIControlProps, {}> {
 			{...this.props}
 			className={className}
 			style={style}
+			onSubMenuToggle={this.onSubMenuToggle.bind(this)}
 		/>
 	}
 }

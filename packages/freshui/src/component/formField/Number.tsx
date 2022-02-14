@@ -3,7 +3,7 @@ import * as React from "react";
 import Form from 'react-bootstrap/Form';
 import MaskedInput from "react-text-mask";
 import createNumberMask from "text-mask-addons/dist/createNumberMask";
-import { getlocaleText } from "../../utils/helper";
+import { getlocaleText, getFormLabelClassName } from "../../utils/helper";
 import { Row, Col } from "react-bootstrap";
 
 class MuiInputNumber extends React.Component<IWidgetControlProps, {}> {
@@ -60,7 +60,7 @@ class MuiInputNumber extends React.Component<IWidgetControlProps, {}> {
 		if (fieldSchema.useMask) {
 			return <>
 				<Form.Group className={customClass} style={customStyle}>
-					<Form.Label className={fieldSchema.readOnly ? "text-label label-disabled" : "text-label"} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
+					<Form.Label className={getFormLabelClassName(fieldSchema)} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
 					<div className="input-textbox">
 						<MaskedInput
 							mask={userMask ? userMask : []}
@@ -99,7 +99,7 @@ class MuiInputNumber extends React.Component<IWidgetControlProps, {}> {
 		}
 		return <>
 			<Form.Group className={customClass} style={customStyle} controlId={fieldSchema.id}>
-				<Form.Label className={fieldSchema.readOnly ? "text-label label-disabled" : "text-label"} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
+				<Form.Label className={getFormLabelClassName(fieldSchema)} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
 				<div className="input-textbox">
 					<Form.Control
 						type="number"

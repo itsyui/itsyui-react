@@ -2,7 +2,7 @@ import { getDefaultRegistry, IWidgetControlProps, retrieveSchema, WidgetsFactory
 import * as React from "react";
 import Form from 'react-bootstrap/Form';
 import { Row, Col } from "react-bootstrap";
-import { getlocaleText } from "../../utils/helper";
+import { getlocaleText, getFormLabelClassName } from "../../utils/helper";
 
 class InputTextArea extends React.Component<IWidgetControlProps, {}> {
 
@@ -37,7 +37,7 @@ class InputTextArea extends React.Component<IWidgetControlProps, {}> {
 		return (
 			<>
 				<Form.Group className={customClass} style={customStyle} controlId={fieldSchema.id}>
-					<Form.Label className={fieldSchema.readOnly ? "text-label label-disabled" : "text-label"} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
+					<Form.Label className={getFormLabelClassName(fieldSchema)} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
 					<div className="input-textbox">
 						<Form.Control
 							as="textarea"

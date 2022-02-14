@@ -1,7 +1,7 @@
 import { getDefaultRegistry, IWidgetControlProps, retrieveSchema, WidgetsFactory } from "@itsy-ui/core";
 import * as React from "react";
 import Form from 'react-bootstrap/Form';
-import { getlocaleText } from "../../utils/helper";
+import { getlocaleText, getFormLabelClassName } from "../../utils/helper";
 import { Row, Col } from "react-bootstrap";
 import Slider, { SliderTooltip, Range, Handle } from "rc-slider";
 import 'rc-slider/assets/index.css';
@@ -66,7 +66,7 @@ class SlideType extends React.Component<IWidgetControlProps, {}> {
 		}
 		return (
 			<Form.Group controlId="formBasicRangeCustom" className={orientation === "vertical" ? `slider-height ${customClassName}` : `${customClassName}`} style={customeStyle} >
-				<Form.Label id="discrete-slider" aria-label={displayName} className={readOnly ? "text-label label-disabled" : "text-label"}>
+				<Form.Label id="discrete-slider" aria-label={displayName} className={getFormLabelClassName(fieldSchema)}>
 					{displayName}
 				</Form.Label>
 				<Slider

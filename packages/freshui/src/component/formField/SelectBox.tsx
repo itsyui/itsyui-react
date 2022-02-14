@@ -1,7 +1,7 @@
 import { getDefaultRegistry, IWidgetControlProps, retrieveSchema, WidgetsFactory } from "@itsy-ui/core";
 import * as React from "react";
 import Form from 'react-bootstrap/Form';
-import { getlocaleText } from "../../utils/helper";
+import { getlocaleText, getFormLabelClassName } from "../../utils/helper";
 import { Row, Col } from "react-bootstrap";
 
 class SelectBoxControl extends React.Component<IWidgetControlProps, {}> {
@@ -68,7 +68,7 @@ class SelectBoxControl extends React.Component<IWidgetControlProps, {}> {
 		return (fieldSchema.visibility === undefined || fieldSchema.visibility) &&
 			<Form.Group className={fieldClass}
 				controlId={fieldSchema.id}>
-				<Form.Label className={fieldSchema.readOnly ? "text-label label-disabled" : "text-label"} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
+				<Form.Label className={getFormLabelClassName(fieldSchema)} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
 				{isMulti ?
 					<Form.Control as="select"
 						className="select-option"

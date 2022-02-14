@@ -2,7 +2,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import { getDefaultRegistry, IWidgetControlProps, retrieveSchema, WidgetsFactory } from "@itsy-ui/core";
 import * as React from "react";
 import Form from 'react-bootstrap/Form';
-import { getlocaleText } from "../../utils/helper";
+import { getlocaleText, getFormLabelClassName } from "../../utils/helper";
 import { Row, Col } from "react-bootstrap";
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 import 'bootstrap-daterangepicker/daterangepicker.css';
@@ -159,7 +159,7 @@ class InputDate extends React.Component<IWidgetControlProps, {}>  {
 					disabled={fieldSchema.readOnly}
 				/></div>
 				: <Form.Group className="date-time-contianer date-range" controlId={fieldSchema.id}>
-					<Form.Label className="text-label" aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
+					<Form.Label className={getFormLabelClassName(fieldSchema)} aria-label={fieldSchema.displayName}>{fieldSchema.displayName}</Form.Label>
 					<div className="date-component">
 						<DateRangePicker
 							key={fieldSchema.id}

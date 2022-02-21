@@ -136,10 +136,16 @@ function drawer(data, props, layout) {
 			if (props.selectedItems[subOption.title] === false) {
 				return false;
 			}
-			const shouldCollapse = props.selectedItems[subOption.title] ? props.selectedItems[subOption.title] :
-				subOption.children ? subOption.children.find(t => url.includes(t.url)) ? true : false : false;
+			let shouldCollapse = props.selectedItems[subOption.title] ? props.selectedItems[subOption.title] :false;
+			if(Array.isArray(subOption.children) && subOption.children.length > 0) {
+				shouldCollapse = subOption.children.some(t => {
+						const available = t.childUrl.some(x=> url.includes(x));
+						return available ? true : false;
+					});
+			}
 			return shouldCollapse;
 		};
+		const collapsed = isCollapsable();
 		return (
 			<div key={subOption.title}>
 				<OverlayTrigger
@@ -158,7 +164,7 @@ function drawer(data, props, layout) {
 								{subOption.title}
 							</div>
 								<div onClick={props.onSubMenuToggle.bind(this, subOption)}>
-									{props.canShowSidebar ? isCollapsable() ?
+									{props.canShowSidebar ? collapsed ?
 										<BsChevronUp /> : <BsChevronDown /> : ""}
 								</div></>
 							}
@@ -166,7 +172,7 @@ function drawer(data, props, layout) {
 					</a>
 				</OverlayTrigger>
 				<div className="childe-item-render fresh-childe-item-render">
-					{isCollapsable() && drawer(subOption.children, props, layout)}
+					{collapsed && drawer(subOption.children, props, layout)}
 				</div>
 			</div>
 		);
